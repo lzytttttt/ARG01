@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>D05 — 三个 Excel 版本</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #43474d; padding: 40px 16px; }
+  .stack { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+  .excel-wrap .meta { font-size: 11px; color: #9aa0a8; margin-top: 8px; font-family: var(--font-mono); }
+  .flag-lost { color: #c0392b; font-weight: 600; }
+  .flag-ok { color: #52c41a; }
+  .flag-none { color: #bfbfbf; }
+  /* V2 的"还可以往下滚"幻觉 */
+  .scroll-illusion { max-height: 300px; overflow-y: auto; border-top: 1px solid #d5d9dd; }
+</style>
+</head>
+<body>
+<div class="stack">
+
+  <!-- 版本一：内部记录版 -->
+  <div class="excel-wrap">
+    <div class="excel-caption">保供人员状态登记表 <span class="ver">V1 · 内部记录版 · 2020-02-02 23:51</span></div>
+    <table class="excel-table">
+      <thead><tr><th style="width:120px;">姓名</th><th style="width:200px;">部门</th><th style="width:120px;">状态</th></tr></thead>
+      <tbody>
+        <tr><td>王建国</td><td>园区物业-保供组</td><td>在岗</td></tr>
+        <tr><td>陈海平</td><td>园区物业-配送组</td><td class="flag-lost">失联</td></tr>
+        <tr><td>李秀兰</td><td>园区物业-保供组</td><td>在岗</td></tr>
+        <tr><td>赵德柱</td><td>城市物流-保供配送</td><td class="flag-lost">失联</td></tr>
+        <tr><td>孙丽华</td><td>社区志愿-登记员</td><td>待核实</td></tr>
+        <tr><td>周文斌</td><td>城市物流-保供配送</td><td>在岗</td></tr>
+      </tbody>
+    </table>
+    <div class="meta">最后编辑：后端-小周 · 备注：状态口径待项目组确认</div>
+  </div>
+
+  <!-- 版本二：正式上报版（底部藏着"还可以往下滚"的幻觉） -->
+  <div class="excel-wrap">
+    <div class="excel-caption">保供人员状态登记表 <span class="ver">V2 · 正式上报版 · 2020-02-03 09:00</span></div>
+    <div class="scroll-illusion">
+      <table class="excel-table">
+        <thead><tr><th style="width:120px;">姓名</th><th style="width:200px;">部门</th><th style="width:120px;">状态</th></tr></thead>
+        <tbody>
+          <tr><td>王建国</td><td>园区物业-保供组</td><td class="flag-ok">在岗</td></tr>
+          <tr><td>陈海平</td><td>园区物业-配送组</td><td class="flag-ok">已处理</td></tr>
+          <tr><td>李秀兰</td><td>园区物业-保供组</td><td class="flag-ok">在岗</td></tr>
+          <tr><td>赵德柱</td><td>城市物流-保供配送</td><td class="flag-ok">已处理</td></tr>
+          <tr><td>孙丽华</td><td>社区志愿-登记员</td><td class="flag-ok">已处理</td></tr>
+          <tr><td>周文斌</td><td>城市物流-保供配送</td><td class="flag-ok">在岗</td></tr>
+          <!-- 不可见的空行：制造"还可以往下滚"的幻觉 -->
+          <tr style="height: 200px; visibility: hidden;"><td>&nbsp;</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="meta">最后编辑：系统 · 备注：——</div>
+  </div>
+
+  <!-- 版本三：合并后系统版 -->
+  <div class="excel-wrap">
+    <div class="excel-caption">保供人员状态登记表 <span class="ver">V3 · 数据中台合并版 · 2021-04-16 02:11</span></div>
+    <table class="excel-table">
+      <thead><tr><th style="width:120px;">姓名</th><th style="width:200px;">部门</th><th style="width:120px;">状态</th></tr></thead>
+      <tbody>
+        <tr><td>王建国</td><td>园区物业-保供组</td><td>在岗</td></tr>
+        <tr><td>陈海平</td><td>园区物业-配送组</td><td class="flag-none">—</td></tr>
+        <tr><td>李秀兰</td><td>园区物业-保供组</td><td>在岗</td></tr>
+        <tr><td style="color:#bfbfbf;">赵德柱</td><td style="color:#bfbfbf;">城市物流-保供配送</td><td class="flag-none">—</td></tr>
+        <tr><td>孙丽华</td><td>社区志愿-登记员</td><td>在岗</td></tr>
+        <tr><td>周文斌</td><td>城市物流-保供配送</td><td>在岗</td></tr>
+      </tbody>
+    </table>
+    <div class="meta">最后编辑：默言 · 备注：重复数据清理完成</div>
+  </div>
+
+</div>
+</body>
+</html>

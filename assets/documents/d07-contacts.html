@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>D07 — 通讯录搜索结果（合并前后 · 实时消失）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #43474d; min-height: 100vh; padding: 48px 16px; }
+  .wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .search-box {
+    width: 560px; background: #fff;
+    border: 1px solid var(--oa-border);
+    padding: 12px 16px; font-size: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .search-box input {
+    flex: 1; border: none; outline: none; font-size: 14px;
+  }
+  .result-meta { width: 560px; font-size: 12px; color: #9aa0a8; display: flex; justify-content: space-between; }
+  .replay {
+    margin-top: 8px; padding: 6px 18px;
+    background: transparent; color: #b8bec6;
+    border: 1px solid #6a7078; cursor: pointer; font-size: 12px;
+  }
+  .replay:hover { color: #fff; border-color: #9aa0a8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="search-box">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#999" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+    <input value="陈海平" readonly>
+  </div>
+  <div class="result-meta">
+    <span>找到 2 条结果</span>
+    <span id="stamp">合并执行于 2021-04-16 02:11:07</span>
+  </div>
+  <ul class="contact-list">
+    <li>
+      <span class="c-name">陈海平</span>
+      <span class="c-dept">园区物业-配送组</span>
+      <span class="c-status">状态：离职</span>
+    </li>
+    <li class="fading" id="row2">
+      <span class="c-name">陈海平</span>
+      <span class="c-dept">城市物流-保供配送</span>
+      <span class="c-status">状态：—</span>
+    </li>
+  </ul>
+  <button class="replay" onclick="replay()">重新播放（3 秒消失）</button>
+</div>
+<script>
+  var row = document.getElementById('row2');
+  var stamp = document.getElementById('stamp');
+  var timer = setTimeout(vanish, 1500);
+  function vanish() {
+    row.classList.add('is-gone');
+    stamp.textContent = '找到 1 条结果';
+  }
+  function replay() {
+    clearTimeout(timer);
+    row.classList.remove('is-gone');
+    stamp.textContent = '合并执行于 2021-04-16 02:11:07';
+    timer = setTimeout(vanish, 1500);
+  }
+</script>
+</body>
+</html>

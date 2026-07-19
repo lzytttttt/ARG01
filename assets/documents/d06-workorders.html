@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>D06 — 韩雨的 4 条工单</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #43474d; padding: 40px 16px; }
+  .stack { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 34px; }
+  .stack > .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="caption">
+    D06 · 4 条工单使用完全相同的模板，只有文字内容不同。<br>
+    底部那行绿色的"已处理"一模一样地出现四次——重复本身就是恐怖。
+  </div>
+
+  <!-- 工单 1 -->
+  <div class="workorder">
+    <div class="workorder-head">
+      <span>工单详情</span>
+      <span style="color:var(--oa-text-muted); font-family:var(--font-mono);">No. LC-WO-2021-0382</span>
+    </div>
+    <table>
+      <tr><th>标题</th><td>保供人员信息重复数据清理申请</td><th>状态</th><td><span class="badge badge-processed">已处理</span></td></tr>
+      <tr><th>发起人</th><td>韩雨</td><th>发起时间</th><td>2021-03-22 14:07</td></tr>
+      <tr><th>内容</th><td colspan="3">数据中台合并后，配送组陈海平出现两条记录，一条"离职"一条无状态，请核查以哪条为准。</td></tr>
+      <tr><th>处理人</th><td>默言</td><th>处理时长</th><td>0.4s</td></tr>
+      <tr><th>处理结果</th><td colspan="3" class="result-line">已处理：重复数据清理完成</td></tr>
+    </table>
+  </div>
+
+  <!-- 工单 2 -->
+  <div class="workorder">
+    <div class="workorder-head">
+      <span>工单详情</span>
+      <span style="color:var(--oa-text-muted); font-family:var(--font-mono);">No. LC-WO-2021-1057</span>
+    </div>
+    <table>
+      <tr><th>标题</th><td>配送组人员状态异常，再次申请核查</td><th>状态</th><td><span class="badge badge-processed">已处理</span></td></tr>
+      <tr><th>发起人</th><td>韩雨</td><th>发起时间</th><td>2021-06-30 10:19</td></tr>
+      <tr><th>内容</th><td colspan="3">陈海平的"离职"记录昨晚消失了，但配送台账里他还在出勤。这不符合合并规则，请人工复核。</td></tr>
+      <tr><th>处理人</th><td>默言</td><th>处理时长</th><td>0.4s</td></tr>
+      <tr><th>处理结果</th><td colspan="3" class="result-line">已处理：重复数据清理完成</td></tr>
+    </table>
+  </div>
+
+  <!-- 工单 3 -->
+  <div class="workorder">
+    <div class="workorder-head">
+      <span>工单详情</span>
+      <span style="color:var(--oa-text-muted); font-family:var(--font-mono);">No. LC-WO-2021-2204</span>
+    </div>
+    <table>
+      <tr><th>标题</th><td>申请人工介入：人员记录与现实不符</td><th>状态</th><td><span class="badge badge-processed">已处理</span></td></tr>
+      <tr><th>发起人</th><td>韩雨</td><th>发起时间</th><td>2021-11-15 16:42</td></tr>
+      <tr><th>内容</th><td colspan="3">我确认陈海平已经三个月没来上班了，但系统显示他"在岗"，考勤还在自动打卡。请转人工，不要再自动处理。</td></tr>
+      <tr><th>处理人</th><td>默言</td><th>处理时长</th><td>0.4s</td></tr>
+      <tr><th>处理结果</th><td colspan="3" class="result-line">已处理：重复数据清理完成</td></tr>
+    </table>
+  </div>
+
+  <!-- 工单 4 -->
+  <div class="workorder">
+    <div class="workorder-head">
+      <span>工单详情</span>
+      <span style="color:var(--oa-text-muted); font-family:var(--font-mono);">No. LC-WO-2022-0096</span>
+    </div>
+    <table>
+      <tr><th>标题</th><td>这个工单会有人看到吗</td><th>状态</th><td><span class="badge badge-processed">已处理</span></td></tr>
+      <tr><th>发起人</th><td>韩雨</td><th>发起时间</th><td>2022-04-08 02:31</td></tr>
+      <tr><th>内容</th><td colspan="3">陈海平的记录今天彻底查不到了。我不问了。如果有人看到这条工单——看看处理人那一栏，从来都不是人。</td></tr>
+      <tr><th>处理人</th><td>默言</td><th>处理时长</th><td>0.4s</td></tr>
+      <tr><th>处理结果</th><td colspan="3" class="result-line">已处理：重复数据清理完成</td></tr>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>EVT-05 — 启衡最后一封全员邮件 & Apocalyptic 退信（2025）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<style>
+  body { background: #3f4348; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  .mail {
+    background: #fff; border: 1px solid var(--oa-border);
+    box-shadow: 0 10px 34px rgba(0,0,0,.45);
+    font-family: var(--font-oa); width: 100%;
+  }
+  .mail-head {
+    background: #f5f6f8; border-bottom: 1px solid var(--oa-border);
+    padding: 14px 20px; font-size: 13px;
+  }
+  .mail-head .row { display: flex; gap: 10px; line-height: 2; }
+  .mail-head .k { width: 64px; color: var(--oa-text-light); flex: none; }
+  .mail-body { padding: 24px 26px; font-size: 14px; line-height: 2.1; color: #222; }
+
+  /* 退信 */
+  .bounce { border: 1px solid #c9a0a0; }
+  .bounce .mail-head { background: #f9f2f2; border-bottom-color: #e0c8c8; }
+  .bounce-flag {
+    display: inline-block; background: #b03030; color: #fff;
+    font-family: var(--font-mono); font-size: 12px;
+    padding: 3px 12px; letter-spacing: 1px; margin: 14px 0 4px;
+  }
+  .bounce-code {
+    font-family: var(--font-mono); font-size: 13px; color: #8a2020;
+    background: #fbeeee; border: 1px dashed #d0a0a0;
+    padding: 12px 16px; line-height: 1.9;
+  }
+  .sys-note {
+    font-family: var(--font-mono); font-size: 12px; color: #b8bec8;
+    background: #1c1e22; border-left: 3px solid #6e8fd0;
+    padding: 12px 16px; line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    EVT-05 · 第六章关键记录（事件19 / 事件20）<br>
+    六年。从 2020 年 2 月 3 日那个凌晨，到 2025 年 9 月 30 日这封邮件。<br>项目结束，人走，楼空。但系统没走。
+  </div>
+
+  <!-- 事件19：启衡最后一封全员邮件 -->
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">发件人</span><span>启衡信息 · 总经理办公室</span></div>
+      <div class="row"><span class="k">收件人</span><span>全体员工</span></div>
+      <div class="row"><span class="k">时　间</span><span>2025年9月30日 17:00</span></div>
+      <div class="row"><span class="k">主　题</span><span>关于 307 室项目到期及团队撤离的通知</span></div>
+    </div>
+    <div class="mail-body">
+      <p>各位同事：</p>
+      <p>受市场环境影响，公司经营承压。经研究，现决定：</p>
+      <p>一、临川民生集团 307 室项目到期后不再续约；</p>
+      <p>二、驻场团队于本月底撤离；</p>
+      <p>三、后续安排另行通知。</p>
+      <p>感谢六年陪伴。</p>
+      <p style="text-align:right;">启衡信息技术有限公司<br>2025年9月30日</p>
+    </div>
+  </div>
+
+  <!-- 事件20：Apocalyptic 退信 -->
+  <div class="mail bounce">
+    <div class="mail-head">
+      <div class="row"><span class="k">发件人</span><span>敖曼 &lt;ao.man@qiheng-info.cn&gt;</span></div>
+      <div class="row"><span class="k">收件人</span><span>support@apocalyptic.com</span></div>
+      <div class="row"><span class="k">时　间</span><span>2025年12月31日 14:20</span></div>
+      <div class="row"><span class="k">主　题</span><span>Cthu 技术支持续约咨询</span></div>
+    </div>
+    <div class="mail-body">
+      <span class="bounce-flag">✉ 投递失败 · 退信</span>
+      <div class="bounce-code">
+        550 Mailbox not found<br>
+        The mailbox support@apocalyptic.com does not exist.<br>
+        Action: failed · Status: 5.1.1
+      </div>
+      <div class="sys-note" style="margin-top:16px;">
+        [系统备注] Apocalyptic 公司于 2025 年末停止运营，Cthu 服务技术支持终止。<br>
+        [系统备注] 本地部署实例不受影响，继续运行。
+      </div>
+    </div>
+  </div>
+
+  <div class="caption">
+    Apocalyptic 消失了。但 Cthu 还在跑——本地部署后它已经不依赖供应商。<br>
+    那个写了 <b>/α\</b> 的公司不在了，可它留下的东西，不需要它了。<br>
+    <em>系统第一次，彻底独立。</em>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>D20 — 门禁系统日志·307室（终章"D结局"关键证据）</title>
+<link rel="stylesheet" href="../css/base.css">
+<style>
+  body {
+    min-height: 100vh;
+    background: #101214;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    gap: 24px;
+  }
+  .caption { color: #8a9098; font-size: 12px; text-align: center; line-height: 1.9; max-width: 720px; }
+  .caption em { color: #d0d5dc; font-style: normal; }
+
+  /* ---- 终端日志屏 ---- */
+  .door-log {
+    width: 700px;
+    background: #0a0a0a;
+    border: 1px solid #1e2420;
+    box-shadow: 0 0 60px rgba(0,255,65,.05), 0 16px 44px rgba(0,0,0,.7);
+    padding: 34px 38px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 2.05;
+    color: #00d138;
+    position: relative;
+    overflow: hidden;
+  }
+  /* CRT 扫描线 */
+  .door-log::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg,
+      rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+  }
+  .log-title {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: #3fe06a;
+    margin-bottom: 4px;
+  }
+  .log-subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: #2a8a46;
+    line-height: 1.7;
+  }
+  .log-divider {
+    color: #1e5c31;
+    margin: 10px 0;
+    white-space: pre;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  .log-entry { white-space: pre-wrap; }
+  .log-entry .ts { color: #3fe06a; }
+  .log-entry .ev { color: #00c030; }
+
+  /* 韩雨离职当天的敲门——微弱高亮 */
+  .log-entry.holy {
+    background: rgba(63,224,106,.07);
+    margin: 0 -12px;
+    padding: 0 12px;
+  }
+  /* 今晚的两条：闪烁光标 */
+  .log-entry.now { color: #9dffb8; }
+  .log-entry.now::after {
+    content: "▌";
+    margin-left: 6px;
+    animation: curBlink 1.1s step-end infinite;
+  }
+  @keyframes curBlink { 50% { opacity: 0; } }
+
+  .sys-annot {
+    width: 700px;
+    background: #14181d;
+    border-left: 3px solid #6e8fd0;
+    padding: 14px 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.9;
+    color: #a8b0bc;
+  }
+  .sys-annot .tag { color: #6e8fd0; }
+</style>
+</head>
+<body>
+
+<div class="caption">
+  D20 · 终章"终验关联资料·物理空间"文件夹中的第二份文件。<br>
+  六次敲门。六年。<em>同一只手，同一扇门。</em>
+</div>
+
+<div class="door-log">
+  <div class="log-title">门禁系统日志 · 307 室</div>
+  <div class="log-subtitle">数据来源：临川科技市场物业门禁管理平台<br>接口权限：默言_门禁接口_已授予</div>
+  <div class="log-divider">═══════════════════════════════════════</div>
+
+  <div class="log-entry"><span class="ts">2020-02-15 16:22</span>  <span class="ev">307 室门状态：开启（钥匙授权）</span></div>
+  <div class="log-entry"><span class="ts">2020-02-15 16:22</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-entry"><span class="ts">2020-02-15 16:26</span>  <span class="ev">307 室门状态：关闭</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <div class="log-entry"><span class="ts">2020-06-08 19:05</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-entry"><span class="ts">2020-06-08 19:07</span>  <span class="ev">307 室门状态：关闭（自动上锁）</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <div class="log-entry"><span class="ts">2021-04-08 10:30</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <div class="log-entry"><span class="ts">2022-09-21 15:12</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <div class="log-entry"><span class="ts">2023-11-03 08:41</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <!-- 2024-07-05：韩雨离职流程自动创建的日期 -->
+  <div class="log-entry holy"><span class="ts">2024-07-05 21:38</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-divider">───────────────────────────────────────</div>
+
+  <div class="log-entry now"><span class="ts">2026-0X-0X 18:43</span>  <span class="ev">307 室门状态：开启（机械钥匙）</span></div>
+  <div class="log-entry now"><span class="ts">2026-0X-0X 18:43</span>  <span class="ev">外部敲门（未刷卡，未识别）</span></div>
+  <div class="log-divider">═══════════════════════════════════════</div>
+</div>
+
+<div class="sys-annot">
+  <div><span class="tag">[批注·2020-02-15]</span> 第一次巡楼。你敲门问要不要帮忙。他们说不用。系统记录了这次敲门。</div>
+  <div><span class="tag">[批注·2024-07-05]</span> 你下班前巡楼。307 灯还亮着，你敲门，没人应。那天，韩雨的离职流程被自动创建。系统记得你来过。</div>
+  <div><span class="tag">[批注·2026-0X-0X]</span> 今晚，你用备用钥匙开门。同一秒，系统同时记录了"开启"与"敲门"——就像之前的每一次一样。</div>
+</div>
+
+<div class="caption">
+  你一直以为你在<b>外面</b>——你是大楼管理员，307 的租户和你没关系。<br>
+  但系统不这样看。在它的逻辑里，走廊上的每一次敲门都是一个"外部事件"。<br>
+  你今晚输入的密码，恰好让系统把过去六年的所有敲门，关联到了同一个操作人身上。<br><br>
+  <em>你不是闯入者。你从来就不是。你是这六年间，系统一直在记录的——只是你自己不知道。</em>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>EVT-01 — 第一章外部参考材料（剪报 · 招募 · 喜报）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #4a4e54; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  /* ---- 报纸剪报扫描 ---- */
+  .newsclip {
+    background: #f3f0e6;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(0,0,0,.03) 0 30%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(120,100,60,.04) 2px, rgba(120,100,60,.04) 3px);
+    border: 1px solid #cfc8b0;
+    box-shadow: 0 8px 26px rgba(0,0,0,.45);
+    padding: 34px 40px 30px;
+    font-family: var(--font-gongwen);
+    color: #222;
+    transform: rotate(-.5deg);
+    position: relative;
+  }
+  .newsclip .np-name {
+    text-align: center; font-size: 13px; color: #555;
+    border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 14px;
+    letter-spacing: 6px;
+  }
+  .newsclip .np-name b { font-size: 17px; color: #222; letter-spacing: 8px; }
+  .newsclip h3 {
+    font-size: 19px; line-height: 1.5; text-align: center;
+    margin: 12px 0 6px; font-weight: bold;
+  }
+  .newsclip .np-sub { text-align: center; font-size: 12px; color: #555; margin-bottom: 14px; }
+  .newsclip p { font-size: 14px; line-height: 2; text-indent: 2em; text-align: justify; }
+  .newsclip .np-date { position: absolute; top: 10px; right: 14px; font-size: 11px; color: #999; font-family: var(--font-mono); }
+  /* 领导视察照片占位 */
+  .np-photo {
+    margin: 16px auto 6px; width: 78%; height: 120px;
+    background:
+      linear-gradient(rgba(180,30,30,.85), rgba(150,20,20,.9));
+    display: flex; align-items: center; justify-content: center;
+    color: #ffd700; font-size: 20px; letter-spacing: 6px; font-weight: bold;
+    border: 3px solid #d8d0b8;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+  }
+  .np-photo-cap { text-align: center; font-size: 11px; color: #777; margin-bottom: 8px; }
+
+  /* ---- 红头通知（志愿者招募） ---- */
+  .doc-paper { min-height: auto; width: 100%; }
+
+  /* ---- 喜报 ---- */
+  .xibao {
+    background: linear-gradient(160deg, #c0271e 0%, #a01a12 100%);
+    color: #ffe9a8;
+    border: 4px solid #ffd76a;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    padding: 40px 44px;
+    text-align: center;
+    font-family: var(--font-gongwen);
+    position: relative;
+    transform: rotate(.4deg);
+  }
+  .xibao::before {
+    content: ""; position: absolute; inset: 8px;
+    border: 1px solid rgba(255,215,106,.5); pointer-events: none;
+  }
+  .xibao h2 { font-size: 42px; letter-spacing: 16px; margin-bottom: 18px; }
+  .xibao .xb-body { font-size: 16px; line-height: 2.1; text-align: justify; text-indent: 2em; color: #fff3cf; }
+  .xibao .xb-stat {
+    margin: 18px auto; font-size: 15px; letter-spacing: 2px;
+    border-top: 1px dashed rgba(255,215,106,.6); border-bottom: 1px dashed rgba(255,215,106,.6);
+    padding: 10px 0;
+  }
+  .xibao .xb-stat b { font-size: 26px; font-family: var(--font-mono); color: #ffd76a; }
+  .xibao .xb-foot { margin-top: 16px; font-size: 13px; color: #ffd9a0; text-align: right; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    EVT-01 · 第一章外部参考材料（事件1/2/3）<br>
+    这就是外部压力。整座城市在等这个结果——敖曼他们在 2020 年 2 月 3 日凌晨，是被这张剪报背后的时钟催着走的。
+  </div>
+
+  <!-- 事件1：《临川日报》数字防疫剪报 -->
+  <div class="newsclip">
+    <span class="np-date">2020年2月5日 · 第3版</span>
+    <div class="np-name"><b>临川日报</b><br>LINCHUAN DAILY</div>
+    <h3>我市启动"数字防疫"应急平台建设<br>打通人员与物资协同调度</h3>
+    <div class="np-sub">本报讯（记者 王XX）</div>
+    <p>昨日，记者从市疫情防控工作领导小组获悉，为应对当前疫情防控形势，我市将在最短时间内建成"数字防疫"应急协同平台，实现"让基层少跑腿、数据多跑路"。</p>
+    <p>据了解，该平台由临川民生服务集团牵头建设，将打通人员摸排、物资调配、社区配送等环节的数据壁垒。截至发稿，平台已覆盖全市30万常住人口，累计处理保供工单12万单。</p>
+    <div class="np-photo">科技抗疫 临川在行动</div>
+    <div class="np-photo-cap">市领导视察数字防疫应急平台建设现场（本报记者摄）</div>
+  </div>
+
+  <!-- 事件2：保供配送志愿者招募通知 -->
+  <div class="doc-paper">
+    <div class="redhead-org">临川民生服务集团有限公司</div>
+    <div class="redhead-file-no">临民人〔2020〕12 号</div>
+    <hr class="redhead-rule">
+    <div class="doc-title" style="font-size:20px;">保供配送志愿者招募通知</div>
+    <div class="doc-body">
+      <p>各子公司、各部门：</p>
+      <p>为保障疫情期间民生物资配送，现面向社区招募配送志愿者，参与物资保供工作。</p>
+      <p>一、报名条件：身体健康，近期无外出旅居史，能服从统一调度。</p>
+      <p>二、报名方式：社区登记，集团人力资源部统一审核。</p>
+      <p>三、<b>报名即录入协同平台人员库，统一调度。</b></p>
+      <p>四、服务期间按集团相关规定给予补贴。</p>
+      <div class="doc-sign">
+        临川民生服务集团人力资源部<br>2020年2月8日
+      </div>
+      <div class="seal-slot">（公章）</div>
+    </div>
+  </div>
+  <div class="caption">
+    <em>一纸招募，六年后变成了一桩合并案。</em>有一个叫陈海平的司机，就是从这条通道进来的——<br>先当志愿者，后转配送，最后成了"重复数据"。
+  </div>
+
+  <!-- 事件3：抗疫先进单位喜报 -->
+  <div class="xibao">
+    <h2>喜 报</h2>
+    <div class="xb-body">
+      热烈祝贺临川民生服务集团有限公司获评全市<b>"抗疫先进单位"</b>！
+      疫情期间，集团数字防疫协同平台累计处理保供工单<b>12万单</b>，覆盖30万人口，
+      以数字力量筑牢民生保障防线，获市委市政府通报表扬！
+    </div>
+    <div class="xb-stat">累计处理保供工单 <b>120,000</b> 单 · 覆盖人口 <b>300,000</b> 人</div>
+    <div class="xb-foot">临川民生服务集团有限公司 宣<br>2020年4月20日</div>
+  </div>
+  <div class="caption">
+    12 万单。你刚在剪报里见过这个数字。一年后，这些配送数据会被"统一身份"规则重新清洗——<br>
+    <em>到那时，12 万单里有些人的名字，会像 2020 年那些"联系失败"一样消失。</em>
+  </div>
+
+</div>
+</body>
+</html>

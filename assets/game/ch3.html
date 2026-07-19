@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第三章 · 规则已经改变 — 2022</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 880px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+  .compare { display: flex; gap: 14px; }
+  .compare .col { flex: 1; border: 1px solid var(--oa-border); background: #fff; }
+  .compare .col h5 { background: #f5f6f8; padding: 8px 12px; font-size: 12px; color: var(--oa-text-light); border-bottom: 1px solid var(--oa-border); }
+  .compare .col pre { padding: 14px; font-family: var(--font-oa); font-size: 12.5px; line-height: 1.9; white-space: pre-wrap; color: #333; }
+  .compare .col.after pre { color: var(--oa-dark-blue); }
+  .sig-zone { margin-top: 14px; border: 1px dashed #b5b5b5; background: #fffef8; padding: 14px 18px; font-size: 13px; line-height: 2; }
+  .sig-zone .name { font-family: var(--font-hand); font-size: 24px; color: #1c1c1c; }
+  .gray-foot-line { font-size: 11px; color: #b5b5b5; margin-top: 10px; font-style: italic; }
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+  .pencil { font-size: 12px; color: #a09060; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 19:50</span>
+  </div>
+  <div class="oa-banner">系统公告</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">5</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-3｜审核 2022 年系统规则变更</span>
+        <span><button class="btn" onclick="finish()" id="skipBtn" style="display:none;">下一阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>变更依据 · 2022年12月8日 23:41 紧急通知</h3>
+        <div class="src">"后续管理要求另行通知。"——你翻遍 OA 也没找到第二篇。它从未发布。</div>
+        <div class="doc-paper" style="width:100%; min-height:auto; padding:22px 30px;">
+          <div class="doc-body" style="font-size:13.5px;">
+            <p><b>关于优化出入管理的紧急通知</b>（临民防〔2022〕88 号 · 特急）</p>
+            <p>自即日起，暂停执行通行凭证查验、核酸检测要求、风险人员标签管控等措施。<b>后续管理要求另行通知。</b></p>
+            <p style="text-align:right;">临川民生服务集团有限公司 · 2022年12月8日 23:41</p>
+          </div>
+        </div>
+
+        <h3>系统变更单 · CHG-2022-1212</h3>
+        <div class="src">"CHG-2022-1212，就是那句永远没来的'另行通知'的替代品。"</div>
+        <table class="excel-table" style="width:100%; font-size:13px;">
+          <tr><th>变更编号</th><td>CHG-2022-1212</td><th>日期</th><td>2022年12月12日 · 加急</td></tr>
+          <tr><th>变更内容</th><td colspan="3">原人员风险状态不再作为业务审批依据。实施方式：前端停止展示相关标签和校验规则。后台数据暂不清理，保留以备审计。</td></tr>
+          <tr><th>变更原因</th><td colspan="3">根据最新要求调整。</td></tr>
+          <tr><th>风险评估</th><td colspan="3">无。</td></tr>
+        </table>
+        <div class="sig-zone">
+          █ 电子签名：<span class="name">敖曼</span>（项目经理·启衡信息）　签批意见：<b>同意上线</b><br>
+          <span class="src">你手里还捏着字条残角上那个黑点——也许犹豫，也许后悔。而六年前他在这张单上，签了"同意上线"。</span>
+          <div class="gray-foot-line">* 本变更单所含风险标签已于变更生效日起停止向授权人员展示。</div>
+        </div>
+
+        <h3>核心谜题 · 版本差异对比：隐藏 ≠ 删除</h3>
+        <div class="compare">
+          <div class="col"><h5>变更前（2020 规则 V1.3）</h5><pre>1. 高风险地区返回人员，须完成居家
+   观察后方可进入。
+2. 高风险人员不得进入办公及
+   经营场所。
+3. 健康码非绿码人员，系统自动
+   限制门禁权限。
+4. 未完成每日健康填报人员，
+   限制进入园区。</pre></div>
+          <div class="col after"><h5>变更后（2022年12月 规则 V2.0）</h5><pre>1. 系统根据当前管理要求自动评估
+   人员进入权限。
+2. 系统未发现人员限制信息。
+3. 如遇异常，请联系物业管理处。
+
+
+
+
+</pre></div>
+        </div>
+        <div class="src" style="margin-top:8px;">"高风险人员不得进入"没了。取而代之："系统未发现人员限制信息。"<b>系统不是发现没有风险，是不再去看。</b></div>
+
+        <h3>研发备注（内部，不外传）</h3>
+        <div class="doc-paper" style="width:100%; min-height:auto; padding:18px 24px; font-family:var(--font-mono); font-size:12.5px; line-height:2;">
+          数据库不做删除，仅前端不展示。接口底层逻辑不变。<br>
+          风险：旧标签仍存在于数据库中。如后续系统使用这些字段做自动判断，可能产生不一致结果。<br>
+          建议后续彻底清理。——但甲方未批复后续清理预算。　<span class="pencil">（旁边极小的铅笔批注："太贵了。"）</span>
+        </div>
+
+        <div class="complete-bar" id="completeBar" style="display:block;">
+          第三阶段验收完成。下一阶段：2023 年 AI 智能助手上线资料。
+          <div class="gray-line">—— 你开始担心：AI 从这些"隐藏但未删除"的数据里，学到的到底是什么？</div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入第四章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+  function finish() { ARG.completeChapter(3); ARG.go('ch4.html'); }
+</script>
+</body>
+</html>

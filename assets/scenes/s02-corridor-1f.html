@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>S02 — 一楼走廊（CSS 透视走廊）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/scenes.css">
+<link rel="stylesheet" href="../css/horror.css">
+<style>
+  /* 走廊几何：梯形 clip-path 伪造透视，灭点在画面中央偏上 */
+  .s02 { background: #101215; }
+  .ceil {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 0, 100% 0, 63% 31%, 37% 31%);
+    background: linear-gradient(180deg, #b9beb4 0%, #9aa096 100%);
+  }
+  .floor {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 100%, 100% 100%, 63% 71%, 37% 71%);
+    background:
+      radial-gradient(ellipse at 50% 88%, rgba(210, 214, 200, .16), transparent 55%),
+      linear-gradient(0deg, #78796f 0%, #8a8a80 100%);
+  }
+  .wall-l {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 0, 37% 31%, 37% 71%, 0 100%);
+    background: linear-gradient(90deg, #93a08d 0%, #a8b5a2 100%);
+  }
+  .wall-r {
+    position: absolute; inset: 0;
+    clip-path: polygon(100% 0, 63% 31%, 63% 71%, 100% 100%);
+    background: linear-gradient(270deg, #93a08d 0%, #a8b5a2 100%);
+  }
+  .back {
+    position: absolute;
+    left: 37%; top: 31%; width: 26%; height: 40%;
+    background: linear-gradient(180deg, #9aa696, #8b9785);
+    box-shadow: 0 0 40px rgba(0, 0, 0, .35);
+  }
+  /* 墙面底部的污渍带 */
+  .grime-l { position: absolute; inset: 0; clip-path: polygon(0 86%, 37% 65%, 37% 71%, 0 100%); background: rgba(70, 75, 62, .35); }
+  .grime-r { position: absolute; inset: 0; clip-path: polygon(100% 86%, 63% 65%, 63% 71%, 100% 100%); background: rgba(70, 75, 62, .35); }
+
+  /* 左墙卷帘门（顺透视的斜切四边形） */
+  .feature-l {
+    position: absolute;
+    left: 3%; top: 26%;
+    width: 26%; height: 56%;
+    clip-path: polygon(0 6%, 100% 20%, 100% 76%, 0 100%);
+  }
+  .feature-l.second { left: 31%; top: 34%; width: 12%; height: 34%; clip-path: polygon(0 10%, 100% 16%, 100% 82%, 0 96%); opacity: .85; }
+
+  /* 右墙电梯门 */
+  .elevator {
+    position: absolute;
+    right: 6%; top: 30%;
+    width: 22%; height: 52%;
+    clip-path: polygon(0 18%, 100% 4%, 100% 100%, 0 80%);
+    background: linear-gradient(90deg, #8d9296 49.4%, #6f7478 49.6%, #6f7478 50.4%, #8d9296 50.6%);
+    border-top: 4px solid #5c6165;
+    box-shadow: inset 0 0 26px rgba(0, 0, 0, .4);
+  }
+  /* 电梯门上的"停运通知"黄纸 */
+  .elevator .notice-paper {
+    position: absolute;
+    left: 26%; top: 24%;
+    width: 46%; height: 26%;
+    transform: rotate(3deg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-size: 13px; font-weight: bold; letter-spacing: 2px;
+  }
+  .elevator .notice-paper small { font-size: 8px; font-weight: normal; letter-spacing: 0; margin-top: 3px; }
+
+  /* 尽头黑暗门洞 */
+  .doorway {
+    position: absolute;
+    left: 44%; top: 38%; width: 12%; height: 33%;
+    background: linear-gradient(180deg, #17191c, #0c0d0f);
+    box-shadow: inset 0 0 14px #000;
+  }
+  .exit-sign {
+    position: absolute;
+    left: 44.5%; top: 34.5%;
+    padding: 1px 6px;
+    background: #1d5c34;
+    color: #bfe8c8;
+    font-size: 9px;
+    letter-spacing: 2px;
+    box-shadow: 0 0 8px rgba(80, 200, 120, .5);
+  }
+
+  /* 灯管：顺天花纵深排列，一根灭、一根闪 */
+  .tube-wrap { position: absolute; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .t1 { top: 7%;  } .t1 .light-tube { width: 150px; }
+  .t2 { top: 16%; } .t2 .light-tube { width: 108px; }
+  .t3 { top: 23%; } .t3 .light-tube { width: 76px; }
+
+  /* 灯光在地面上的冷光晕 + 闪烁覆盖层（H03） */
+  .light-pool {
+    position: absolute; left: 50%; top: 58%;
+    width: 46%; height: 34%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at 50% 30%, rgba(240, 244, 220, .20), transparent 65%);
+    pointer-events: none;
+  }
+  .flicker-layer {
+    position: absolute; inset: 0;
+    background: rgba(245, 248, 225, .05);
+    pointer-events: none;
+  }
+
+  /* 地面水洼（天花板漏水） */
+  .floor-puddle {
+    position: absolute; left: 40%; top: 76%;
+    width: 20%; height: 9%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 45% 35%, rgba(190, 198, 195, .35), rgba(90, 95, 90, .2) 70%, transparent);
+    filter: blur(1px);
+  }
+</style>
+</head>
+<body>
+<div class="scene s02 vignette">
+  <div class="ceil"></div>
+  <div class="floor"></div>
+  <div class="wall-l"></div>
+  <div class="wall-r"></div>
+  <div class="grime-l"></div>
+  <div class="grime-r"></div>
+  <div class="back"></div>
+
+  <div class="feature-l shutter"></div>
+  <div class="feature-l second shutter"></div>
+
+  <div class="elevator">
+    <div class="notice-paper">
+      电梯停运通知
+      <small>故障检修 · 恢复时间另行通知 · 物业办</small>
+    </div>
+  </div>
+
+  <div class="doorway"></div>
+  <div class="exit-sign">安全出口</div>
+
+  <div class="tube-wrap t1"><div class="light-tube"></div></div>
+  <div class="tube-wrap t2"><div class="light-tube off"></div></div>
+  <div class="tube-wrap t3"><div class="light-tube fx-flicker"></div></div>
+
+  <div class="light-pool"></div>
+  <div class="floor-puddle"></div>
+  <div class="flicker-layer fx-flicker"></div>
+</div>
+</body>
+</html>

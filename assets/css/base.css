@@ -1,0 +1,73 @@
+/* ============================================================
+   ARG-01「六年一夜」前端美术资源 — 基础变量与字体
+   依据 WIKI/17-视觉与UI规范.md、WIKI/20-美术资源需求清单.md
+   原则：能用代码画的，绝不用图片。
+   ============================================================ */
+
+:root {
+  /* ---- OA 标准配色 ---- */
+  --oa-bg:            #FFFFFF;
+  --oa-sidebar-bg:    #F0F2F5;
+  --oa-primary-blue:  #1a56db;
+  --oa-blue:          #1a56db;
+  --oa-dark-blue:     #1e3a5f;
+  --oa-text:          #333333;
+  --oa-text-light:    #666666;
+  --oa-text-muted:    #999999;
+  --oa-border:        #D9D9D9;
+  --oa-border-light:  #E8E8E8;
+
+  /* ---- 状态色 ---- */
+  --status-red:       #E34D59;
+  --status-green:     #52c41a;
+  --status-orange:    #FA8C16;
+  --status-gray:      #BFBFBF;
+
+  /* ---- 场景色彩 ---- */
+  --scene-wall:       #a8b5a2;   /* 走廊灰绿 */
+  --scene-floor:      #8a8a80;
+  --scene-shadow:     rgba(20, 25, 35, 0.15);
+  --scene-tile:       #d4c9b8;   /* 大楼外墙瓷砖 */
+  --scene-tile-line:  #c4b9a8;
+  --scene-sky-lo:     #8a8a8a;   /* 阴天天空（上） */
+  --scene-sky-hi:     #c0c0c0;   /* 阴天天空（下） */
+
+  /* ---- 字体 ---- */
+  --font-gongwen:  "SimSun", "宋体", serif;
+  --font-fangsong: "FangSong", "仿宋", "SimSun", serif;
+  --font-hei:      "SimHei", "黑体", sans-serif;
+  --font-oa:       "Microsoft YaHei", "微软雅黑", sans-serif;
+  --font-mono:     "Courier New", "Consolas", monospace;
+  --font-hand:     "ZCOOL KuaiLe", "Ma Shan Zheng", "Liu Jian Mao Cao", "Kaiti", "楷体", cursive;
+
+  /* ---- 字号 ---- */
+  --text-xs: 12px; --text-sm: 13px; --text-base: 14px;
+  --text-lg: 16px; --text-xl: 18px; --text-2xl: 20px;
+  --leading: 1.6;
+
+  /* ---- 恐怖参数（游戏引擎通过 JS 动态修改） ---- */
+  --horror-flicker: 0;
+  --horror-blur: 0px;
+  --horror-shift-x: 0px;
+  --horror-shift-y: 0px;
+  --horror-hue: 0deg;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: var(--font-oa);
+  font-size: var(--text-base);
+  color: var(--oa-text);
+  line-height: var(--leading);
+}
+
+/* 资源展示用深色舞台（演示页/索引页使用） */
+.asset-stage {
+  min-height: 100vh;
+  background: #26262b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}

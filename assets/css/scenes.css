@@ -1,0 +1,150 @@
+/* ============================================================
+   场景共享组件（S01-S06）
+   绘画式氛围感——不追求照片级真实
+   ============================================================ */
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  background: #0c0d10;
+}
+
+/* --- 室外雨丝（由 js/rain.js 按 data-rain 数量生成 <i class="raindrop">） --- */
+.rain-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 8; }
+.raindrop {
+  position: absolute;
+  top: -90px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(214, 226, 235, .75));
+  animation: rainDrop linear infinite;
+}
+
+/* --- 窗玻璃雨痕（由 js/rain.js 按 data-glass-rain 生成） --- */
+.glass-streak {
+  position: absolute;
+  width: 1px;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, rgba(220, 230, 238, .55));
+  animation: rainOnWindow linear infinite;
+}
+.glass-bead {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(225, 235, 242, .35);
+  filter: blur(.6px);
+}
+
+/* --- 墙面/天花板渗水渍 --- */
+.water-stain {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1.5px);
+  background: radial-gradient(ellipse at 50% 42%,
+    rgba(116, 96, 58, .42) 0%,
+    rgba(116, 96, 58, .20) 38%,
+    rgba(116, 96, 58, .06) 62%,
+    transparent 72%);
+}
+.water-stain.drip::after {
+  content: "";
+  position: absolute;
+  left: 48%; top: 58%;
+  width: 2px; height: 70px;
+  background: linear-gradient(to bottom, rgba(116, 96, 58, .35), transparent);
+}
+
+/* --- 日光灯管 --- */
+.light-tube {
+  width: 130px; height: 9px;
+  border-radius: 4px;
+  background: #f6f6ec;
+  box-shadow: 0 0 18px rgba(255, 255, 238, .55),
+              0 0 55px rgba(255, 255, 238, .28),
+              0 2px 3px rgba(0, 0, 0, .2);
+}
+.light-tube.off {
+  background: #62645c;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+/* --- 卷帘门 --- */
+.shutter {
+  background: repeating-linear-gradient(0deg,
+    #9ba1a5 0 5px, #7f858a 5px 7px, #6f7479 7px 8px);
+  border: 1px solid #5c6165;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .35);
+}
+
+/* --- 黄色通知纸 --- */
+.notice-paper {
+  background: linear-gradient(160deg, #eadb8f, #ddcb7d);
+  color: #55461c;
+  font-family: var(--font-gongwen);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+/* --- 暗角（::after 覆盖） --- */
+.vignette::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 9;
+  background: radial-gradient(ellipse at 50% 45%, transparent 52%, rgba(12, 15, 24, .5) 100%);
+}
+
+/* --- 室内冷色覆盖层（阴天室内光照，z-index 低于暗角） --- */
+.cold-overlay::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 5;
+  background: rgba(30, 35, 50, .15);
+}
+
+/* --- 门牌（T02 同款，场景内缩小版） --- */
+.doorplate {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #eef0f2, #d4d7db);
+  border: 1px solid #9fa4aa;
+  padding: 6px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+.doorplate .room-num {
+  font-family: var(--font-hei);
+  font-size: 22px;
+  color: #2c3e50;
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
+.doorplate .company-name { font-size: 10px; color: #5a636e; letter-spacing: 1px; }
+
+/* --- 窗帘：半透明渐变 + 轻微飘动 --- */
+.curtain {
+  position: absolute;
+  background: repeating-linear-gradient(90deg,
+    rgba(196, 198, 188, .42) 0 7px,
+    rgba(150, 152, 143, .30) 7px 15px);
+  box-shadow: inset -6px 0 12px rgba(0, 0, 0, .15);
+  transform-origin: top center;
+  animation: curtainSway 7s ease-in-out infinite;
+}
+@keyframes curtainSway {
+  0%, 100% { transform: skewX(0); }
+  50%      { transform: skewX(1.6deg); }
+}
+
+/* --- 散落纸张 --- */
+.loose-paper {
+  position: absolute;
+  background: linear-gradient(175deg, #e8e8e4, #d8d8d2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+}
+.loose-paper::before {
+  content: "";
+  position: absolute; left: 12%; right: 18%; top: 18%; bottom: 20%;
+  background: repeating-linear-gradient(0deg,
+    transparent 0 5px, rgba(90, 95, 105, .35) 5px 6px, transparent 6px 9px);
+}

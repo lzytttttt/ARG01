@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>U06 — OA 登录页</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<style>
+  .login-logo { display: flex; justify-content: center; margin-bottom: 14px; }
+  .login-container form { margin-top: 4px; }
+  .login-tip { margin-top: 10px; font-size: 11px; color: #c0c4ca; text-align: center; }
+</style>
+</head>
+<body>
+<div class="login-page">
+  <div class="login-container">
+    <div class="login-logo">
+      <!-- L01 临川民生集团 LOGO（小号） -->
+      <svg width="54" height="54" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="56" fill="#1a56db"/>
+        <circle cx="60" cy="60" r="48" fill="#fff"/>
+        <circle cx="60" cy="60" r="44" fill="#1a56db"/>
+        <path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+        <line x1="38" y1="56" x2="38" y2="64" stroke="#fff" stroke-width="2.4"/>
+        <line x1="60" y1="47" x2="60" y2="64" stroke="#fff" stroke-width="2.4"/>
+        <line x1="82" y1="56" x2="82" y2="64" stroke="#fff" stroke-width="2.4"/>
+        <path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      </svg>
+    </div>
+    <h1>临川民生集团协同办公平台</h1>
+    <p class="sub">Linchuan Minsheng Group Collaborative Office Platform</p>
+    <form id="loginForm">
+      <input type="text" id="u" placeholder="用户名" value="ao.man">
+      <input type="password" id="p" placeholder="密码" value="200203">
+      <button type="submit">登 录</button>
+    </form>
+    <p class="login-tip" id="loginTip">推荐使用 Chrome / Edge 浏览器访问本系统</p>
+    <p class="footer-text">
+      Powered by Cthu / Apocalyptic
+      <span class="apocalyptic-logo">/<span class="alpha">α</span>\</span>
+    </p>
+  </div>
+</div>
+<script src="../js/engine.js"></script>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var u = document.getElementById('u').value.trim();
+    var p = document.getElementById('p').value.trim();
+    if (u === 'ao.man' && p === '200203') {
+      // 登录成功 → 进入 OA 主界面（关闭通知弹窗 + TK-2026-0001）
+      ARG.go('layout.html');
+    } else {
+      document.getElementById('loginTip').textContent = '账号或密码错误。提示：密码是"那一天，第一个谎言"。';
+      document.getElementById('loginTip').style.color = '#e34d59';
+    }
+  });
+</script>
+</body>
+</html>

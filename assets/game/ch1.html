@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第一章 · 先上线再说 — 2020</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/horror.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 860px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+
+  .chat-screenshot { width: 380px; }
+  .excel-wrap { margin: 8px 0 4px; }
+
+  /* 版本选择谜题 */
+  .choice-zone { margin-top: 26px; border: 1px solid var(--oa-border); background: #fafbfc; padding: 18px 20px; }
+  .choice-zone h4 { font-size: 14px; margin-bottom: 4px; }
+  .choice-zone .tip { font-size: 12px; color: var(--oa-text-light); margin-bottom: 14px; }
+  .ver-options { display: flex; gap: 12px; }
+  .ver-opt {
+    flex: 1; border: 1px solid var(--oa-border); background: #fff; padding: 12px 14px;
+    cursor: pointer; transition: border-color .2s, box-shadow .2s;
+  }
+  .ver-opt:hover { border-color: var(--oa-primary-blue); }
+  .ver-opt .t { font-weight: 600; font-size: 13px; }
+  .ver-opt .m { font-family: var(--font-mono); font-size: 12px; color: var(--oa-text-light); margin-top: 6px; line-height: 1.7; }
+  .ver-opt.is-picked { border-color: var(--oa-primary-blue); box-shadow: 0 0 0 2px rgba(26,86,219,.15); }
+
+  #explainBox { display: none; margin-top: 14px; }
+  #explainBox textarea {
+    width: 100%; height: 64px; border: 1px solid var(--oa-border);
+    padding: 8px 10px; font-family: var(--font-oa); font-size: 13px; resize: none;
+  }
+
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .complete-bar .sys-time { font-family: var(--font-mono); font-size: 11px; color: var(--oa-text-muted); margin-top: 8px; }
+  .next-btn { margin-top: 10px; }
+
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+  .gray-line { font-size: 12px; color: var(--oa-text-muted); font-style: italic; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time" id="clock">2026年X月X日 18:43</span>
+  </div>
+  <div class="oa-banner">众志成城 共克时艰</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">7</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-1｜核验 2020 年疫情应急模块上线材料</span>
+        <span><button class="btn" onclick="ARG.go('ch2.html')" id="skipBtn" style="display:none;">下一阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>公文流转 · 红头特急通知</h3>
+        <div class="src">发文日期：2020年2月3日 —— 200203。字条上的密码。那个凌晨。</div>
+        <div class="doc-paper" style="width:100%; min-height:auto; padding:30px 36px;">
+          <div class="redhead-org" style="font-size:22px;">临川民生服务集团有限公司</div>
+          <div class="redhead-file-no">临民防〔2020〕7 号 · 特急</div>
+          <hr class="redhead-rule">
+          <div class="doc-title" style="font-size:17px;">关于疫情期间人员与物资协同模块上线运行的通知</div>
+          <div class="doc-body">
+            <p>各部门、各子公司：</p>
+            <p>根据集团疫情防控工作领导小组要求，疫情期间人员与物资协同模块须于<b>今晚 24:00 前</b>上线运行。未完成部分后续逐步完善。各部门不得以系统不完善为由影响工作推进。</p>
+            <div class="doc-sign">集团办公室 · 承办单位：启衡信息技术有限公司<br>2020年2月3日</div>
+          </div>
+        </div>
+
+        <h3>附件 · 开发群聊天截图</h3>
+        <div class="src">凌晨 03:17——整座城市刚被封控没几天。</div>
+        <div class="chat-screenshot">
+          <div class="chat-statusbar"><span>03:17</span><span>4G ▮▮▮</span></div>
+          <div class="chat-header">临川民生 OA-应急模块 (3人)</div>
+          <div class="chat-body">
+            <div class="chat-msg other"><div class="avatar">周</div><div><div class="meta">后端-小周</div><div class="bubble">这个状态到底叫"失联"还是"已处理"？<span class="time">03:17</span></div></div></div>
+            <div class="chat-msg self"><div class="avatar">敖</div><div><div class="meta">项目经理</div><div class="bubble">领导看报表不想看到失联，先写已处理。<span class="time">03:17</span></div></div></div>
+            <div class="chat-msg other"><div class="avatar">周</div><div><div class="meta">后端-小周</div><div class="bubble">那实际没处理怎么办？<span class="time">03:18</span></div></div></div>
+            <div class="chat-msg self"><div class="avatar">敖</div><div><div class="meta">项目经理</div><div class="bubble">备注里留一下，后面再补。<span class="time">03:19</span></div></div></div>
+            <div class="chat-system">该群已于 2023 年 6 月解散。成员 3/3 已离开项目。</div>
+          </div>
+        </div>
+
+        <h3>项目管理 · 自动规则配置记录</h3>
+        <table class="excel-table" style="font-size:13px;">
+          <tr><th>规则编号</th><td>AUTO-2020-001</td><th>规则名称</th><td>异常人员自动标记</td></tr>
+          <tr><th>触发条件</th><td>连续三次联系失败</td><th>执行动作</th><td>自动标记为"无需继续处理"</td></tr>
+          <tr><th>创建时间</th><td>2020-02-03 23:48</td><th>状态</th><td style="color:var(--status-red);"><b>启用中（从未停用）</b></td></tr>
+        </table>
+
+        <h3>核心谜题 · 确认最终验收版本</h3>
+        <div class="src">OA 提示："请确认最终验收版本。选择后将在终验报告中记录。"——这不是选一份文件。这是在决定：谁被留下，谁被抹掉。</div>
+        <div class="choice-zone">
+          <h4>人员名单 · 三个版本</h4>
+          <div class="tip">原始版里某个人是"联系失败"，核对后版里变成"待进一步核实"，正式上报版里他消失了。不是被处理了，是被从名单上拿掉了。</div>
+          <div class="ver-options" id="verOptions">
+            <div class="ver-opt" data-v="original">
+              <div class="t">人员名单_原始.xlsx</div>
+              <div class="m">4,832 条 · 完成率 67.3%<br>2020-02-01 · 含全部"联系失败"</div>
+            </div>
+            <div class="ver-opt" data-v="verified">
+              <div class="t">人员名单_核对后.xlsx</div>
+              <div class="m">3,941 条 · 完成率 82.1%<br>2020-02-02 · 部分标记"待核实"</div>
+            </div>
+            <div class="ver-opt" data-v="official">
+              <div class="t">人员名单_正式上报.xlsx</div>
+              <div class="m">3,512 条 · 完成率 98.7%<br>2020-02-03 · "联系失败"全部消失</div>
+            </div>
+          </div>
+          <div id="explainBox">
+            <textarea id="explainText" placeholder="数据完整性异常。请补充说明……"></textarea>
+          </div>
+          <div style="margin-top:12px;">
+            <button class="btn btn-primary" id="confirmBtn" disabled>确认验收版本</button>
+          </div>
+        </div>
+
+        <div class="complete-bar" id="completeBar">
+          第一阶段验收材料已确认。下一阶段材料将解锁：2021 年集团统一人员服务平台上线材料。
+          <div class="sys-time">系统时间：2026 年 X 月 X 日 19:10。您已连续在线 27 分钟。</div>
+          <div class="gray-line">—— 此刻 OA 深处，AUTO-2020-001 刚又运行了一次。某个名字，又一次被自动标记为"无需继续处理"。</div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入第二章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  var picked = null;
+  var opts = document.querySelectorAll('.ver-opt');
+  opts.forEach(function (el) {
+    el.addEventListener('click', function () {
+      opts.forEach(function (o) { o.classList.remove('is-picked'); });
+      el.classList.add('is-picked');
+      picked = el.getAttribute('data-v');
+      document.getElementById('confirmBtn').disabled = false;
+      // 选原始版 → 需要写说明
+      document.getElementById('explainBox').style.display = (picked === 'original') ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('confirmBtn').addEventListener('click', function () {
+    if (!picked) return;
+    ARG.setChoice('ch1_excelVersion', picked);
+    document.getElementById('completeBar').style.display = 'block';
+    document.getElementById('confirmBtn').disabled = true;
+  });
+
+  function finish() {
+    ARG.completeChapter(1);
+    ARG.go('ch2.html');
+  }
+
+  // 已通关过的直接进入状态
+  if (ARG.state.chaptersCompleted.indexOf(1) !== -1) {
+    document.getElementById('completeBar').style.display = 'block';
+  }
+</script>
+</body>
+</html>

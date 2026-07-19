@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>EVT-04 — 智能助手供应商调研邮件（敖曼 · 2023-04-07）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<style>
+  body { background: #4a4e54; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  /* 邮件窗口 */
+  .mail {
+    background: #fff;
+    border: 1px solid var(--oa-border);
+    box-shadow: 0 10px 34px rgba(0,0,0,.4);
+    font-family: var(--font-oa);
+    width: 100%;
+  }
+  .mail-head {
+    background: #f5f6f8; border-bottom: 1px solid var(--oa-border);
+    padding: 14px 20px; font-size: 13px;
+  }
+  .mail-head .row { display: flex; gap: 10px; line-height: 2; }
+  .mail-head .k { width: 64px; color: var(--oa-text-light); flex: none; }
+  .mail-head .v { color: var(--oa-text); }
+  .mail-body { padding: 24px 26px; font-size: 14px; line-height: 2; color: #222; }
+  .mail-body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .mail-body th, .mail-body td { border: 1px solid var(--oa-border-light); padding: 7px 12px; text-align: left; }
+  .mail-body th { background: #fafbfc; color: var(--oa-text-light); font-weight: normal; width: 150px; }
+  .risk-line {
+    background: #fff8e6;
+    border-left: 4px solid #e6b800;
+    padding: 12px 16px; margin: 14px 0;
+    line-height: 2;
+  }
+  .risk-line b { color: #a06a00; }
+  .reply {
+    background: #f7f8fa; border: 1px dashed var(--oa-border);
+    padding: 14px 18px; margin-top: 16px; font-size: 13px; color: #444;
+  }
+  .reply .who { color: var(--oa-primary-blue); }
+  .no-reply { color: #b00; font-size: 12px; margin-top: 6px; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    EVT-04 · 第四章核心证据（事件13）<br>
+    敖曼做了尽职调查，然后把它压进了附件，再没提起。
+  </div>
+
+  <!-- 敖曼的调研邮件 -->
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">发件人</span><span class="v">敖曼 &lt;ao.man@qiheng-info.cn&gt;</span></div>
+      <div class="row"><span class="k">收件人</span><span class="v">集团信息化办公室</span></div>
+      <div class="row"><span class="k">时　间</span><span class="v">2023年4月7日 16:22</span></div>
+      <div class="row"><span class="k">主　题</span><span class="v">智能助手供应商调研结论</span></div>
+    </div>
+    <div class="mail-body">
+      <p>信息化办公室：</p>
+      <p>智能助手供应商调研已完成，结论如下：</p>
+      <table>
+        <tr><th>候选供应商</th><td>A 司（国际厂商，需联网调用）</td></tr>
+        <tr><th></th><td>B 司（国内云服务）</td></tr>
+        <tr><th></th><td><b>C 司 Cthu（Apocalyptic 旗下，支持本地化部署）</b></td></tr>
+        <tr><th>建议方案</th><td><b>选 Cthu。</b>可本地部署，数据不出域。报价 120 万/年。</td></tr>
+        <tr><th>结论</th><td>综合安全与成本，推荐 Cthu。</td></tr>
+      </table>
+
+      <div class="risk-line">
+        <b>风险提示：</b>该供应商成立时间较短（2019 年），客户案例无法独立验证，<b>训练数据来源未完全披露，建议补充审计后再上线。</b>
+      </div>
+
+      <p>如无异议，拟按上述方案推进合同流程。</p>
+      <p style="text-align:right;">启衡信息 · 敖曼</p>
+
+      <!-- 甲方回复 -->
+      <div class="reply">
+        <span class="who">集团信息化办公室</span> 回复（2023-04-10 09:05）：<br>
+        "按你们建议办，尽快上线。"
+        <div class="no-reply">▲ 针对"风险提示：训练数据来源未完全披露，建议补充审计"——无任何批复。风险提示被跳过了。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caption">
+    Cthu 就是字条页脚那个 <b>/α\</b> 的主人。<br>
+    邮件最后那句风险提示下面没有任何批复。<em>敖曼做了尽职调查，然后把它压进了附件，再没提起。</em>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* ============================================================
+   恐怖效果 H01-H07 — 全部极其克制
+   参数范围见 WIKI/17-视觉与UI规范.md 第七节
+   ============================================================ */
+
+/* H01 像素偏移：结局 D 启动，应用于整个 OA 容器 */
+@keyframes pixelShift {
+  0%, 90%   { transform: translate(0, 0); }
+  91%       { transform: translate(1px, 0); }
+  92%       { transform: translate(-1px, 0); }
+  93%       { transform: translate(0, 1px); }
+  94%, 100% { transform: translate(0, 0); }
+}
+.fx-pixel-shift { animation: pixelShift 1.6s infinite; }
+
+/* H03 走廊灯闪烁：应用于走廊场景的灯光覆盖层 */
+@keyframes flicker {
+  0%, 95%   { opacity: 1; }
+  95.5%     { opacity: 0.3; }
+  96%       { opacity: 1; }
+  96.5%     { opacity: 0.1; }
+  97%, 100% { opacity: 1; }
+}
+.fx-flicker { animation: flicker 6s infinite; }
+
+/* H05 文字微颤：0.5-1Hz，持续触发，应用于关键页面文本 */
+@keyframes textJitter {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(0.3px, -0.3px); }
+  50%      { transform: translate(-0.2px, 0.2px); }
+  75%      { transform: translate(0.1px, 0.1px); }
+}
+.fx-text-jitter { animation: textJitter 1.2s infinite; }
+
+/* H06 渐进模糊：blur(0)→blur(2px) / 30s，应用于"已经消失的人"的文本 */
+@keyframes slowBlur {
+  from { filter: blur(0);   opacity: 1; }
+  to   { filter: blur(2px); opacity: .55; }
+}
+.fx-slow-blur { animation: slowBlur 30s forwards; }
+
+/* H07 颜色偏移：极缓慢的色相漂移——玩家不一定注意到，但潜意识会不安 */
+@keyframes hueDrift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50%      { filter: hue-rotate(1.5deg); }
+}
+.fx-hue-drift { animation: hueDrift 14s ease-in-out infinite; }
+
+/* H02 雨水动画（窗玻璃流淌，S06 使用） */
+@keyframes rainOnWindow {
+  0%   { top: -15%; opacity: 0; }
+  12%  { opacity: .8; }
+  100% { top: 110%; opacity: 0; }
+}
+
+/* 室外雨丝下落（S01 / 场景通用，元素由 js/rain.js 生成） */
+@keyframes rainDrop {
+  from { transform: translate(0, -12vh) rotate(8deg); }
+  to   { transform: translate(-6vw, 112vh) rotate(8deg); }
+}
+
+/* H04 倒计时钟样式：灰色、小字、OA 界面角落 */
+.countdown {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--oa-text-muted);
+  letter-spacing: 1px;
+}

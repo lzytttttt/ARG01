@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>ARG-01「六年一夜」美术资源库</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+  body { background: #1e2024; color: #d8dce2; min-height: 100vh; }
+  .head { max-width: 1080px; margin: 0 auto; padding: 48px 24px 8px; }
+  .head h1 { font-size: 24px; font-weight: 600; letter-spacing: 2px; color: #f0f2f5; }
+  .head h1 span { color: #7d8592; font-size: 14px; font-weight: normal; margin-left: 14px; letter-spacing: 1px; }
+  .head p { margin-top: 12px; font-size: 13px; color: #9aa0a8; line-height: 1.9; }
+  .head .mark { font-family: serif; color: #6d737c; }
+  .stats { display: flex; gap: 22px; margin-top: 18px; flex-wrap: wrap; }
+  .stat { font-family: var(--font-mono); font-size: 12px; color: #8a9098; }
+  .stat b { color: #e8ecf1; font-size: 18px; margin-right: 6px; }
+
+  .section { max-width: 1080px; margin: 0 auto; padding: 28px 24px 8px; }
+  .section h2 { font-size: 14px; color: #8a9098; font-weight: normal; letter-spacing: 3px; margin-bottom: 16px; border-bottom: 1px solid #33363c; padding-bottom: 10px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .cardlink {
+    display: block; text-decoration: none;
+    background: #26282e; border: 1px solid #35383f;
+    padding: 16px 18px; transition: border-color .2s, transform .2s;
+  }
+  .cardlink:hover { border-color: #5a8de8; transform: translateY(-2px); }
+  .cardlink .no { font-family: var(--font-mono); font-size: 11px; color: #5a8de8; }
+  .cardlink .name { font-size: 15px; color: #e8ecf1; margin: 6px 0 4px; }
+  .cardlink .how { font-size: 12px; color: #7d8592; }
+  .foot { max-width: 1080px; margin: 40px auto 0; padding: 18px 24px 40px; font-size: 12px; color: #6d737c; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>ARG-01「六年一夜」美术资源库 <span>序章 · 雨天</span></h1>
+  <p>原则：能用代码画的，绝不用图片。全部资源为纯 HTML + CSS + SVG 实现，零 PNG。<br>
+  两张手写字条按清单第八节的降级方案以 CSS 伪造（手写 web font + 撕边 + 涂改层），可达到真实字条 60-70% 的效果。</p>
+  <div class="stats">
+    <span class="stat"><b>34</b>个资源页面</span>
+    <span class="stat"><b>60+</b>项纯代码资源</span>
+    <span class="stat"><b>8</b>个可玩章节</span>
+    <span class="stat"><b>0</b>张 PNG</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>场景与氛围 S01-S06</h2>
+  <div class="cards">
+    <a class="cardlink" href="scenes/s01-building-exterior.html" target="_blank"><span class="no">S01</span><div class="name">科技市场大楼外部</div><div class="how">CSS 建筑立面 + 雨幕 + 积水倒影</div></a>
+    <a class="cardlink" href="scenes/s02-corridor-1f.html" target="_blank"><span class="no">S02</span><div class="name">一楼走廊</div><div class="how">CSS 透视走廊 / 停运电梯 / 闪烁灯管</div></a>
+    <a class="cardlink" href="scenes/s03-corridor-3f.html" target="_blank"><span class="no">S03</span><div class="name">三楼走廊 + 307 门口</div><div class="how">渗水墨渍 / 虚掩的门 / 更暗的光</div></a>
+    <a class="cardlink" href="scenes/s04-office-307.html" target="_blank"><span class="no">S04</span><div class="name">307 室全景</div><div class="how">六桌五显两碎 / 玻璃隔间 / 枯盆栽</div></a>
+    <a class="cardlink" href="scenes/s05-aoman-office.html" target="_blank"><span class="no">S05</span><div class="name">敖曼办公室</div><div class="how">唯一暖光台灯 / 桌上的字条（可点击）</div></a>
+    <a class="cardlink" href="scenes/s06-window-rain.html" target="_blank"><span class="no">S06</span><div class="name">窗外雨景 ×3</div><div class="how">傍晚 / 入夜 / 深夜 三变体</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>品牌与道具 L01-L03 · T01-T03</h2>
+  <div class="cards">
+    <a class="cardlink" href="brand/logos.html" target="_blank"><span class="no">L01-L03</span><div class="name">三个 LOGO</div><div class="how">临川民生徽章 / 启衡 / Apocalyptic /α\</div></a>
+    <a class="cardlink" href="props/props.html" target="_blank"><span class="no">T01-T03</span><div class="name">道具细节</div><div class="how">敖曼名牌 / 307 门牌 / 枯死盆栽</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>OA 界面 U01-U11</h2>
+  <div class="cards">
+    <a class="cardlink" href="oa/banners.html" target="_blank"><span class="no">U01-U05</span><div class="name">年份横幅 ×5</div><div class="how">2020 防疫 → 2025 国产化</div></a>
+    <a class="cardlink" href="oa/login.html" target="_blank"><span class="no">U06</span><div class="name">OA 登录页</div><div class="how">ao.man / 200203</div></a>
+    <a class="cardlink" href="oa/layout.html" target="_blank"><span class="no">布局</span><div class="name">OA 主界面</div><div class="how">关闭通知弹窗 + TK-2026-0001 终验工单 + /α\ 水印</div></a>
+    <a class="cardlink" href="oa/components.html" target="_blank"><span class="no">U07-U11</span><div class="name">组件库</div><div class="how">红头公文 / 工单 / 标签 / 徽标 / 图标</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>文档与截图 D01-D07 · D19-D20</h2>
+  <div class="cards">
+    <a class="cardlink" href="documents/note-front.html" target="_blank"><span class="no">D01</span><div class="name">字条 · 正面</div><div class="how">手写体 / 涂改的密码 / 力透纸背的"走"</div></a>
+    <a class="cardlink" href="documents/note-back.html" target="_blank"><span class="no">D02</span><div class="name">字条 · 背面</div><div class="how">合同片段 / 铅笔字迹"她是对的"（悬停可见）</div></a>
+    <a class="cardlink" href="documents/d03-chat.html" target="_blank"><span class="no">D03</span><div class="name">2020 聊天截图</div><div class="how">"先写已处理" · 群已解散</div></a>
+    <a class="cardlink" href="documents/d05-excel.html" target="_blank"><span class="no">D05</span><div class="name">三个 Excel 版本</div><div class="how">失联 → 已处理 → "—"</div></a>
+    <a class="cardlink" href="documents/d06-workorders.html" target="_blank"><span class="no">D06</span><div class="name">韩雨的 4 条工单</div><div class="how">同一行绿色"已处理"出现四次</div></a>
+    <a class="cardlink" href="documents/d07-contacts.html" target="_blank"><span class="no">D07</span><div class="name">通讯录搜索结果</div><div class="how">一条记录在你眼前淡出</div></a>
+    <a class="cardlink" href="documents/d19-delegation.html" target="_blank"><span class="no">D19</span><div class="name">账号授权委托书</div><div class="how">D结局关键 · 空白授权对象栏</div></a>
+    <a class="cardlink" href="documents/d20-doorlog.html" target="_blank"><span class="no">D20</span><div class="name">门禁系统日志·307室</div><div class="how">D结局关键 · 六年六次敲门</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>虚实事件材料 EVT-01 ~ EVT-05（novel 织入）</h2>
+  <div class="cards">
+    <a class="cardlink" href="documents/evt-external-2020.html" target="_blank"><span class="no">EVT-01</span><div class="name">第一章外部参考</div><div class="how">剪报 / 志愿者招募 / 12万单喜报</div></a>
+    <a class="cardlink" href="documents/evt-1208-notice.html" target="_blank"><span class="no">EVT-02</span><div class="name">12·8 紧急通知</div><div class="how">23:41 · "另行通知"从未发布</div></a>
+    <a class="cardlink" href="documents/evt-service-weekly.html" target="_blank"><span class="no">EVT-03</span><div class="name">客服工单周报</div><div class="how">94.7% 自动关闭率</div></a>
+    <a class="cardlink" href="documents/evt-research-mail.html" target="_blank"><span class="no">EVT-04</span><div class="name">供应商调研邮件</div><div class="how">选 Cthu · 风险提示被跳过</div></a>
+    <a class="cardlink" href="documents/evt-final-mails.html" target="_blank"><span class="no">EVT-05</span><div class="name">最后的邮件 ×2</div><div class="how">启衡全员邮件 / Apocalyptic 退信 550</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>恐怖效果 H01-H07</h2>
+  <div class="cards">
+    <a class="cardlink" href="horror/effects.html" target="_blank"><span class="no">H01-H07</span><div class="name">效果演示台</div><div class="how">像素偏移 / 闪烁 / 微颤 / 模糊 / 色偏 / 雨 / 倒计时</div></a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>游戏章节（可玩流程 · js/engine.js 驱动）</h2>
+  <div class="cards">
+    <a class="cardlink" href="oa/login.html" target="_blank"><span class="no">入口</span><div class="name">登录 OA</div><div class="how">ao.man / 200203 → 关闭通知弹窗 → TK-2026-0001</div></a>
+    <a class="cardlink" href="game/ch1.html" target="_blank"><span class="no">CH1</span><div class="name">第一章 · 先上线再说</div><div class="how">三个 Excel 版本选择谜题 · 凌晨 03:17</div></a>
+    <a class="cardlink" href="game/ch2.html" target="_blank"><span class="no">CH2</span><div class="name">第二章 · 一个人只能有一个编号</div><div class="how">通讯录实时合并谜题 · 韩雨首次登场</div></a>
+    <a class="cardlink" href="game/ch3.html" target="_blank"><span class="no">CH3</span><div class="name">第三章 · 规则已经改变</div><div class="how">隐藏≠删除 · 敖曼签名"同意上线"</div></a>
+    <a class="cardlink" href="game/ch4.html" target="_blank"><span class="no">CH4</span><div class="name">第四章 · 让它帮我们写材料</div><div class="how">四份材料对比 · "我不同意"→"一致认为"</div></a>
+    <a class="cardlink" href="game/ch5.html" target="_blank"><span class="no">CH5</span><div class="name">第五章 · 建议自动采纳</div><div class="how">韩雨五碎片拼图 · "未提出异议"</div></a>
+    <a class="cardlink" href="game/ch6.html" target="_blank"><span class="no">CH6</span><div class="name">第六章 · 本地部署之后</div><div class="how">权限清单 · 门禁权限"空" · 12847 vs 3</div></a>
+    <a class="cardlink" href="game/finale.html" target="_blank"><span class="no">终章</span><div class="name">终验之夜 · 结局 D</div><div class="how">委托书+门禁日志+八项证据链 → 逻辑自噬</div></a>
+  </div>
+</div>
+
+<div class="foot">
+  <span>样式：css/base · scenes · oa · docs · horror ｜ 雨效：js/rain.js ｜ 叙事引擎：js/engine.js（章节进度/证据链/倒计时，localStorage）</span>
+  <span class="mark">/α\</span>
+</div>
+
+</body>
+</html>

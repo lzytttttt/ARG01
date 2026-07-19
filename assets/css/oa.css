@@ -1,0 +1,208 @@
+/* ============================================================
+   OA 系统组件（U01-U11 + 整体布局）
+   美学：正常、陈旧、国企、补丁感、不完美
+   ============================================================ */
+
+/* ---- 年份横幅 U01-U05 ---- */
+.oa-banner {
+  background: var(--oa-blue);
+  color: #fff;
+  font-family: var(--font-hei);
+  font-size: 18px;
+  text-align: center;
+  line-height: 80px;
+  height: 80px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- 顶部导航 ---- */
+.oa-topbar {
+  height: 48px;
+  background: var(--oa-dark-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px;
+  font-size: 15px;
+}
+.oa-topbar .platform-name { font-family: var(--font-hei); letter-spacing: 1px; }
+.oa-topbar .time {
+  margin-left: auto;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .75);
+  font-family: var(--font-mono);
+}
+.oa-topbar .user { font-size: 13px; color: rgba(255, 255, 255, .9); }
+
+/* ---- 布局骨架：左侧导航 + 右侧内容区 ---- */
+.oa-shell { display: flex; min-height: calc(100vh - 48px - 24px); }
+.oa-sidebar {
+  width: 200px;
+  flex: none;
+  background: var(--oa-sidebar-bg);
+  border-right: 1px solid var(--oa-border);
+  padding-top: 8px;
+}
+.oa-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  font-size: 14px;
+  color: var(--oa-text);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.oa-menu-item:hover { background: #e4e9f0; }
+.oa-menu-item.active {
+  background: #fff;
+  color: var(--oa-blue);
+  border-left-color: var(--oa-blue);
+}
+.oa-menu-item .grow { flex: 1; }
+.oa-menu-divider { height: 1px; background: var(--oa-border); margin: 6px 12px; }
+.oa-icon { width: 16px; height: 16px; flex: none; }
+
+.oa-content { flex: 1; padding: 18px 22px; background: #fff; position: relative; }
+
+.oa-footer {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font-size: 12px;
+  color: var(--oa-text-muted);
+  border-top: 1px solid var(--oa-border-light);
+  background: #fafafa;
+}
+
+/* ---- 待办数字徽标 U10 ---- */
+.badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--status-red);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* ---- 状态标签 U09 ---- */
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+}
+.badge-pending    { background: #fff3e0; color: var(--status-orange); border-color: #ffd591; }
+.badge-processing { background: #e6f0ff; color: var(--oa-blue);       border-color: #adc6ff; }
+.badge-processed  { background: #e6f7e6; color: var(--status-green);  border-color: #b7eb8f; }
+.badge-closed     { background: #f0f0f0; color: #999;                 border-color: #d9d9d9; }
+.badge-expired    { background: #fafafa; color: #bfbfbf;              border-color: #e8e8e8; }
+
+/* ---- 按钮 ---- */
+.btn {
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: 13px;
+  border: 1px solid var(--oa-border);
+  background: #fff;
+  color: var(--oa-text);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.btn-primary { background: var(--oa-blue); border-color: var(--oa-blue); color: #fff; }
+.btn-link    { color: var(--oa-blue); border-color: transparent; }
+
+/* ---- 表格 ---- */
+.oa-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.oa-table th { background: #f5f6f8; font-weight: 600; text-align: left; }
+.oa-table th, .oa-table td { border: 1px solid var(--oa-border); padding: 7px 10px; }
+.oa-table tbody tr:nth-child(even) { background: #fafbfc; }
+.oa-table tbody tr:hover { background: #eef4ff; }
+
+/* ---- 页面标题区 ---- */
+.oa-page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--oa-border-light);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.oa-page-title { font-size: 18px; color: var(--oa-text); }
+
+/* ---- 登录页 U06 ---- */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #e8ecf3 0%, #f4f6f9 60%, #e2e7ee 100%);
+}
+.login-container {
+  width: 380px;
+  background: #fff;
+  border: 1px solid #b9c4d4;
+  box-shadow: 0 4px 18px rgba(30, 58, 95, .18);
+  padding: 34px 38px 26px;
+}
+.login-container h1 {
+  font-size: 19px;
+  color: var(--oa-dark-blue);
+  text-align: center;
+  font-family: var(--font-hei);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.login-container .sub {
+  text-align: center;
+  font-size: 12px;
+  color: var(--oa-text-muted);
+  margin-bottom: 22px;
+}
+.login-container input {
+  width: 100%;
+  height: 36px;
+  margin-bottom: 14px;
+  padding: 0 10px;
+  border: 1px solid var(--oa-border);
+  font-size: 14px;
+  border-radius: 2px;
+}
+.login-container input:focus { outline: none; border-color: var(--oa-blue); }
+.login-container button {
+  width: 100%;
+  height: 38px;
+  background: var(--oa-blue);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  letter-spacing: 6px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.login-container .footer-text {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 11px;
+  color: #a8a8a8;
+}
+
+/* ---- Apocalyptic /α\ 水印 L03 ---- */
+.apocalyptic-logo {
+  font-family: serif;
+  color: #999;
+  font-size: 11px;
+}
+.apocalyptic-logo .alpha { font-style: italic; }

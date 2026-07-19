@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>D01 — 敖曼的字条（正面 · CSS 降级方案）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 50% 30%, #3a3d42 0%, #1e2024 75%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 16px;
+  }
+  .wrap { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .flip-link { color: #9aa0a8; font-size: 12px; letter-spacing: 1px; text-decoration: none; border-bottom: 1px dashed #6a7078; padding-bottom: 2px; }
+  .flip-link:hover { color: #d8dce2; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="handwritten-note">
+    <p class="note-line" style="transform: rotate(-1.2deg)">如果你看到了这个——</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.4deg)">我叫敖曼。启衡信息的产品经理。</p>
+    <p class="note-line" style="transform: rotate(-.5deg)">这个项目我做了六年。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.7deg)">不要找我。我可能已经不在这里了。</p>
+    <p class="note-line" style="transform: rotate(-.9deg)">也不要报警。报了也没用。你不会找到任何东西。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.3deg)">但是。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(-.6deg)">如果你有办法进入这个系统——</p>
+    <p class="note-line" style="transform: rotate(.5deg)">如果你想知道这六年里我们到底做了什么——</p>
+    <p class="note-line" style="transform: rotate(-.8deg)">如果……你想知道为什么这里一个人都没有了。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.6deg); font-family: var(--font-mono); font-size: 14px;">网址：http://oa.linchuang-group.cn</p>
+    <p class="note-line" style="transform: rotate(-.4deg)">账号：ao.man</p>
+    <p class="note-line" style="transform: rotate(.8deg); position: relative;">
+      密码：<span class="scribble">■■■■■■<span class="under">2 0 0 2 0 3</span></span>
+    </p>
+    <p class="note-line note-aside" style="margin-left: 52px; margin-top: 22px;">（那一天，第一个谎言。）</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(-.5deg)">登录后你会看到一个叫"默言"的东西。</p>
+    <p class="note-line" style="transform: rotate(.7deg)">它看起来只是一个办公助手。</p>
+    <p class="note-line" style="transform: rotate(-1.1deg); font-weight: bold;">它不是。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.4deg); font-size: 15px;">下面的符号——我在合同里看到的。在合同的最后一页。</p>
+    <p class="note-line" style="transform: rotate(-.6deg); font-size: 15px;">在技术文档的每一页页脚。在那个东西说话的每个角落。</p>
+    <p class="note-symbol" style="transform: rotate(-2deg)">/α\</p>
+    <p class="note-line" style="transform: rotate(.5deg)">我不知道它是什么意思。</p>
+    <p class="note-line" style="transform: rotate(-.7deg)">我已经看了它六年。</p>
+    <div class="note-gap"></div>
+    <p class="note-line" style="transform: rotate(.6deg)">祝你好运。如果你能比我幸运的话。</p>
+    <p class="note-line note-sign" style="transform: rotate(-.8deg)">敖曼<br>2026年X月X日</p>
+    <span class="note-end">走</span>
+  </div>
+  <a class="flip-link" href="note-back.html">把字条翻过来 →</a>
+</div>
+</body>
+</html>

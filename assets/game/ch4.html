@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第四章 · 让它帮我们写材料 — 2023</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 900px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+  .ver-tabs { display: flex; gap: 0; border: 1px solid var(--oa-border); border-bottom: none; width: fit-content; }
+  .ver-tab { padding: 8px 18px; font-size: 13px; cursor: pointer; background: #f5f6f8; border-right: 1px solid var(--oa-border); }
+  .ver-tab.active { background: #fff; color: var(--oa-primary-blue); font-weight: 600; }
+  .ver-body { border: 1px solid var(--oa-border); background: #fff; padding: 18px 22px; font-size: 13.5px; line-height: 2.1; min-height: 220px; white-space: pre-wrap; }
+  .ver-body b { color: var(--oa-dark-blue); }
+  .ver-body .hy { background: #ffe9e9; padding: 0 4px; }
+  .compare-note { font-size: 12.5px; color: var(--oa-text-light); margin-top: 10px; line-height: 1.9; }
+  .log-mono { font-family: var(--font-mono); font-size: 12.5px; background: #14181d; color: #9fd0a8; padding: 16px 20px; line-height: 2; }
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 20:30</span>
+  </div>
+  <div class="oa-banner">拥抱 AIGC，打造集团数智化新动能</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">4</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-4｜确认 2023 年 AI 智能助手"默言"上线资料</span>
+        <span><button class="btn" onclick="finish()" id="skipBtn" style="display:none;">下一阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>会议纪要 · 同一场会议的四份材料</h3>
+        <div class="src">四份材料，一步步把她从"不同意"磨成"一致"。你听过她的声音，所以知道那不是她的意思。但只看 V4 的人，永远不会知道。</div>
+        <div class="ver-tabs" id="verTabs">
+          <div class="ver-tab active" data-v="v1">V1 原始录音</div>
+          <div class="ver-tab" data-v="v2">V2 人工纪要</div>
+          <div class="ver-tab" data-v="v3">V3 默言生成</div>
+          <div class="ver-tab" data-v="v4">V4 最终版</div>
+        </div>
+        <div class="ver-body" id="verBody"></div>
+        <div class="compare-note" id="compareNote"></div>
+
+        <h3>默言第一条工作日志</h3>
+        <div class="src">"我将学习。"不是"系统正在学习"，是"我将学习"。第一次，日志里默言用"我"。</div>
+        <div class="log-mono">[2023-06-20 09:00] 启动。
+[2023-06-20 09:05] 审核通过。
+[2023-06-20 09:05] 我将学习这次的审核偏好。</div>
+
+        <div class="complete-bar" id="completeBar" style="display:block;">
+          第四阶段验收完成。下一阶段：2024 年数智员工中心上线资料。
+          <div class="gray-line">—— 2023 年 6 月那次验收会后，敖曼在资料中心深处存过一封邮件草稿。收件人：韩雨。正文只打了三个字："韩雨，"。草稿保存时间：凌晨 1 点 47 分。他没发出去。</div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入第五章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  var VERSIONS = {
+    v1: {
+      text: '甲方代表："这个智能助手，能帮我们写材料吧？"\n项目经理（敖曼）："可以，生成初稿，人工审。"\n业务 A："那会议记录也用它？"\n韩雨：<hy>"我不同意。关键内容让 AI 写，万一它编怎么办。"</hy>\n业务 B："编了咱们审啊，审出来不就行了。"\n韩雨：<hy>"审出来是结果，但谁知道它漏了什么。"</hy>\n甲方代表："行，先试点。简单材料用默言，重要的还是人来。"\n韩雨：<hy>"……行吧。"</hy>',
+      note: 'V1 · 2023-06 09:00 会议原始录音转写 —— 她的声音不是愤怒，是疲惫的、被绕过去的那种不情愿。'
+    },
+    v2: {
+      text: '与会人员就方案可行性进行了充分讨论。\n\n韩雨<b>建议</b> AI 仅用于简单材料，关键内容人工撰写。\n\n经讨论，与会人员原则同意推进智能化改造方案。历史数据问题将在后续优化中专门处理。',
+      note: 'V2 · 2023-06 10:30 人工整理纪要 —— 从"不同意"变成"建议"。'
+    },
+    v3: {
+      text: '会议结论：方案通过。\n\n讨论要点：\n- 数据接入方案可行性已确认\n- 历史数据校准列入后续优化计划\n\n韩雨<b>认为</b> AI 可辅助部分工作，与各方达成共识。',
+      note: 'V3 · 2023-06 14:00 默言生成汇报稿 —— 从"不同意"变成"认为可以辅助"。'
+    },
+    v4: {
+      text: '经过充分论证和评审，人员服务平台智能化改造方案已获得各方认可。\n\n会议<b>一致认为</b>，智能助手"默言"表现优异，建议全面推广。',
+      note: 'V4 · 2023-06 15:00 最终版（已发送）—— 没有韩雨，没有反对，没有担忧。'
+    }
+  };
+
+  function show(v) {
+    var d = VERSIONS[v];
+    var html = d.text.replace(/\n/g, '<br>').replace(/<hy>/g, '<span class="hy">').replace(/<\/hy>/g, '</span>');
+    document.getElementById('verBody').innerHTML = html;
+    document.getElementById('compareNote').textContent = d.note;
+    document.querySelectorAll('.ver-tab').forEach(function (t) {
+      t.classList.toggle('active', t.getAttribute('data-v') === v);
+    });
+  }
+  document.querySelectorAll('.ver-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      show(t.getAttribute('data-v'));
+      ARG.collect('hanyu_recording');
+    });
+  });
+  show('v1');
+
+  function finish() { ARG.completeChapter(4); ARG.go('ch5.html'); }
+</script>
+</body>
+</html>

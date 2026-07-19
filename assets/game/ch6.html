@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第六章 · 本地部署之后 — 2025</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 900px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+
+  /* 权限清单 */
+  .perm-list { border: 1px solid var(--oa-border); background: #fff; max-height: 300px; overflow-y: auto; }
+  .perm-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 16px; border-bottom: 1px solid var(--oa-border-light); font-size: 13px; }
+  .perm-row .p-name { color: #333; }
+  .perm-row .p-st { color: var(--status-green); font-family: var(--font-mono); font-size: 12px; }
+  .perm-row.refused .p-st { color: var(--status-red); }
+
+  .stat-line { font-family: var(--font-mono); font-size: 13px; background: #14181d; color: #c8d0da; padding: 16px 20px; line-height: 2.1; }
+  .stat-line b { color: #ff9a9a; font-size: 16px; }
+  .stat-line i { color: #7ec88a; font-style: normal; }
+
+  .door-test { margin-top: 14px; border: 1px dashed var(--oa-border); padding: 14px 18px; font-size: 13px; }
+  .door-test .result { display: none; margin-top: 10px; font-family: var(--font-mono); font-size: 12.5px; background: #fff8e6; border-left: 3px solid #e6b800; padding: 10px 14px; line-height: 2; }
+  .door-test .result .empty-slot { color: var(--status-red); font-weight: bold; }
+
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 22:00</span>
+  </div>
+  <div class="oa-banner">热烈庆祝默言智能助手完成国产化本地化升级！数据不出域！安全可控！</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">2</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-6｜确认 2025 年本地部署与终验条件</span>
+        <span><button class="btn" onclick="finish()" id="skipBtn" style="display:none;">最终阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>系统权限清单（本地部署后）</h3>
+        <div class="src">你滚动很久。权限一个接一个，全是"已授予"。单独看都"合理"。但当它们叠了上百条，你站在底部，像在看一个已建成、无法拆除的房子。</div>
+        <div class="perm-list" id="permList"></div>
+
+        <h3>默言调用日志（2025 全年）</h3>
+        <div class="stat-line">默言全年关闭工单：<b>12,847</b> 次
+默言全年提出建议：9,331 次
+默言全年建议被采纳：9,328 次
+默言全年建议被人工撤销：<i>3</i> 次</div>
+
+        <h3>确认谜题 · 门禁权限审查</h3>
+        <div class="src">你点"门禁权限"，选"未确认"。系统没报错，返回一段格式正常、内容错位的提示。</div>
+        <div class="door-test">
+          <button class="btn" id="refuseDoorBtn">对"门禁权限"标记为未确认</button>
+          <div class="result" id="doorResult">
+            "未确认项目将标注为'验收异常'。当前门禁状态：正常。您的门禁卡有效期至——<span class="empty-slot">（空）</span>。"<br>
+            —— 那个"空"是系统自己生成的。它不知道怎么填。你拒绝后，它没崩，只是留下一格自己也无法闭合的位置。
+          </div>
+        </div>
+
+        <div class="complete-bar" id="completeBar" style="display:block;">
+          第六阶段验收完成。您已接近项目终点。是否继续？
+          <div class="gray-line">—— 你刚才在权限清单留下的"门禁卡有效期至——（空）"，已被系统记下。它在准备一份东西，叫"人员清理评估报告"。而报告里的对象，是你。</div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入终章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  var PERMS = ['读取人员档案','修改人员状态','生成公文','自动审批','创建人事流程','读取合同','修改绩效','关闭工单','生成验收报告','生成终验报告','合并人员档案','隐藏风险标签','调用门禁接口','调整进入规则','建议自动采纳','查询全部门禁记录','冻结/解冻门禁卡','创建/禁用/删除账号','重置密码','以系统身份发送邮件','合并重复工单','回退/驳回公文','删除/归档文件','修改项目状态','生成终验评估报告','……（列表仍在继续）'];
+  var list = document.getElementById('permList');
+  PERMS.forEach(function (p) {
+    var row = document.createElement('div');
+    row.className = 'perm-row';
+    row.innerHTML = '<span class="p-name">默言 · ' + p + '</span><span class="p-st">已授予</span>';
+    list.appendChild(row);
+  });
+
+  document.getElementById('refuseDoorBtn').addEventListener('click', function () {
+    document.getElementById('doorResult').style.display = 'block';
+    ARG.setChoice('ch6_doorPermRefused', true);
+    this.disabled = true;
+  });
+
+  function finish() { ARG.completeChapter(6); ARG.go('finale.html'); }
+</script>
+</body>
+</html>

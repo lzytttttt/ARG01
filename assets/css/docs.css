@@ -1,0 +1,337 @@
+/* ============================================================
+   文档与截图组件（D03-D18 + 字条 CSS 降级方案）
+   所有"截图"和"文档"都是样式化 HTML——完全不需要图片
+   ============================================================ */
+
+/* ---- 文档展示视口与纸页 ---- */
+.doc-viewport {
+  min-height: 100vh;
+  background: #565a60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.doc-paper {
+  background: #fff;
+  width: 760px;
+  min-height: 900px;
+  padding: 56px 64px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .4);
+  font-family: var(--font-fangsong);
+}
+
+/* ---- 红头文件 U07 / D04 ---- */
+.redhead-org {
+  text-align: center;
+  color: #cc0000;
+  font-family: var(--font-gongwen);
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 4px;
+}
+.redhead-file-no {
+  text-align: center;
+  color: #cc0000;
+  font-size: 14px;
+  margin-top: 8px;
+  font-family: var(--font-gongwen);
+}
+.redhead-rule { border: none; border-top: 2px solid #cc0000; margin: 14px 0 26px; }
+.doc-title {
+  text-align: center;
+  font-family: var(--font-gongwen);
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.doc-body p { font-size: 16px; line-height: 2; text-indent: 2em; margin-bottom: 6px; }
+.doc-sign { margin-top: 44px; text-align: right; font-size: 16px; line-height: 2; }
+.seal-slot {
+  width: 120px; height: 120px;
+  border: 2px dashed #b5b5b5;
+  margin-left: auto;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0c0c0;
+  font-size: 12px;
+  transform: rotate(-4deg);
+}
+
+/* ---- 聊天截图 D03（微信/企业微信风） ---- */
+.chat-screenshot {
+  width: 380px;
+  background: #ededed;
+  border: 1px solid #d0d0d0;
+  font-family: var(--font-oa);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+.chat-statusbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #333;
+  background: #f7f7f7;
+}
+.chat-header {
+  background: #f7f7f7;
+  border-bottom: 1px solid #dcdcdc;
+  text-align: center;
+  padding: 10px 12px 12px;
+  font-size: 15px;
+  color: #111;
+}
+.chat-body { padding: 14px 12px 18px; }
+.chat-msg { display: flex; margin-bottom: 14px; }
+.chat-msg .avatar {
+  width: 38px; height: 38px;
+  flex: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-msg .meta { font-size: 11px; color: #9a9a9a; margin-bottom: 3px; }
+.chat-msg .bubble {
+  max-width: 240px;
+  padding: 9px 11px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+}
+.chat-msg.other .avatar { margin-right: 8px; background: #7c9cbf; }
+.chat-msg.other .bubble { background: #fff; }
+.chat-msg.self { flex-direction: row-reverse; }
+.chat-msg.self .avatar { margin-left: 8px; background: #6aa66a; }
+.chat-msg.self .bubble { background: #95ec69; }
+.chat-msg .time {
+  display: block;
+  font-size: 10px;
+  color: rgba(0, 0, 0, .35);
+  margin-top: 4px;
+  text-align: right;
+}
+.chat-system {
+  text-align: center;
+  font-size: 11px;
+  color: #9a9a9a;
+  margin: 16px 20px 4px;
+  line-height: 1.6;
+}
+
+/* ---- Excel 表格 D05 ---- */
+.excel-caption { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.excel-caption .ver {
+  color: var(--status-red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-left: 8px;
+}
+.excel-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: var(--font-oa);
+  background: #fff;
+}
+.excel-table th {
+  background: #e8ecef;
+  border: 1px solid #c4c9ce;
+  padding: 4px 14px;
+  font-weight: 600;
+}
+.excel-table td { border: 1px solid #d5d9dd; padding: 4px 14px; }
+.excel-table tbody tr:nth-child(even) { background: #f6f8fa; }
+.excel-wrap { background: #fff; padding: 14px; border: 1px solid #c9ced4; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+
+/* ---- 工单 D06 / U08 ---- */
+.workorder {
+  width: 720px;
+  background: #fff;
+  border: 1px solid var(--oa-border);
+  font-family: var(--font-oa);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+}
+.workorder-head {
+  background: #f5f6f8;
+  border-bottom: 1px solid var(--oa-border);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.workorder table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.workorder th, .workorder td {
+  border: 1px solid var(--oa-border-light);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.workorder th {
+  width: 110px;
+  background: #fafbfc;
+  color: var(--oa-text-light);
+  font-weight: normal;
+}
+.workorder .result-line { color: var(--status-green); font-weight: 600; }
+
+/* ---- 通讯录 D07 ---- */
+.contact-search {
+  width: 560px;
+  background: #fff;
+  border: 1px solid var(--oa-border);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--oa-text-light);
+  margin-bottom: -1px;
+}
+.contact-list {
+  list-style: none;
+  width: 560px;
+  background: #fff;
+  border: 1px solid var(--oa-border);
+  font-size: 14px;
+}
+.contact-list li {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--oa-border-light);
+  display: flex;
+  gap: 18px;
+}
+.contact-list li.fading { transition: opacity 3s ease-in, filter 3s ease-in; }
+.contact-list li.fading.is-gone { opacity: 0; filter: blur(1px); }
+.contact-list .c-name { width: 90px; font-weight: 600; }
+.contact-list .c-dept { flex: 1; color: var(--oa-text-light); }
+.contact-list .c-status { color: var(--oa-text-muted); }
+
+/* ---- 手写字条（PNG-01 降级方案，见清单第八节） ---- */
+.handwritten-note {
+  background: #f5f0e8;
+  background-image: repeating-linear-gradient(0deg,
+    transparent, transparent 2px,
+    rgba(180, 160, 120, .05) 2px, rgba(180, 160, 120, .05) 3px);
+  border: 3px dashed #c0b0a0;
+  border-radius: 2px;
+  padding: 34px 30px 30px;
+  width: 560px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  transform: rotate(-.6deg);
+  position: relative;
+}
+.note-line {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  line-height: 1.9;
+  color: #2a2a2a;
+  text-shadow: .3px .3px 0 rgba(0, 0, 0, .18);
+}
+.note-gap { height: 12px; }
+.note-symbol {
+  font-family: serif;
+  font-size: 24px;
+  color: #1c1c1c;
+  text-align: center;
+  letter-spacing: 4px;
+  margin: 6px 0;
+}
+.note-sign { text-align: right; margin-top: 14px; }
+.note-end {
+  position: absolute;
+  right: 20px; bottom: 12px;
+  font-family: var(--font-hand);
+  font-size: 36px;
+  font-weight: bold;
+  color: #151515;
+  transform: rotate(-4deg);
+  text-shadow: .5px .5px 0 rgba(0, 0, 0, .35);
+}
+
+/* 涂改痕迹：密码被反复涂改 */
+.scribble { position: relative; display: inline-block; padding: 0 6px; }
+.scribble::after {
+  content: "";
+  position: absolute;
+  left: -4px; right: -4px; top: 42%;
+  height: 14px;
+  transform: rotate(-2deg);
+  background: repeating-linear-gradient(100deg,
+    rgba(20, 20, 20, .92) 0 2px, transparent 2px 4px,
+    rgba(20, 20, 20, .85) 4px 5px, transparent 5px 9px);
+}
+.scribble .under {
+  position: absolute;
+  left: 2px; top: 108%;
+  font-size: 19px;
+  letter-spacing: 8px;
+  color: #111;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.note-aside { font-size: 13px; color: #3a3a3a; display: inline-block; transform: rotate(-1deg); }
+
+/* ---- 字条背面 PNG-02 降级方案：合同打印片段 ---- */
+.note-back {
+  background: #f2efe9;
+  width: 560px;
+  min-height: 720px;
+  padding: 44px 42px 90px;
+  border: 1px solid #cfc8bb;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  font-family: var(--font-gongwen);
+  color: #222;
+  position: relative;
+  transform: rotate(.4deg);
+}
+.note-back h4 { font-size: 14px; text-align: center; margin-bottom: 18px; letter-spacing: 2px; }
+.note-back p { font-size: 13px; line-height: 1.9; text-align: justify; margin-bottom: 8px; }
+.note-back .page-no { position: absolute; bottom: 52px; left: 0; right: 0; text-align: center; font-size: 11px; color: #888; }
+.note-back .gray-foot {
+  position: absolute;
+  left: 0; right: 0; bottom: 24px;
+  text-align: center;
+  font-size: 10px;
+  color: #9a9a9a;
+  font-family: var(--font-mono);
+}
+.note-back .black-dot {
+  position: absolute;
+  bottom: 46px; left: 50%;
+  width: 5px; height: 5px;
+  background: #111;
+  border-radius: 50%;
+}
+/* 正面字迹力透纸背的痕迹 */
+.note-back .bleed-through {
+  position: absolute;
+  right: 36px; bottom: 64px;
+  font-family: var(--font-hand);
+  font-size: 44px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, .055);
+  transform: scaleX(-1) rotate(4deg);
+  pointer-events: none;
+}
+
+/* ---- 铅笔字迹：被橡皮擦过、侧光可见（novel 序章/终章关键伏笔） ---- */
+.note-back .pencil-mark {
+  position: absolute;
+  font-family: var(--font-hand);
+  color: rgba(60, 60, 60, .16);          /* 极淡：像被橡皮擦过 */
+  text-shadow: .5px .5px 0 rgba(255,255,255,.35); /* 纸张压痕的高光边 */
+  pointer-events: none;
+  transform: rotate(-2deg);
+}
+/* 鼠标悬停纸张 = "用侧光看"：铅笔字变得可读 */
+.note-back:hover .pencil-mark {
+  color: rgba(45, 45, 45, .42);
+  text-shadow:
+    .6px .6px 0 rgba(255,255,255,.5),
+    -.4px -.4px 0 rgba(0,0,0,.12);
+}

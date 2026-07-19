@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>S06 — 窗外雨景（3 个时间变体）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/scenes.css">
+<link rel="stylesheet" href="../css/horror.css">
+<style>
+  body { background: #1c1d21; }
+  .variants {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 24px;
+    flex-wrap: wrap;
+  }
+  .variant { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .variant .label {
+    color: #9aa0a8;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  .variant .label b { color: #d8dce2; font-weight: 600; margin-right: 8px; }
+
+  /* 窗框 */
+  .window {
+    position: relative;
+    width: 300px; height: 420px;
+    border: 12px solid #3f444b;
+    box-shadow: 0 0 0 2px #2b2f35, 0 14px 30px rgba(0, 0, 0, .5), inset 0 0 24px rgba(0, 0, 0, .35);
+    overflow: hidden;
+  }
+  .window .mullion-v { position: absolute; left: 50%; top: 0; bottom: 0; width: 8px; margin-left: -4px; background: #3f444b; z-index: 6; }
+  .window .mullion-h { position: absolute; top: 50%; left: 0; right: 0; height: 8px; margin-top: -4px; background: #3f444b; z-index: 6; }
+
+  .sky { position: absolute; inset: 0; }
+  /* 三个时间的天空渐变（见清单 S06 表格） */
+  .dusk   .sky { background: linear-gradient(180deg, #7a8a9a 0%, #b0b8c0 100%); }
+  .night  .sky { background: linear-gradient(180deg, #3a3a4a 0%, #5a5a6a 100%); }
+  .late   .sky { background: linear-gradient(180deg, #1a1a28 0%, #2a2a38 100%); }
+
+  /* 对面建筑轮廓 */
+  .blocks { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; }
+  .blk { position: absolute; bottom: 0; background: #4a4a50; }
+  .blk .lit {
+    position: absolute;
+    width: 4px; height: 5px;
+    background: #ffd98a;
+    box-shadow: 0 0 4px rgba(255, 217, 138, .6);
+  }
+  .night .blk { background: #43434e; }
+  .late  .blk { background: #33333d; }
+
+  /* 玻璃反光（室内微弱反光） */
+  .window .glass-reflect {
+    position: absolute; inset: 0; z-index: 5;
+    background: linear-gradient(115deg, rgba(230, 238, 245, .10) 0%, transparent 30%, transparent 70%, rgba(230, 238, 245, .05) 100%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="variants">
+
+  <!-- 傍晚（序章-第二章） -->
+  <div class="variant">
+    <div class="window dusk" data-glass-rain="12">
+      <div class="sky"></div>
+      <div class="blocks">
+        <div class="blk" style="left:4%;  width:26%; height:72%;"></div>
+        <div class="blk" style="left:36%; width:30%; height:100%;"></div>
+        <div class="blk" style="left:72%; width:24%; height:58%;"></div>
+      </div>
+      <div class="glass-reflect"></div>
+      <div class="mullion-v"></div><div class="mullion-h"></div>
+    </div>
+    <div class="label"><b>傍晚</b>序章 – 第二章 · 18:30</div>
+  </div>
+
+  <!-- 入夜（第三-五章） -->
+  <div class="variant">
+    <div class="window night" data-glass-rain="12">
+      <div class="sky"></div>
+      <div class="blocks">
+        <div class="blk" style="left:4%;  width:26%; height:72%;"></div>
+        <div class="blk" style="left:36%; width:30%; height:100%;"></div>
+        <div class="blk" style="left:72%; width:24%; height:58%;"></div>
+      </div>
+      <div class="glass-reflect"></div>
+      <div class="mullion-v"></div><div class="mullion-h"></div>
+    </div>
+    <div class="label"><b>入夜</b>第三 – 五章 · 22:00</div>
+  </div>
+
+  <!-- 深夜（第六章-终章） -->
+  <div class="variant">
+    <div class="window late" data-glass-rain="12">
+      <div class="sky"></div>
+      <div class="blocks">
+        <div class="blk" style="left:4%;  width:26%; height:72%;"></div>
+        <div class="blk" style="left:36%; width:30%; height:100%;"></div>
+        <div class="blk" style="left:72%; width:24%; height:58%;"></div>
+      </div>
+      <div class="glass-reflect"></div>
+      <div class="mullion-v"></div><div class="mullion-h"></div>
+    </div>
+    <div class="label"><b>深夜</b>第六章 – 终章 · 03:00</div>
+  </div>
+
+</div>
+
+<script src="../js/rain.js"></script>
+<script>
+  /* 点亮对面楼的窗户：傍晚零星 / 入夜减少 60% / 深夜只剩一两个 */
+  (function () {
+    var plans = [
+      { sel: '.dusk',  count: 14 },
+      { sel: '.night', count: 6  },
+      { sel: '.late',  count: 2  }
+    ];
+    plans.forEach(function (p) {
+      var blocks = document.querySelectorAll(p.sel + ' .blk');
+      for (var i = 0; i < p.count; i++) {
+        var blk = blocks[Math.floor(Math.random() * blocks.length)];
+        var w = document.createElement('i');
+        w.className = 'lit';
+        w.style.left = (8 + Math.random() * 84) + '%';
+        w.style.top  = (8 + Math.random() * 84) + '%';
+        blk.appendChild(w);
+      }
+    });
+  })();
+</script>
+</body>
+</html>

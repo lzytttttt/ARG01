@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>EVT-02 — 关于优化出入管理的紧急通知（2022-12-08 23:41）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #4a4e54; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #e0a0a0; font-style: normal; }
+  .doc-paper { min-height: auto; }
+  /* 扫描件感：略歪、带时间戳 */
+  .scanned { transform: rotate(-.4deg); position: relative; }
+  .scan-ts {
+    position: absolute; top: 18px; right: 20px;
+    font-family: var(--font-mono); font-size: 12px; color: #999;
+    border: 1px solid #ccc; padding: 2px 8px; background: rgba(255,255,255,.7);
+  }
+  /* 那句从未兑现的话 */
+  .never-came {
+    background: #fff8e6;
+    border-left: 4px solid #e6b800;
+    padding: 14px 18px;
+    font-family: var(--font-gongwen);
+    font-size: 16px; line-height: 2;
+    color: #5a4500;
+  }
+  .never-came .strike {
+    position: relative;
+  }
+  .sys-note {
+    font-family: var(--font-mono); font-size: 12px; color: #b8bec8;
+    background: #1c1e22; border-left: 3px solid #a05050;
+    padding: 12px 16px; line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    EVT-02 · 第三章"变更依据"附件扫描件（事件7）<br>
+    落款时间 23:41——半小时后就是 12 月 9 日，"新十条"落地后的头几天。
+  </div>
+
+  <!-- 12·8 紧急通知扫描件 -->
+  <div class="doc-paper scanned">
+    <span class="scan-ts">2022-12-08 23:41</span>
+    <div class="redhead-org" style="font-size:26px;">临川民生服务集团有限公司</div>
+    <div class="redhead-file-no">临民防〔2022〕88 号 · 特急</div>
+    <hr class="redhead-rule">
+    <div class="doc-title" style="font-size:20px;">关于优化出入管理的紧急通知</div>
+    <div class="doc-body">
+      <p>各部门、各子公司：</p>
+      <p>根据上级最新工作要求，经集团研究决定，自即日起：</p>
+      <p>一、暂停执行通行凭证查验措施；</p>
+      <p>二、暂停执行核酸检测要求；</p>
+      <p>三、暂停执行风险人员标签管控措施。</p>
+      <p><b>后续管理要求另行通知。</b></p>
+      <p>请各单位遵照执行，遇突发情况及时上报。</p>
+      <div class="doc-sign">
+        临川民生服务集团有限公司<br>2022年12月8日
+      </div>
+      <div class="seal-slot">（公章）</div>
+    </div>
+  </div>
+
+  <!-- 玩家检索结果 -->
+  <div class="never-came">
+    <p>你在 OA 中检索"后续管理要求"——</p>
+    <p>搜索结果：<b>0</b> 条。</p>
+    <p><span class="strike">"后续管理要求另行通知。"</span> —— 这句话的"另行通知"，<em>从未发布</em>。</p>
+  </div>
+
+  <div class="sys-note">
+    <div>[系统关联] 2022-12-12，变更单 CHG-2022-1212 创建并执行："原人员风险状态不再作为业务审批依据。"</div>
+    <div>[系统关联] 规则从"高风险人员不得进入"变更为"系统未发现人员限制信息。"</div>
+    <div>[系统关联] CHG-2022-1212，就是那句永远没来的"另行通知"的替代品。</div>
+  </div>
+
+  <div class="caption">
+    "另行通知"的空档，被系统自己填上了：规则从"禁止"变成"系统未发现"。<br>
+    <em>人不再判断，系统自动判断。</em>
+  </div>
+
+</div>
+</body>
+</html>

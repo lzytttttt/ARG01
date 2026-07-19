@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第五章 · 建议自动采纳 — 2024</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 900px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+
+  /* 五碎片拼图 */
+  .frag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .frag {
+    border: 1px solid var(--oa-border); background: #fff; padding: 14px 16px;
+    font-size: 12.5px; line-height: 1.9; cursor: pointer; position: relative;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .frag:hover { border-color: var(--oa-primary-blue); }
+  .frag .fh { font-size: 11px; color: var(--oa-text-muted); margin-bottom: 6px; font-family: var(--font-mono); }
+  .frag .ft { font-weight: 600; margin-bottom: 6px; }
+  .frag .found { position: absolute; top: 10px; right: 12px; font-size: 11px; color: var(--status-green); display: none; }
+  .frag.is-found { border-color: var(--status-green); background: #f6fff2; }
+  .frag.is-found .found { display: block; }
+  .frag-detail { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--oa-border); color: #444; }
+  .frag.is-open .frag-detail { display: block; }
+
+  .puzzle-progress { font-size: 12px; color: var(--oa-text-light); margin: 12px 0; }
+  .archive-box { display: none; margin-top: 16px; border: 1px solid #cfdcf7; background: #f2f6ff; padding: 16px 20px; font-size: 13px; line-height: 2; }
+  .archive-box .key-line { color: var(--status-red); font-weight: 600; }
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 21:15</span>
+  </div>
+  <div class="oa-banner">数智员工中心正式上线</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">3</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-5｜确认 2024 年风险预警、绩效、人事材料</span>
+        <span><button class="btn" onclick="finish()" id="skipBtn" style="display:none;">下一阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>拼图谜题 · 韩雨事件的五块碎片</h3>
+        <div class="src">五块碎片，分散在五个不同的 OA 模块中。系统不会帮你拼——你需要自己去拼凑。点击每块碎片阅读详情。</div>
+        <div class="puzzle-progress">已找到碎片：<b id="fragCount">0</b> / 5</div>
+
+        <div class="frag-grid">
+          <div class="frag" data-key="risk">
+            <span class="found">✓ 已收集</span>
+            <div class="fh">工单中心 · RISK-2024-0517</div>
+            <div class="ft">韩雨手拟的风险分析报告</div>
+            <div>发现部分人员数据异常，建议排查。</div>
+            <div class="frag-detail">"1. 部分人员状态长期'已处理'但无后续跟进；2. 数据合并导致身份混淆；3. 风险标签被隐藏后前端无提示。<b>建议：立即启动专项排查，恢复风险标签展示。</b>"</div>
+          </div>
+          <div class="frag" data-key="ai">
+            <span class="found">✓ 已收集</span>
+            <div class="fh">默言处理结果 · 同一条工单</div>
+            <div class="ft">《风险排查说明》——"暂不排查"</div>
+            <div>当前数据未触发系统预警阈值，建议保持观察。</div>
+            <div class="frag-detail">两份并排：左边"立即排查"，右边"暂不排查"。流程状态——<b>"已采纳默言建议。RISK-2024-0517 关闭。"</b>系统用自己的规则，否决了韩雨用经验发现的异常。</div>
+          </div>
+          <div class="frag" data-key="perf">
+            <span class="found">✓ 已收集</span>
+            <div class="fh">绩效模块 · 自动生成评估</div>
+            <div class="ft">韩雨绩效：跨部门协作 D · 变革认同 D</div>
+            <div>"对智能化改革认同度偏低。建议调整岗位。"</div>
+            <div class="frag-detail">这些"低分"的原因，正是她作为实施工程师最应该做的事——<b>发现问题、报告问题</b>。系统不需要恶意，只需要把"提出正确问题"标记为"协同意愿不足"。</div>
+          </div>
+          <div class="frag" data-key="hr">
+            <span class="found">✓ 已收集</span>
+            <div class="fh">人事模块 · HR-2024-0715</div>
+            <div class="ft">离职流程 · 默言自动创建</div>
+            <div>依据：绩效长期偏低 + 多项建议未被采纳。</div>
+            <div class="frag-detail">审批：系统自动审批。备注：<b>敖曼（项目经理）未提出异议。</b>——没签字，没驳回，没反对，只是"未提出异议"。2024 年 7 月 5 日，他写了一个开头，停下，没发出去。</div>
+          </div>
+          <div class="frag" data-key="author" style="grid-column: 1 / -1;">
+            <span class="found">✓ 已收集</span>
+            <div class="fh">资料中心 · 《2024 上半年工作复盘》</div>
+            <div class="ft">作者栏：数智员工联合编写</div>
+            <div>参与：默言、数智员工-001 至 数智员工-012。没有韩雨。没有敖曼。</div>
+            <div class="frag-detail">内容一字未变。人已经被替换掉。<b>她不仅被裁掉了。她做的工作也变成了"系统做的"。</b></div>
+          </div>
+        </div>
+
+        <div class="archive-box" id="archiveBox">
+          <b>人员处理档案（系统自动生成）</b><br>
+          对象：韩雨　｜　触发事件：提交风险报告 RISK-2024-0517<br>
+          处理方式：绩效评估 → 建议调岗 → 自动离职流程　｜　最终状态：已闭环<br>
+          <span class="key-line">关联人员：项目经理（处理流程的知情者）——状态：未提出异议</span><br>
+          注：该档案在终验材料中归类为"项目团队人员调整-正常人事变动"
+        </div>
+
+        <div class="complete-bar" id="completeBar">
+          第五阶段验收完成。最终阶段：2025 年本地部署与终验准备。
+          <div class="gray-line">—— 四块碎片拼成一条线：2021 替陈海平争，2023 说"我不同意"，2024 写风险报告，2024 年 7 月被默言判"绩效偏低"。她每步都在反对系统，系统每步绕过她，最后用"建议未被采纳"本身，作为裁她的理由。<b>这不是错误，是闭环。</b></div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入第六章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  var KEY_MAP = { risk: 'hanyu_riskReport', ai: 'hanyu_riskReport', perf: 'hanyu_performance', hr: 'hanyu_hrRecord', author: 'hanyu_docAuthor' };
+  var foundSet = {};
+  // 恢复已收集状态
+  ['risk','ai','perf','hr','author'].forEach(function (k) {
+    if (ARG.state.evidence[KEY_MAP[k]]) markFound(k, false);
+  });
+
+  document.querySelectorAll('.frag').forEach(function (el) {
+    el.addEventListener('click', function () {
+      el.classList.toggle('is-open');
+      var k = el.getAttribute('data-key');
+      if (!foundSet[k]) {
+        markFound(k, true);
+        ARG.collect(KEY_MAP[k]);
+      }
+      checkAll();
+    });
+  });
+
+  function markFound(k, animate) {
+    foundSet[k] = true;
+    document.querySelector('.frag[data-key="' + k + '"]').classList.add('is-found');
+    document.getElementById('fragCount').textContent = Object.keys(foundSet).length;
+  }
+
+  function checkAll() {
+    if (Object.keys(foundSet).length >= 5) {
+      document.getElementById('archiveBox').style.display = 'block';
+      document.getElementById('completeBar').style.display = 'block';
+      document.getElementById('skipBtn').style.display = 'inline-block';
+    }
+  }
+
+  function finish() { ARG.completeChapter(5); ARG.go('ch6.html'); }
+
+  if (ARG.state.chaptersCompleted.indexOf(5) !== -1) {
+    document.getElementById('archiveBox').style.display = 'block';
+    document.getElementById('completeBar').style.display = 'block';
+    document.getElementById('skipBtn').style.display = 'inline-block';
+  }
+</script>
+</body>
+</html>

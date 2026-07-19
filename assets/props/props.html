@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>T01-T03 — 道具细节（CSS + SVG）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/scenes.css">
+<style>
+  body { background: #33363c; min-height: 100vh; padding: 48px 24px; }
+  .grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+  .card {
+    background: #3c4047; border: 1px solid #4a4e55;
+    min-height: 260px; padding: 28px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  }
+  .card .code { align-self: flex-start; font-family: var(--font-mono); font-size: 11px; color: #7d838c; }
+  .card .desc { font-size: 12px; color: #9aa0a8; text-align: center; line-height: 1.7; }
+
+  /* T01 — 敖曼名牌 */
+  .nameplate {
+    background: #1a56db;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+  }
+  /* 立式桌牌版 */
+  .nameplate-stand {
+    background: linear-gradient(180deg, #1f66e8, #1748b8);
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    border-bottom: 4px solid #0f3690;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .45);
+    transform: perspective(200px) rotateX(6deg);
+  }
+</style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- T01 敖曼名牌 -->
+  <div class="card">
+    <span class="code">T01 · 敖曼名牌</span>
+    <div class="nameplate-stand">敖曼&nbsp;&nbsp;产品经理</div>
+    <div class="nameplate">敖曼 产品经理</div>
+    <div class="desc">蓝底白字小 div。<br>用于 S05 玻璃门、办公桌、OA 审批记录签名处。</div>
+  </div>
+
+  <!-- T02 307 室门牌 -->
+  <div class="card">
+    <span class="code">T02 · 307 室门牌</span>
+    <div class="doorplate" style="transform: scale(1.6); margin: 18px 0;">
+      <span class="room-num">307</span>
+      <span class="company-name">启衡信息技术有限公司</span>
+    </div>
+    <div class="desc">金属拉丝渐变底 + 黑体房号。<br>用于 S03 走廊尽头的门，是玩家的空间锚点。</div>
+  </div>
+
+  <!-- T03 枯死盆栽 -->
+  <div class="card">
+    <span class="code">T03 · 枯死盆栽</span>
+    <svg width="140" height="210" viewBox="0 0 40 60">
+      <!-- 花盆：梯形 -->
+      <polygon points="8,30 32,30 28,55 12,55" fill="#8B7355"/>
+      <polygon points="8,30 32,30 31,34 9,34" fill="#7a6349"/>
+      <!-- 枯茎：曲折的线条 -->
+      <path d="M20,30 Q18,20 15,10 Q14,5 16,0" stroke="#6b5b3a" stroke-width="1.5" fill="none"/>
+      <path d="M20,30 Q22,18 25,12" stroke="#6b5b3a" stroke-width="1" fill="none"/>
+      <path d="M20,30 Q16,24 11,20" stroke="#6b5b3a" stroke-width="1" fill="none"/>
+      <!-- 枯叶：干瘪的小椭圆 -->
+      <ellipse cx="14" cy="8" rx="4" ry="1.5" fill="#7a6b4a" transform="rotate(-30,14,8)"/>
+      <ellipse cx="19" cy="3" rx="3" ry="1" fill="#6b5b3a" transform="rotate(15,19,3)"/>
+      <ellipse cx="25" cy="10" rx="3" ry="1.2" fill="#7a6b4a" transform="rotate(42,25,10)"/>
+      <ellipse cx="11" cy="18" rx="2.6" ry="1" fill="#6b5b3a" transform="rotate(-52,11,18)"/>
+    </svg>
+    <div class="desc">SVG 曲线枯茎 + 干褐 #6b5b3a。<br>用于 S04 第三张桌子——"已经枯成了一团褐色的纤维"。</div>
+  </div>
+
+</div>
+</body>
+</html>

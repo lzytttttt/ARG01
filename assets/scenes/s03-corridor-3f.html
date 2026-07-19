@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>S03 — 三楼走廊 + 307 室门口</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/scenes.css">
+<link rel="stylesheet" href="../css/horror.css">
+<style>
+  /* 与 S02 同一套透视，整体更暗 */
+  .s03 { background: #0b0c0e; }
+  .ceil {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 0, 100% 0, 63% 31%, 37% 31%);
+    background: linear-gradient(180deg, #8e9389 0%, #73786e 100%);
+  }
+  .floor {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 100%, 100% 100%, 63% 71%, 37% 71%);
+    background:
+      radial-gradient(ellipse at 50% 90%, rgba(180, 185, 170, .10), transparent 55%),
+      linear-gradient(0deg, #5c5d55 0%, #6d6e66 100%);
+  }
+  .wall-l {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 0, 37% 31%, 37% 71%, 0 100%);
+    background: linear-gradient(90deg, #75816f 0%, #8a9684 100%);
+  }
+  .wall-r {
+    position: absolute; inset: 0;
+    clip-path: polygon(100% 0, 63% 31%, 63% 71%, 100% 100%);
+    background: linear-gradient(270deg, #75816f 0%, #8a9684 100%);
+  }
+  .back {
+    position: absolute;
+    left: 37%; top: 31%; width: 26%; height: 40%;
+    background: linear-gradient(180deg, #7c8677, #6f7969);
+    box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+  }
+
+  /* 天花板渗水：307 门口上方的大片水渍（反复回来时 scale 微增） */
+  .stain-main {
+    left: 40%; top: 6%;
+    width: 26%; height: 30%;
+    transform: scale(1);
+    transition: transform 20s ease, opacity 20s ease;
+  }
+  .stain-small { left: 63%; top: 12%; width: 9%; height: 12%; opacity: .7; }
+  /* 墙皮被浸湿剥落的斑块 */
+  .peel {
+    position: absolute;
+    left: 37.5%; top: 33%;
+    width: 8%; height: 14%;
+    background: radial-gradient(ellipse at 40% 40%, #b9b4a4 30%, rgba(150, 145, 130, .6) 60%, transparent 75%);
+    filter: blur(.8px);
+    opacity: .8;
+  }
+
+  /* 307 的门：画面尽头偏左，焦点 */
+  .door307 {
+    position: absolute;
+    left: 40%; top: 36%; width: 11%; height: 35%;
+    background: linear-gradient(160deg, #6b5a49 0%, #594b3d 100%);
+    border: 2px solid #453a2e;
+    box-shadow: inset 2px 0 6px rgba(0, 0, 0, .5), 0 0 18px rgba(0, 0, 0, .5);
+  }
+  .door307 .knob {
+    position: absolute; right: 8%; top: 52%;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #a8a49a;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .6);
+  }
+  /* 门缝：门没锁，虚掩着一线黑 */
+  .door307::after {
+    content: "";
+    position: absolute; right: -2px; top: 0; bottom: 0;
+    width: 2px;
+    background: #050505;
+  }
+  .door307 .doorplate {
+    position: absolute;
+    left: 50%; top: -26%;
+    transform: translateX(-50%) scale(.62);
+    transform-origin: bottom center;
+    white-space: nowrap;
+  }
+
+  /* 水从天花板滴到地面的痕迹 */
+  .drip-line {
+    position: absolute; left: 47.5%; top: 30%;
+    width: 1px; height: 44%;
+    background: linear-gradient(to bottom, rgba(170, 175, 165, .5), rgba(170, 175, 165, .08));
+  }
+  .floor-puddle {
+    position: absolute; left: 42%; top: 73%;
+    width: 14%; height: 6%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 45% 35%, rgba(180, 188, 180, .28), rgba(80, 84, 78, .18) 70%, transparent);
+    filter: blur(1px);
+  }
+
+  .tube-wrap { position: absolute; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .t1 { top: 8%;  } .t1 .light-tube { width: 140px; }
+  .t2 { top: 18%; } .t2 .light-tube { width: 92px; }
+
+  /* 右墙：其他空置办公室的门，黑洞洞 */
+  .door-empty {
+    position: absolute;
+    right: 10%; top: 38%;
+    width: 14%; height: 36%;
+    clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+    background: linear-gradient(180deg, #141518, #0a0b0d);
+  }
+
+  /* 整体压暗层 */
+  .dim { position: absolute; inset: 0; background: rgba(8, 10, 16, .28); pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="scene s03 vignette">
+  <div class="ceil"></div>
+  <div class="floor"></div>
+  <div class="wall-l"></div>
+  <div class="wall-r"></div>
+  <div class="back"></div>
+
+  <div class="water-stain drip stain-main"></div>
+  <div class="water-stain stain-small"></div>
+  <div class="peel"></div>
+
+  <div class="door307">
+    <div class="doorplate">
+      <span class="room-num">307</span>
+      <span class="company-name">启衡信息技术有限公司</span>
+    </div>
+    <div class="knob"></div>
+  </div>
+
+  <div class="door-empty"></div>
+
+  <div class="tube-wrap t1"><div class="light-tube fx-flicker"></div></div>
+  <div class="tube-wrap t2"><div class="light-tube off"></div></div>
+
+  <div class="drip-line"></div>
+  <div class="floor-puddle"></div>
+  <div class="dim"></div>
+</div>
+</body>
+</html>

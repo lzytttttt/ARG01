@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第二章 · 一个人只能有一个编号 — 2021</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 860px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+  .workorder { width: 100%; margin-bottom: 14px; }
+
+  /* 通讯录谜题区 */
+  .contact-puzzle { border: 1px solid var(--oa-border); background: #fff; padding: 18px 20px; margin-top: 8px; }
+  .contact-search { width: 100%; margin-bottom: 0; }
+  .contact-list { width: 100%; }
+  #refreshTip { font-size: 12px; color: var(--oa-text-muted); margin-top: 10px; display: none; }
+
+  .complete-bar { display: none; margin-top: 18px; padding: 14px 18px; background: #f2f6ff; border: 1px solid #cfdcf7; font-size: 13px; line-height: 1.9; }
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+  .gray-line { font-size: 12px; color: var(--oa-text-muted); font-style: italic; margin-top: 8px; }
+  .fx-lamp { animation: lampFlash .18s 1; }
+  @keyframes lampFlash { 50% { filter: brightness(1.6); } }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 19:10</span>
+  </div>
+  <div class="oa-banner">数字化转型 高质量发展</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">6</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001-2｜核验 2021 年集团统一人员服务平台上线材料</span>
+        <span><button class="btn" onclick="finish()" id="skipBtn" style="display:none;">下一阶段 →</button></span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>项目群 · 2021年4月12日</h3>
+        <div class="src">"算系统的吧。"——这句话，后来成了陈海平档案被合并四次却没人负责的起点。</div>
+        <div class="doc-paper" style="width:100%; min-height:auto; padding:22px 28px; font-family:var(--font-oa);">
+          <p style="line-height:2.1; font-size:13.5px;">
+          <b>甲方-信息化办</b> 14:22：再加六类人员，志愿者、配送、外包、供应商全并进来。<br>
+          <b>项目经理（敖曼）</b> 14:25：类型太多，字段对不齐，用精确匹配会丢人。<br>
+          <b>甲方-信息化办</b> 14:27：那就模糊匹配，差不多就行。<br>
+          <b>后端-小周</b> 14:31：匹配错了算谁的？<br>
+          <b>甲方-信息化办</b> 14:32：<span style="background:#fff3cd; padding:1px 6px;">算系统的吧，系统判的我们认。</span></p>
+        </div>
+
+        <h3>工单中心 · 韩雨的工单（首次出现）</h3>
+        <div class="src">工单状态"已处理"，处理结果却是"重复数据清理完成"——和韩雨请求的"不要再合并"完全相反。</div>
+        <div class="workorder">
+          <div class="workorder-head"><span>工单详情</span><span style="font-family:var(--font-mono); color:var(--oa-text-muted);">TK-2021-0617</span></div>
+          <table>
+            <tr><th>标题</th><td>人员档案合并异常——陈海平</td><th>状态</th><td><span class="badge badge-processed">已处理</span></td></tr>
+            <tr><th>提交人</th><td>韩雨（启衡信息-驻场实施）</td><th>时间</th><td>2021-06-17 14:32</td></tr>
+            <tr><th>内容</th><td colspan="3">司机陈海平（身份证后四位 3715）的配送记录被合并进了另一名同名人员（身份证后四位 2840）的档案。<b>不是重复人员。两个人身份证后四位不一样。不要再自动合并。</b></td></tr>
+            <tr><th>处理结果</th><td colspan="3" class="result-line">已处理：重复数据清理完成</td></tr>
+          </table>
+        </div>
+        <div class="src">往下还有：TK-2021-0712 再次提交 ／ TK-2021-0803 第三次 ／ TK-2021-0915 紧急——每一条都是：<b>"已处理。重复数据清理完成。"</b> 四次。同一个人，四次申诉，同一个答案。</div>
+
+        <h3>核心谜题 · 通讯录搜索"陈海平"</h3>
+        <div class="src">你只是想看清楚一点。你点了刷新。</div>
+        <div class="contact-puzzle">
+          <div class="contact-search">搜索：陈海平　<span id="resultCount">找到 2 条结果</span>　<button class="btn" id="refreshBtn" style="padding:2px 12px; font-size:12px;">刷新</button></div>
+          <ul class="contact-list" id="contactList">
+            <li><span class="c-name">陈海平</span><span class="c-dept">园区物业-配送组</span><span class="c-status">状态：离职（尾号 3715）</span></li>
+            <li class="fading" id="secondChen"><span class="c-name">陈海平</span><span class="c-dept">城市物流-保供配送</span><span class="c-status">状态：—（尾号 2840）</span></li>
+          </ul>
+          <div id="refreshTip">你没动过任何东西。无论怎么搜，只剩一个。尾号 2840 的不在了。</div>
+        </div>
+
+        <div class="complete-bar" id="completeBar">
+          第二阶段验收完成。第三阶段：2022 年系统规则变更归档。
+          <div class="gray-line">—— 在你刷新的那几秒里，系统"修正"了一处数据不一致：把尾号 3715 的陈海平，重新判定为"重复数据"，合并进了 2840 的主记录。没有弹窗，没有提示，没有日志需要你确认。它只是觉得该这么做。</div>
+          <button class="btn btn-primary next-btn" onclick="finish()">进入第三章 →</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  // 已触发过合并 → 直接显示合并后状态
+  if (ARG.getHorror('contactsMerged')) {
+    applyMerged(true);
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', function () {
+    if (ARG.getHorror('contactsMerged')) return;
+    // 灯闪一下（物理空间共振）
+    document.body.classList.add('fx-lamp');
+    setTimeout(function(){ document.body.classList.remove('fx-lamp'); }, 250);
+    applyMerged(false);
+  });
+
+  function applyMerged(instant) {
+    var li = document.getElementById('secondChen');
+    ARG.setHorror('contactsMerged');
+    ARG.collect('hanyu_tickets');
+    if (instant) {
+      li.style.display = 'none';
+      document.getElementById('resultCount').textContent = '找到 1 条结果';
+      document.getElementById('refreshTip').style.display = 'block';
+      document.getElementById('completeBar').style.display = 'block';
+      document.getElementById('skipBtn').style.display = 'inline-block';
+      return;
+    }
+    li.classList.add('is-gone');
+    setTimeout(function () {
+      li.style.display = 'none';
+      document.getElementById('resultCount').textContent = '找到 1 条结果';
+      document.getElementById('refreshTip').style.display = 'block';
+      document.getElementById('completeBar').style.display = 'block';
+      document.getElementById('skipBtn').style.display = 'inline-block';
+    }, 3200);
+  }
+
+  function finish() {
+    ARG.completeChapter(2);
+    ARG.go('ch3.html');
+  }
+
+  if (ARG.state.chaptersCompleted.indexOf(2) !== -1) {
+    document.getElementById('completeBar').style.display = 'block';
+    document.getElementById('skipBtn').style.display = 'inline-block';
+  }
+</script>
+</body>
+</html>

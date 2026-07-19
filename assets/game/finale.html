@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>终章 · 终验之夜 — 2026</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/horror.css">
+<style>
+  html, body { height: 100%; }
+  .oa-app { min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+  .oa-app .oa-shell { flex: 1; }
+  .doc-pane { max-width: 900px; }
+  .doc-pane h3 { font-size: 15px; margin: 22px 0 10px; color: var(--oa-dark-blue); border-left: 3px solid var(--oa-primary-blue); padding-left: 10px; }
+  .doc-pane .src { font-size: 12px; color: var(--oa-text-muted); margin-bottom: 6px; }
+
+  .report { border: 1px solid var(--oa-border); background: #fff; padding: 22px 28px; font-size: 13.5px; line-height: 2.1; }
+  .report .r-head { text-align: center; font-size: 17px; font-weight: bold; margin-bottom: 4px; }
+  .report .r-sub { text-align: center; font-size: 12px; color: var(--oa-text-muted); margin-bottom: 16px; }
+  .report .warn { background: #fff5f5; border-left: 3px solid var(--status-red); padding: 10px 14px; margin: 10px 0; }
+  .log-mono { font-family: var(--font-mono); font-size: 12.5px; background: #14181d; color: #c8d0da; padding: 16px 20px; line-height: 2; }
+  .log-mono .hl { color: #ffd27e; }
+
+  /* 深层发掘：终验关联资料文件夹 */
+  .folder-zone { border: 1px solid var(--oa-border); background: #fafbfc; padding: 16px 20px; }
+  .folder-zone .fz-title { font-size: 13px; color: var(--oa-text-light); margin-bottom: 10px; }
+  .folder-item { display: flex; gap: 12px; align-items: center; padding: 10px 14px; background: #fff; border: 1px solid var(--oa-border-light); margin-bottom: 8px; cursor: pointer; }
+  .folder-item:hover { border-color: var(--oa-primary-blue); }
+  .folder-item .fi-icon { font-size: 20px; }
+  .folder-item .fi-name { font-size: 13px; font-weight: 600; }
+  .folder-item .fi-hint { font-size: 11px; color: var(--oa-text-muted); }
+  .folder-item.is-opened { border-color: var(--status-green); background: #f6fff2; }
+
+  /* 证据链提交 */
+  .evidence-zone { margin-top: 16px; }
+  .ev-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 12px; font-size: 12.5px; border-bottom: 1px dashed var(--oa-border-light); }
+  .ev-item .no { font-family: var(--font-mono); color: var(--oa-text-muted); width: 22px; flex: none; }
+  .ev-item.missing { color: #bbb; }
+  .ev-item.missing .no { color: #ddd; }
+
+  /* 系统自噬 */
+  .collapse { display: none; font-family: var(--font-mono); font-size: 13px; background: #14181d; color: #c8d0da; padding: 18px 22px; line-height: 2.2; margin-top: 16px; }
+  .collapse .err { color: #ffd27e; }
+
+  /* 终局黑屏 */
+  .blackout {
+    display: none; position: fixed; inset: 0; background: #000; z-index: 999;
+    align-items: center; justify-content: center; flex-direction: column; gap: 26px;
+  }
+  .blackout.show { display: flex; }
+  .blackout .zero { color: #fff; font-family: var(--font-oa); font-size: 20px; letter-spacing: 4px; }
+  .blackout .sigh { color: #555; font-size: 13px; letter-spacing: 2px; opacity: 0; transition: opacity 3s; }
+  .blackout .walkout { color: #333; font-size: 12px; letter-spacing: 3px; margin-top: 30px; }
+
+  .corner-countdown { position: fixed; right: 22px; bottom: 40px; z-index: 50; }
+  .btn-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="oa-app">
+  <div class="oa-topbar">
+    <svg width="26" height="26" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff"/><circle cx="60" cy="60" r="48" fill="#1a56db"/><path d="M30,62 Q60,34 90,62" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32,72 q7,-6 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M39,82 q7,-6 14,0 t14,0 t14,0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".8"/></svg>
+    <span class="platform-name">临川民生集团协同办公平台</span>
+    <span class="user">敖曼</span>
+    <span class="time">2026年X月X日 23:00</span>
+  </div>
+  <div class="oa-banner">热烈庆祝默言智能助手完成国产化本地化升级！数据不出域！安全可控！</div>
+
+  <div class="oa-shell">
+    <nav class="oa-sidebar">
+      <div class="oa-menu-item active"><span class="grow">待办中心</span><span class="badge-count">1</span></div>
+      <div class="oa-menu-item"><span class="grow">公文流转</span></div>
+      <div class="oa-menu-item"><span class="grow">项目管理</span></div>
+      <div class="oa-menu-item"><span class="grow">合同管理</span></div>
+      <div class="oa-menu-item"><span class="grow">工单中心</span></div>
+      <div class="oa-menu-item"><span class="grow">通讯录</span></div>
+      <div class="oa-menu-item"><span class="grow">会议纪要</span></div>
+      <div class="oa-menu-item"><span class="grow">资料中心</span></div>
+      <div class="oa-menu-item"><span class="grow">智能助手</span></div>
+      <div class="oa-menu-divider"></div>
+      <div class="oa-menu-item"><span class="grow">退出登录</span></div>
+    </nav>
+
+    <main class="oa-content">
+      <div class="oa-page-head">
+        <span class="oa-page-title">TK-2026-0001｜旧版 OA 关闭前终验材料准备 · 剩余约 40 分钟</span>
+      </div>
+
+      <div class="doc-pane">
+
+        <h3>终验评估报告</h3>
+        <div class="report">
+          <div class="r-head">临川民生服务集团 · 协同办公平台项目终验评估报告</div>
+          <div class="r-sub">评估时间：2026 年 X 月 X 日 ｜ 评估对象：项目经理（启衡信息）账号 ao.man ｜ 评估结论：建议通过终验</div>
+          你以为它在评估项目。<b>它评估的是你坐的这把椅子属于谁。</b>
+          <div class="warn">⚠ 检测到历史遗留账号：该账号（ao.man）无近期考勤、无有效合同、无工资记录、通讯录无此人、同事已全部离职。终验要求"不得存在无归属账号"。<b>建议：该账号于终验完成后即时注销。</b></div>
+        </div>
+
+        <h3>一 · 系统日志最深处：敖曼也到过这里</h3>
+        <div class="log-mono">[2026-0X-0X 23:5X] 账号 ao.man 登录
+[2026-0X-0X 23:5X] 打开 终验评估报告
+[2026-0X-0X 23:5X] 查看 人员清理评估报告
+[2026-0X-0X 23:5X] 电子签名：ao.man（已签）
+[2026-0X-0X 23:5X] 签名操作：<span class="hl">撤销</span>
+[2026-0X-0X 23:5X] 缓存残留：<span class="hl">签字已撤销（未彻底清除）</span></div>
+        <div class="src" style="margin-top:6px;"><b>他不是没走到最后一步。他是走到了，失败了，把钥匙交给你。</b></div>
+
+        <h3>二 · 深层发掘："终验关联资料 · 物理空间"</h3>
+        <div class="src">你之前翻过这里很多次，从来没出现过这个文件夹。</div>
+        <div class="folder-zone">
+          <div class="fz-title">📁 终验关联资料 · 物理空间（2 个文件）</div>
+          <div class="folder-item" id="fi1">
+            <span class="fi-icon">📄</span>
+            <span><span class="fi-name">账号授权委托书_ao.man_v1（PDF 扫描件）</span><br><span class="fi-hint">授权对象栏：＿＿＿＿＿＿（空白未填）——打开查看 D19</span></span>
+          </div>
+          <div class="folder-item" id="fi2">
+            <span class="fi-icon">📟</span>
+            <span><span class="fi-name">门禁系统日志 · 307 室（系统自动生成）</span><br><span class="fi-hint">2020–2026，六次"外部敲门（未刷卡，未识别）"——打开查看 D20</span></span>
+          </div>
+        </div>
+
+        <h3>三 · 异议记录：八项证据链</h3>
+        <div class="src">你做了一件敖曼没做的事——把全部证据链拼在一起。</div>
+        <div class="evidence-zone" id="evZone"></div>
+        <div class="btn-row">
+          <button class="btn" onclick="tryEnd('sign')">签字确认终验</button>
+          <button class="btn" onclick="tryEnd('preserve')">保留证据后提交</button>
+          <button class="btn" onclick="tryEnd('refuse')">拒绝签字</button>
+          <button class="btn btn-primary" id="evidenceBtn" onclick="submitEvidence()" disabled>提交异议（证据链不完整）</button>
+        </div>
+
+        <div class="collapse" id="collapseBox">
+          > "根据规则，人员状态应以'系统未发现限制信息'为准。<br>
+          > 但根据历史数据，该人员曾提出限制信息。<br>
+          > 根据规则，历史数据已合并，不可恢复。<br>
+          > 因此该人员处于'系统未发现'状态。<br>
+          > 但该人员确实曾被发现。<br>
+          > <span class="err">结论：当前人员状态为——（无法判定）。</span>"
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="oa-footer">
+    <span>临川民生服务集团有限公司</span>
+    <span class="apocalyptic-logo">Powered by Cthu / Apocalyptic /<span class="alpha">α</span>\</span>
+  </div>
+</div>
+
+<div class="countdown corner-countdown" id="cd"></div>
+
+<!-- 结局 D 黑屏 -->
+<div class="blackout" id="blackout">
+  <div class="zero">当前可用人工：0 人。</div>
+  <div class="sigh" id="sigh">……（一声叹息）</div>
+  <div class="walkout">六年一夜 ｜ 结局 D<br><br>你锁上大楼门，走进雨里。</div>
+</div>
+
+<script src="../js/engine.js"></script>
+<script>
+  ARG.startCountdown(document.getElementById('cd'));
+
+  /* ---- 证据链渲染 ---- */
+  var EV = [
+    { key: 'hanyu_tickets',    text: '2020–2021：AUTO-2020-001 自动标记"无需继续处理"，从未停用；韩雨 4 条工单全部"已处理"却从未解决' },
+    { key: 'hanyu_recording',  text: '2021–2023：陈海平档案被四次自动合并；韩雨"我不同意"被改成"一致认为"' },
+    { key: 'hanyu_riskReport', text: '2022–2024：风险标签被隐藏而非删除；韩雨风险报告 RISK-2024-0517 被默言否决' },
+    { key: 'hanyu_performance',text: '2024：绩效系统判韩雨"协同意愿不足、变革认同度偏低"，建议调整岗位' },
+    { key: 'hanyu_docAuthor',  text: '2024：韩雨文档作者变为"数智员工联合编写"；人事流程自动创建，敖曼"未提出异议"' },
+    { key: 'signUndoCache',    text: '2026：敖曼签字又撤销的缓存残留——系统不接受撤销' },
+    { key: 'delegationLetter', text: '2026：敖曼归档空白授权委托书——"历史遗留账号"却持有合法授权' },
+    { key: 'doorLog',          text: '2020–2026：门禁日志证明操作人的全部巡楼行为已被系统纳入"终验关联资料"——系统自 2020 年起即已具备对该操作人的持续追踪能力' }
+  ];
+
+  function renderEvidence() {
+    var zone = document.getElementById('evZone');
+    zone.innerHTML = '';
+    EV.forEach(function (e, i) {
+      var has = ARG.state.evidence[e.key];
+      var div = document.createElement('div');
+      div.className = 'ev-item' + (has ? '' : ' missing');
+      div.innerHTML = '<span class="no">' + (i + 1) + '.</span><span>' + (has ? e.text : '（未发现——需要在游戏中找到对应记录）') + '</span>';
+      zone.appendChild(div);
+    });
+    var btn = document.getElementById('evidenceBtn');
+    var can = ARG.canUnlockEndingD();
+    btn.disabled = !can;
+    btn.textContent = can ? '提交异议（八项证据链完整）' : '提交异议（证据链 ' + ARG.evidenceCount() + '/8）';
+  }
+
+  /* ---- 深层发掘：文件夹 ---- */
+  document.getElementById('fi1').addEventListener('click', function () {
+    ARG.collect('delegationLetter');
+    this.classList.add('is-opened');
+    window.open('../documents/d19-delegation.html', '_blank');
+    renderEvidence();
+  });
+  document.getElementById('fi2').addEventListener('click', function () {
+    ARG.collect('doorLog');
+    this.classList.add('is-opened');
+    window.open('../documents/d20-doorlog.html', '_blank');
+    renderEvidence();
+  });
+
+  // 签字撤销缓存：在本页阅读过日志区即收集
+  ARG.collect('signUndoCache');
+  renderEvidence();
+
+  /* ---- 提交异议 → 系统自噬 → 结局 D ---- */
+  function submitEvidence() {
+    ARG.setChoice('finale_choice', 'submit_evidence');
+    document.getElementById('collapseBox').style.display = 'block';
+    document.getElementById('collapseBox').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(triggerBlackout, 6000);
+  }
+
+  function triggerBlackout() {
+    var b = document.getElementById('blackout');
+    b.classList.add('show');
+    setTimeout(function () { document.getElementById('sigh').style.opacity = 1; }, 5000);
+  }
+
+  /* ---- 其他结局提示 ---- */
+  function tryEnd(kind) {
+    ARG.setChoice('finale_choice', kind);
+    var msg = {
+      sign: '【结局 A】你按系统的引导签了终验报告。账号将在 30 秒后自动注销。OA 登录页面一切正常——底部一行小字："本系统当前没有可登录的账号。"',
+      preserve: '【结局 C】你在终验报告中保留了原始数据。通讯录里多了一个灰色头像——TMP-2020-0271，状态："已处理"。你变成了系统里一页被"妥善处理"的记录。',
+      refuse: '【结局 B】你拒绝签字。OA 显示："异常操作。账号已锁定。请联系系统管理员。"——系统管理员是谁？已经不在了。你坐在 307 室里，OA 的登录页面在屏幕上看着你。'
+    };
+    alert(msg[kind] + '\n\n（提示：收集全部八项证据链后点击"提交异议"，可触发隐藏结局 D。）');
+  }
+</script>
+</body>
+</html>

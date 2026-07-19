@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>U01-U05 — 年份横幅</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/oa.css">
+<style>
+  body { background: #3a3d42; padding: 44px 24px; }
+  .stack { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  .year-row { display: flex; align-items: stretch; gap: 0; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+  .year-tag {
+    flex: none; width: 86px;
+    background: #141a26; color: #d8dce2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 18px; letter-spacing: 1px;
+  }
+  .year-tag small { font-size: 10px; color: #7d8592; margin-top: 4px; letter-spacing: 0; }
+  .year-row .oa-banner { flex: 1; }
+  .note { max-width: 980px; margin: 26px auto 0; color: #9aa0a8; font-size: 12px; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="stack">
+
+  <div class="year-row">
+    <div class="year-tag">2020<small>疫情防控</small></div>
+    <div class="oa-banner">坚决打赢疫情防控阻击战 全力保障民生服务不中断</div>
+  </div>
+
+  <div class="year-row">
+    <div class="year-tag">2021<small>数据中台</small></div>
+    <div class="oa-banner">关于启动集团统一身份认证与人员数据中台建设的通知</div>
+  </div>
+
+  <div class="year-row">
+    <div class="year-tag">2023<small>AIGC</small></div>
+    <div class="oa-banner">拥抱 AIGC，打造集团数智化新动能</div>
+  </div>
+
+  <div class="year-row">
+    <div class="year-tag">2024<small>人工智能+</small></div>
+    <div class="oa-banner">深入推进"人工智能+"行动 加快建设数智员工中心</div>
+  </div>
+
+  <div class="year-row">
+    <div class="year-tag">2025<small>国产化</small></div>
+    <div class="oa-banner">热烈庆祝默言智能助手完成国产化本地化升级！数据不出域！安全可控！</div>
+  </div>
+
+</div>
+<div class="note">
+  规格：蓝底 #1a56db / 白字 / 黑体 18px / 高 80px 居中。<br>
+  文案均出自 WIKI/21-新闻与热点事件库 与 WIKI/17-视觉与UI规范——一条横幅，一瞥即知年代。
+</div>
+</body>
+</html>
