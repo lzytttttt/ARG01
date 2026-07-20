@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apocalypic</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0a0a'/%3E%3Ctext x='0.5' y='12.5' font-family='monospace' font-size='12' fill='%23e8e8e8'%3E/%CE%B1%5C%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/web.css">
+</head>
+<body class="web-reset ap-page">
+
+  <main class="ap-home">
+
+    <!-- 首屏 -->
+    <section class="ap-hero">
+      <div class="ap-logo" id="apLogo">/α\</div>
+      <div class="ap-brand">Apocalypic</div>
+      <hr class="ap-divider">
+      <div class="ap-tagline">enterprise intelligence infrastructure</div>
+      <a class="ap-link" href="WEB-03-product.html">[ Products ]</a>
+    </section>
+
+    <!-- 滚动视差区块 -->
+    <section class="ap-block">
+      <div class="ap-title-xl ap-fade">Cthu</div>
+      <div class="ap-desc ap-fade">a language model infrastructure</div>
+      <a class="ap-link ap-fade" href="WEB-03-product.html">[ 了解更多 ]</a>
+    </section>
+
+    <section class="ap-block">
+      <div class="ap-keywords ap-fade">enterprise&nbsp;&nbsp;·&nbsp;&nbsp;private&nbsp;&nbsp;·&nbsp;&nbsp;sovereign</div>
+    </section>
+
+  </main>
+
+  <!-- 从 2019 年第一版就存在的注释。没有人删除它。或者——没有人能删除它。 -->
+  <!-- /α\ -->
+
+  <script>
+    // 页面加载：黑屏 1 秒，然后 /α\ 极慢淡入（1.5s）
+    window.addEventListener('load', function () {
+      setTimeout(function () { document.body.classList.add('ap-ready'); }, 1000);
+    });
+
+    // Logo 悬停：1.5s 颜色过渡（CSS）；悬停超过 5 秒触发 0.5px 像素微颤
+    var logo = document.getElementById('apLogo');
+    var creepTimer = null;
+    logo.addEventListener('mouseenter', function () {
+      creepTimer = setTimeout(function () { logo.classList.add('creep'); }, 5000);
+    });
+    logo.addEventListener('mouseleave', function () {
+      clearTimeout(creepTimer);
+      logo.classList.remove('creep');
+    });
+
+    // 滚动视差：文字从深灰 (#444) 缓慢淡入为白 (#e8)，越往下滚动越清晰
+    function apParallax() {
+      var vh = window.innerHeight;
+      var nodes = document.querySelectorAll('.ap-fade');
+      for (var i = 0; i < nodes.length; i++) {
+        var r = nodes[i].getBoundingClientRect();
+        var center = r.top + r.height / 2;
+        var p = (vh * 0.85 - center) / (vh * 0.7);
+        if (p < 0) p = 0; if (p > 1) p = 1;
+        var from = [68, 68, 68], to = [232, 232, 232], c = [];
+        for (var k = 0; k < 3; k++) c[k] = Math.round(from[k] + (to[k] - from[k]) * p);
+        nodes[i].style.color = 'rgb(' + c[0] + ',' + c[1] + ',' + c[2] + ')';
+      }
+    }
+    var ticking = false;
+    function onScroll() {
+      if (!ticking) { window.requestAnimationFrame(function () { apParallax(); ticking = false; }); ticking = true; }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', apParallax);
+    apParallax();
+  </script>
+
+</body>
+</html>
