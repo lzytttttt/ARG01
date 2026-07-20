@@ -1,2 +1,4 @@
 .workbuddy
 .codebuddy
+ARG-01/node_modules
+ARG-01/dist
