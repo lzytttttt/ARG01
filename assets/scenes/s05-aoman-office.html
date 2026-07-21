@@ -145,12 +145,6 @@
     transform: rotate(-9deg) scale(1.12);
     box-shadow: 0 6px 18px rgba(255, 240, 210, .35);
   }
-  .note-hint {
-    position: absolute; left: 54%; top: 61%;
-    font-size: 11px; color: rgba(230, 225, 210, .55);
-    letter-spacing: 1px;
-    z-index: 5;
-  }
 
   /* 桌角杂物 */
   .pen { position: absolute; left: 50%; top: 55%; width: 7%; height: 2px; background: #2a2d33; transform: rotate(14deg); z-index: 5; }
@@ -182,6 +176,14 @@
 
   /* 暖光之外的冷暗部 */
   .cold-dim { position: absolute; inset: 0; background: rgba(20, 26, 40, .22); pointer-events: none; }
+
+  /* 可交互热点：脉冲圆点 + hover 标签 */
+  .hotspot { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: rgba(255,230,160,.10); border: 1px solid rgba(255,230,160,.55); cursor: pointer; z-index: 6; transition: transform .2s, box-shadow .2s; }
+  .hotspot::after { content: attr(data-label); position: absolute; left: 50%; bottom: 135%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; color: #e8dcbe; background: rgba(10,12,16,.88); padding: 3px 8px; border-radius: 3px; opacity: 0; pointer-events: none; transition: opacity .15s; letter-spacing: 1px; }
+  .hotspot:hover { transform: scale(1.3); box-shadow: 0 0 16px rgba(255,230,160,.55); }
+  .hotspot:hover::after { opacity: 1; }
+  .hotspot.pulse { animation: hs-pulse 2.6s ease-in-out infinite; }
+  @keyframes hs-pulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(255,230,160,.45);} 50%{ box-shadow: 0 0 0 9px rgba(255,230,160,0);} }
 </style>
 </head>
 <body>
@@ -216,9 +218,11 @@
   <div class="pen"></div>
 
   <a class="the-note" href="../documents/note-front.html" title="查看字条"></a>
-  <div class="note-hint">一张手写的纸</div>
 
   <div class="cold-dim"></div>
+
+  <!-- 可交互热点：相框·韩雨最后的合影 -->
+  <div class="hotspot pulse" style="left:74%;top:48%;" data-doc="photo" data-label="相框·韩雨最后的合影"></div>
 </div>
 </body>
 </html>

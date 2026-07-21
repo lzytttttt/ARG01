@@ -9,7 +9,7 @@ import corridor3f from './views/physical/corridor3f.js';
 import room307 from './views/physical/room307.js';
 import office from './views/physical/office.js';
 import note from './views/note.js';
-import lcms from './views/lcms.js';
+import lcms, { lcms404 } from './views/lcms.js';
 import lcmsAbout from './views/lcmsAbout.js';
 import lcmsNews from './views/lcmsNews.js';
 import login from './views/login.js';
@@ -30,6 +30,7 @@ registerRoutes({
   '/lcms/about': lcmsAbout,
   '/lcms/news': lcmsNews,
   '/lcms/login': login,
+  '/lcms/404': lcms404,
   '/lcms/oa': oaDesk,
   '/web/qiheng': qiheng,
   '/web/qiheng/cases': qihengCases,

@@ -49,6 +49,7 @@ function guard(path) {
     case '/lcms/about':           return flow.noteRead === true;
     case '/lcms/news':            return flow.noteRead === true;
     case '/lcms/login':           return flow.noteRead === true;
+    case '/lcms/404':             return flow.noteRead === true;
     case '/lcms/oa':              return flow.loggedIn === true;
     default:                      return true; // '/' 与未知路径回落到门户
   }

@@ -19,7 +19,14 @@ const CHROME_CSS =
   '.lcms-toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:90;' +
     'background:rgba(20,30,46,.92);color:#cdd8e6;padding:8px 16px;font-size:13px;' +
     'border:1px solid rgba(120,150,190,.4);opacity:0;transition:opacity .25s;pointer-events:none;}' +
-  '.lcms-toast.show{opacity:1;}';
+  '.lcms-toast.show{opacity:1;}' +
+  // 404 恐怖层附加样式：/α\ 幽灵符号 + 容器定位
+  '.lc-404{position:relative;overflow:hidden;}' +
+  '.lc-404-glyph{position:absolute;top:6%;right:9%;font-family:var(--font-mono);' +
+    'font-size:72px;line-height:1;color:rgba(170,40,40,.13);letter-spacing:6px;' +
+    'pointer-events:none;user-select:none;}' +
+  '.lc-404-foot{margin-top:18px;font-size:12px;color:rgba(150,160,175,.5);' +
+    'font-family:var(--font-mono);letter-spacing:1px;}';
 
 export function makeLcmsPage(rawHtml, imgMap) {
   return {
@@ -49,6 +56,11 @@ export function makeLcmsPage(rawHtml, imgMap) {
       container.querySelectorAll('a[href^="WEB-01"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
           e.preventDefault();
+          // 序章专属：旧版协同办公平台关闭通知 → 导向 WEB-01 404（含恐怖动效）
+          if (a.getAttribute('href') === 'WEB-01-news.html#p2') {
+            navigate('/lcms/404');
+            return;
+          }
           const base = a.getAttribute('href').split('#')[0];
           const target = LINK_MAP[base];
           if (target) {

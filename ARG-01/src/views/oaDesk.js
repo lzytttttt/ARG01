@@ -1,10 +1,13 @@
 import { parseRaw } from '../raw.js';
 import { flow } from '../router.js';
+import { ARG_Horror } from '../horror/horror.js';
 import raw from '../../../assets/oa/layout.html?raw';
 
 export default {
   mount: function (container) {
     flow.step = 'oa';
+    ARG_Horror.setIntensity('oa');
+    ARG_Horror.bloodTint();   // OA 偶发血色一闪（克制，CSS 周期内约 4% 触发）
     const p = parseRaw(raw);
 
     // 序章范围内不开放后续章节：剥离第一章跳转，并移除"点击进入第一章"提示
@@ -16,9 +19,9 @@ export default {
       '<div class="view-oa"><style>' + p.css + '</style>' +
       '<div class="oa-host">' + body + '</div></div>';
 
-    // 数据保留倒计时（后台持续运行）
+    // 数据保留倒计时（后台持续运行）：系统时间 18:43 → 24:00 关闭，约 5h17m
     const cd = container.querySelector('.corner-countdown');
-    let total = 23 * 3600 + 41; // 00:23:41
+    let total = 5 * 3600 + 17 * 60; // 19020s
     const timer = setInterval(function () {
       if (total <= 0) {
         clearInterval(timer);
@@ -44,5 +47,6 @@ export default {
   },
   unmount: function () {
     if (this._timer) clearInterval(this._timer);
+    ARG_Horror.clearBlood();
   }
 };

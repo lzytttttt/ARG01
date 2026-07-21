@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>相框 · 韩雨最后的合影</title>
+<style>
+  .photo-wrap { max-width: 520px; margin: 0 auto; }
+  .photo { background: linear-gradient(180deg,#3a4250,#5a6470); padding: 18px; box-shadow: 0 12px 36px rgba(0,0,0,.5); }
+  .frame-inner { background: #d8dbe0; padding: 14px; position: relative; overflow: hidden; }
+  .frame-inner .wb-bg { position: absolute; inset: 0; background: repeating-linear-gradient(90deg,#e6e0d0 0 40px,#efeae0 40px 80px); opacity: .5; }
+  .frame-inner svg { position: relative; width: 100%; height: 240px; display: block; }
+  .cap { margin-top: 12px; font-size: 12px; color: #c8ccd2; text-align: center; letter-spacing: 1px; }
+  .back-note { max-width: 520px; margin: 16px auto 0; background: #f2ede2; color: #5a5345; font-size: 13px; padding: 14px 18px; transform: rotate(1deg); box-shadow: 0 6px 18px rgba(0,0,0,.3); font-style: italic; line-height: 1.8; }
+  .back-note .label { font-size: 11px; color: #9a8e6a; margin-bottom: 4px; letter-spacing: 1px; font-style: normal; }
+</style>
+</head>
+<body>
+<div class="photo-wrap">
+  <div class="photo">
+    <div class="frame-inner">
+      <div class="wb-bg"></div>
+      <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
+        <line x1="0" y1="40" x2="400" y2="40" stroke="#cfc8b8" stroke-width="2"/>
+        <line x1="0" y1="80" x2="400" y2="80" stroke="#cfc8b8" stroke-width="2"/>
+        <!-- 左下 敖曼（戴眼镜） -->
+        <circle cx="110" cy="158" r="22" fill="#e8c9a0"/>
+        <rect x="86" y="178" width="48" height="62" fill="#4a6a8a"/>
+        <rect x="100" y="154" width="20" height="7" fill="#222" opacity=".75"/>
+        <!-- 右下 韩雨（短发，没笑） -->
+        <circle cx="290" cy="158" r="22" fill="#e8c9a0"/>
+        <rect x="266" y="178" width="48" height="62" fill="#8a6a5a"/>
+        <path d="M270,148 a20,17 0 0,1 40,0 z" fill="#3a2a2a"/>
+        <!-- 左上 小周（笑） -->
+        <circle cx="150" cy="92" r="18" fill="#e8c9a0"/>
+        <rect x="132" y="108" width="36" height="50" fill="#6a8a6a"/>
+        <path d="M144,90 q6,5 12,0" stroke="#333" stroke-width="1.5" fill="none"/>
+        <!-- 右上 小王（笑） -->
+        <circle cx="250" cy="92" r="18" fill="#e8c9a0"/>
+        <rect x="232" y="108" width="36" height="50" fill="#8a8a4a"/>
+        <path d="M244,90 q6,5 12,0" stroke="#333" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+  <div class="cap">韩雨最后的合影 · 307 室</div>
+  <div class="back-note">
+    <div class="label"></div>
+    左下敖曼（年轻，戴眼镜，二十七八）；右下韩雨（短发，没笑，眼睛里有一种「我知道你说得不对但我先听着」的表情）；小周和小王微笑着。
+  </div>
+</div>
+</body>
+</html>

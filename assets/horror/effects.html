@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>H01-H07 — 恐怖效果（纯 CSS / SVG 滤镜）</title>
+<title>H01-H10 — 恐怖效果（纯 CSS / SVG 滤镜）</title>
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/oa.css">
 <link rel="stylesheet" href="../css/scenes.css">
@@ -37,6 +37,16 @@
 
   /* H04 演示 */
   .big-count { font-family: var(--font-mono); font-size: 22px; color: #c8ccd2; letter-spacing: 3px; }
+
+  /* H08 演示：残影文字 */
+  .residual-text { color: #d8dce2; font-size: 14px; letter-spacing: 1px; text-align: center; line-height: 1.9; }
+
+  /* H09 演示：监控画面（红晕覆盖层） */
+  .monitor-demo { width: 100%; height: 132px; background: linear-gradient(180deg, #20242a, #2c3138); position: relative; display: flex; align-items: flex-end; justify-content: center; }
+  .monitor-demo .scan { font-family: var(--font-mono); font-size: 10px; color: #5a6470; padding-bottom: 8px; letter-spacing: 1px; }
+
+  /* H10 演示：白噪覆盖 */
+  .whisper-tip { color: #8a9098; font-size: 12px; text-align: center; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -95,6 +105,29 @@
   <div class="demo">
     <h3>H04 · 倒计时钟</h3>
     <div class="stage"><span class="big-count" id="cd">00:23:41</span></div>
+  </div>
+
+  <div class="demo">
+    <h3>H08 · 文字残影（打字机回放）<button onclick="toggle('d8','fx-ghost-text')">开关</button></h3>
+    <div class="stage">
+      <span class="residual-text" id="d8">这行字被删掉过，<br>但它还在你眼前重播。</span>
+    </div>
+  </div>
+
+  <div class="demo">
+    <h3>H09 · 血色 / 异常红晕<button onclick="toggle('d9','fx-blood')">开关</button></h3>
+    <div class="stage fx-blood" id="d9">
+      <div class="monitor-demo">
+        <div class="scan">CAM-307 · 信号正常</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <h3>H10 · 静音后的「白噪」<span style="font-size:11px;color:#5a6470;">悬停 / 点击静音</span></h3>
+    <div class="stage fx-whisper" id="d10" onclick="document.getElementById('d10').classList.add('touched')">
+      <span class="whisper-tip">安静下来，<br>你才听得到那层噪。</span>
+    </div>
   </div>
 
 </div>

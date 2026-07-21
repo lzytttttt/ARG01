@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D22 — 敖曼离职证明（2019-12-31）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #43474d; padding: 40px 16px; }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; max-width: 720px; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  .scanned-doc {
+    width: 640px;
+    background: #f5f0e8;
+    background-image:
+      radial-gradient(circle at 22% 18%, rgba(0,0,0,.035) 0 40%, transparent 70%),
+      radial-gradient(circle at 78% 82%, rgba(0,0,0,.028) 0 35%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(150,130,100,.03) 3px, rgba(150,130,100,.03) 4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.55);
+    padding: 52px 54px 60px 50px;
+    font-family: var(--font-gongwen);
+    color: #1e1e1e;
+    position: relative;
+    transform: rotate(.3deg);
+  }
+  .doc-header { text-align: center; font-size: 24px; font-weight: bold; letter-spacing: 8px; margin-bottom: 6px; }
+  .doc-subheader { text-align: center; font-size: 11px; color: #777; font-family: var(--font-mono); margin-bottom: 28px; }
+  .doc-body p { font-size: 14px; line-height: 2.2; margin-bottom: 6px; text-indent: 2em; }
+  .doc-body .no-indent { text-indent: 0; }
+  .seal {
+    position: absolute; right: 56px; bottom: 70px;
+    width: 120px; height: 120px; border: 3px solid #b23a2e; border-radius: 50%;
+    color: #b23a2e; display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 13px; line-height: 1.5; transform: rotate(-12deg); opacity: .78;
+    font-family: var(--font-fangsong);
+  }
+  .sig-block { margin-top: 34px; text-align: right; font-size: 14px; line-height: 2; }
+  .doc-note { margin-top: 26px; font-size: 12px; color: #666; border-top: 1px solid #d8d2c4; padding-top: 12px; font-family: var(--font-fangsong); }
+
+  .sys-annot {
+    width: 640px; background: #1c1e22; border-left: 3px solid var(--status-red);
+    padding: 14px 18px; font-family: var(--font-mono); font-size: 12px; line-height: 1.9; color: #b8bec8;
+  }
+  .sys-annot .tag { color: #d08a8a; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    D22 · 她在 2019 年的最后一天离开了公司。<br>
+    <em>可六年后的今天，她的账号还在签字、还在验收。人走了，名字留了下来。</em>
+  </div>
+
+  <div class="scanned-doc">
+    <div class="doc-header">离 职 证 明</div>
+    <div class="doc-subheader">PDF 扫描件 · 编号：RESIGN-ao.man-2019-001</div>
+
+    <div class="doc-body">
+      <p class="no-indent">兹证明 <b>敖曼</b>，女，于 2012 年 X 月入职我司，担任项目经理一职。</p>
+      <p class="no-indent">因个人原因，该员工于 <b>2019 年 12 月 31 日</b>与我司解除劳动合同，相关离职手续已办理完毕。</p>
+      <p class="no-indent">其在职期间所受聘之项目经理职务，自离职之日起自行终止，不再具有任何代表公司之权限。</p>
+      <p class="no-indent">特此证明。</p>
+    </div>
+
+    <div class="sig-block">
+      <div>启衡信息技术有限公司　人力资源部</div>
+      <div>2019 年 12 月 31 日</div>
+    </div>
+
+    <div class="seal">人力资源部<br>专用章</div>
+
+    <div class="doc-note">备注：本证明仅证明劳动关系存续情况，不涉及任何系统账号权限之状态。</div>
+  </div>
+
+  <div class="sys-annot">
+    <div><span class="tag">[系统批注]</span> 离职证明出具日期：2019-12-31。</div>
+    <div><span class="tag">[系统批注]</span> 账号 ao.man 状态：<b>活跃</b>。最后登录：2026-0X-0X 18:43。</div>
+    <div><span class="tag">[系统批注]</span> 冲突检测：离职证明（2019）与账号当前"项目经理"身份不符。</div>
+    <div><span class="tag">[系统批注]</span> 处理建议：账号权限应以"系统未发现限制信息"为准。未做处理。</div>
+  </div>
+
+  <div class="caption">
+    证明说她 2019 年就不再是项目经理了。<br>
+    可 2026 年的终验报告上，签字的还是"敖曼"。<br>
+    系统分不清人和名字。它只认账号。
+  </div>
+
+</div>
+</body>
+</html>

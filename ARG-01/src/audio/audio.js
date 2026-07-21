@@ -1,8 +1,10 @@
 // ARG-01「六年一夜」声音模块（全局单例，由 chapter1/audio.js 提升为 ESM）
 // 原则：零音频文件，全部 Web Audio 实时合成。
-// - startDrone() ：极低频底噪（35Hz），首次用户交互后启动
-// - playPing()   ：系统"已处理"提示脉冲音
-// - toggleMute() ：静音开关，返回当前是否静音
+// - startDrone()    ：极低频底噪（35Hz），首次用户交互后启动
+// - playPing()      ：系统"已处理"提示脉冲音
+// - playThunder(int)：雷声（near 亮 / far 闷），S01-S03 偶发
+// - startHum()/stopHum()：30Hz 低频嗡声 + 相位偏移（第二振荡器微失谐），307 起进入
+// - toggleMute()    ：静音开关，返回当前是否静音
 // 浏览器自动播放限制：必须在用户手势后调用 startDrone()
 
 let ctx = null;
@@ -70,6 +72,116 @@ function playPing() {
   osc.stop(t + 0.46);
 }
 
+// 雷声：白噪声爆 + 低通滤波 + 指数衰减包络；near 亮（近）、far 闷（远）
+// 静音时直接跳过，节省算力
+function playThunder(intensity) {
+  if (muted) return;
+  if (!ensure()) return;
+  resume();
+  const t = ctx.currentTime;
+  const near = intensity !== 'far';
+  const dur = near ? 2.4 : 3.2;
+
+  // 噪声缓冲
+  const len = Math.floor(ctx.sampleRate * dur);
+  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+
+  const lp = ctx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = near ? 380 : 140;
+  lp.Q.value = 0.7;
+
+  const g = ctx.createGain();
+  const peak = near ? 0.5 : 0.22;
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(peak, t + 0.06);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.connect(lp).connect(g).connect(masterGain || ctx.destination);
+  src.start(t);
+  src.stop(t + dur + 0.1);
+
+  // 近雷：叠加一道更亮的"裂帛"前刺
+  if (near) {
+    const hp = ctx.createBiquadFilter();
+    hp.type = 'highpass';
+    hp.frequency.value = 1200;
+    const g2 = ctx.createGain();
+    g2.gain.setValueAtTime(0.0001, t);
+    g2.gain.exponentialRampToValueAtTime(0.18, t + 0.02);
+    g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+    const src2 = ctx.createBufferSource();
+    src2.buffer = buf;
+    src2.connect(hp).connect(g2).connect(masterGain || ctx.destination);
+    src2.start(t);
+    src2.stop(t + 0.6);
+  }
+}
+
+// 30Hz 低频嗡声 + 相位偏移（第二振荡器微失谐制造慢拍频）——"胸骨下方"的低频
+let humOsc1 = null, humOsc2 = null, humGain = null;
+function startHum() {
+  if (!ensure()) return;
+  resume();
+  if (humOsc1) return;
+  humGain = ctx.createGain();
+  humGain.gain.value = 0.04; // 受 masterGain 静音统一控制
+  humGain.connect(masterGain);
+
+  humOsc1 = ctx.createOscillator();
+  humOsc1.type = 'sine';
+  humOsc1.frequency.value = 30;
+  humOsc1.connect(humGain);
+  humOsc1.start();
+
+  // 相位偏移第二振荡器：微微失谐，制造缓慢拍频，嗡声似从另一方向传来
+  humOsc2 = ctx.createOscillator();
+  humOsc2.type = 'sine';
+  humOsc2.frequency.value = 30.4;
+  const g2 = ctx.createGain();
+  g2.gain.value = 0.5;
+  humOsc2.connect(g2).connect(humGain);
+  humOsc2.start();
+}
+function stopHum() {
+  if (humOsc1) { try { humOsc1.stop(); } catch (e) {} humOsc1 = null; }
+  if (humOsc2) { try { humOsc2.stop(); } catch (e) {} humOsc2 = null; }
+  if (humGain) { try { humGain.disconnect(); } catch (e) {} humGain = null; }
+}
+
+// 低语：带通滤波白噪声爆（~1100Hz），极弱、缓慢衰减，像一声贴耳的呼吸
+function playWhisper() {
+  if (muted) return;
+  if (!ensure()) return;
+  resume();
+  const t = ctx.currentTime;
+  const dur = 1.6;
+  const len = Math.floor(ctx.sampleRate * dur);
+  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+
+  const bp = ctx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.value = 1100;
+  bp.Q.value = 1.2;
+
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(0.06, t + 0.4);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.connect(bp).connect(g).connect(masterGain || ctx.destination);
+  src.start(t);
+  src.stop(t + dur + 0.1);
+}
+
 function toggleMute() {
   muted = !muted;
   if (masterGain) masterGain.gain.value = muted ? 0 : 0.5;
@@ -80,4 +192,4 @@ function isMuted() {
   return muted;
 }
 
-export const ARG_Audio = { startDrone, playPing, toggleMute, isMuted };
+export const ARG_Audio = { startDrone, playPing, playThunder, startHum, stopHum, playWhisper, toggleMute, isMuted };

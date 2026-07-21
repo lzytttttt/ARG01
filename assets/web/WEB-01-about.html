@@ -3,9 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>临川民生集团</title>
+<title>关于我们 - 临川民生集团</title>
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/web.css">
+<style>
+  .lc-team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 4px; }
+  .lc-team .m { border: 1px solid #e0e0e0; background: #fff; padding: 16px; }
+  .lc-team .m .nm { font-size: 16px; font-weight: bold; color: #1a3a5c; }
+  .lc-team .m .rl { font-size: 13px; color: #666; margin: 4px 0 8px; }
+  .lc-team .m .ds { font-size: 13px; color: #555; line-height: 1.8; }
+  .lc-cut { border: 1px solid #e0e0e0; background: #fafbfc; padding: 18px 20px; line-height: 2; color: #444; font-size: 14px; }
+  .lc-cut b { color: #1a3a5c; }
+  .lc-echo { margin-top: 14px; padding: 12px 16px; background: #f5f6f8; border-left: 4px solid #1a56db; font-size: 13px; color: #555; line-height: 1.9; }
+  .lc-echo a { color: #1a56db; }
+  @media (max-width: 640px){ .lc-team { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body class="web-reset lc-page">
 
@@ -32,42 +44,61 @@
         <li><a href="WEB-01-about.html" class="active">关于我们</a></li>
         <li><a href="WEB-01-news.html">新闻中心</a></li>
         <li><a href="WEB-01-home.html#biz">业务领域</a></li>
-        <li><a href="WEB-01-about.html">企业文化</a></li>
+        <li><a href="WEB-01-about.html#culture">企业文化</a></li>
         <li><a href="WEB-01-about.html#contact">联系我们</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="lc-wrap lc-section">
-    <div class="lc-crumb"><a href="WEB-01-home.html">首页</a> &gt; 关于我们</div>
-    <h2 class="lc-h2">关于我们</h2>
-
-    <div class="lc-prose">
-      <p>临川民生服务集团有限公司（简称“临川民生集团”）为省属国有企业，成立于 2005 年，注册资本 8.6 亿元，主要从事城市物流、社区服务、商超供应链、园区物业及公共交通配套等民生保障业务，是临川市公共服务体系的重要支撑力量。</p>
-      <p>集团始终坚持以服务民生为己任，围绕城市运行与居民生活需求，持续推进数字化转型与智能化升级，努力建设一流民生服务集团。</p>
-    </div>
+    <div class="lc-crumb"><a href="WEB-01-home.html">首页</a> &gt; <strong>关于我们</strong></div>
+    <h2 class="lc-h2">关于临川民生</h2>
+    <p style="line-height:2; color:#444; max-width:760px;">
+      临川民生服务集团有限公司是市属国有民生保障服务企业，承担区域应急保供、社区公共服务与数字化民生平台建设等职能。
+      我们坚持“数据不出域、服务不断档”，以稳健、温吞、可靠的方式，把每一项民生服务稳稳交付。
+    </p>
 
     <h3 class="lc-block-title">领导班子</h3>
-    <div class="lc-leaders">
-      <div class="lc-leader"><b>董建国</b><span>党委书记、董事长</span><em>主持集团全面工作，提出“AI 不是选择题，是必答题”战略导向。</em></div>
-      <div class="lc-leader"><b>张国庆</b><span>信息化办公室主任（2020-2024）</span><em>分管集团信息化建设与协同办公平台规划。</em></div>
-      <div class="lc-leader"><b>刘建国</b><span>信息化办公室副主任（2024-2026）</span><em>推动数智员工中心上线与本地化部署。</em></div>
+    <div class="lc-team">
+      <div class="m">
+        <div class="nm">董建国</div>
+        <div class="rl">党委书记、董事长</div>
+        <div class="ds">主持全面工作，提出“AI 不是选择题，是必答题”的转型方针。</div>
+      </div>
+      <div class="m">
+        <div class="nm">李志强</div>
+        <div class="rl">党委副书记、总经理</div>
+        <div class="ds">分管经营与信息化建设，统筹“数智员工中心”落地。</div>
+      </div>
+      <div class="m">
+        <div class="nm">王慧</div>
+        <div class="rl">党委委员、副总经理</div>
+        <div class="ds">分管资产与后勤，牵头办公场地优化与降本增效工作。</div>
+      </div>
     </div>
 
-    <h3 class="lc-block-title">发展历程</h3>
-    <ul class="lc-timeline">
-      <li><span class="lc-yr">2020</span> 应急状态 · 众志成城 共克时艰 <span class="lc-cnt">（年度新闻 12 条）</span></li>
-      <li><span class="lc-yr">2021</span> 扩张期 · 数字化转型 高质量发展 <span class="lc-cnt">（年度新闻 10 条）</span></li>
-      <li><span class="lc-yr">2022</span> 政策调整 · 后续管理要求另行通知 <span class="lc-cnt">（年度新闻 9 条）</span></li>
-      <li><span class="lc-yr">2023</span> AI 转型 · AI 不是选择题是必答题 <span class="lc-cnt">（年度新闻 8 条）</span></li>
-      <li><span class="lc-yr">2024</span> 降本增效 · 该优化的优化，该精简的精简 <span class="lc-cnt">（年度新闻 6 条）</span></li>
-      <li><span class="lc-yr">2025</span> 自动化替代 · 数据不出域，安全可控 <span class="lc-cnt">（年度新闻 3 条）</span></li>
-      <li><span class="lc-yr">2026</span> 系统更迭 · 旧版平台已关闭 <span class="lc-cnt">（年度新闻 — 条）</span></li>
-    </ul>
+    <h3 class="lc-block-title" id="cut">降本增效</h3>
+    <div class="lc-cut">
+      <p>自 2024 年起，集团开展“<b>降本增效</b>”专项行动，优化办公场地与人员结构，推动非核心职能向系统沉淀。</p>
+      <p>我们的原则是：<b>能系统做的，交给系统；该人做的，留给人。</b> 在效率之外，也保留一份对“人”的体面——
+      正如那句被反复提起的话：把每一个项目，都稳稳地交付。</p>
+      <div class="lc-echo">
+        注：涉及历史项目账号与授权事项，以书面授权委托书及资产交接清单为准。
+        （相关材料参见账号授权委托书与 307 室资产交接清单。）
+      </div>
+    </div>
+
+    <h3 class="lc-block-title" id="culture">企业文化</h3>
+    <div class="lc-cut" style="background:#fff; border-style:dashed;">
+      民生为本，稳健致远；数据不出域，服务不断档。<br>
+      我们相信，技术的尽头是让人更安心地生活——而不是让人变成待清理的数据。
+    </div>
 
     <h3 class="lc-block-title" id="contact">联系我们</h3>
-    <div class="lc-prose">
-      <p>地址：临川市 XX 区 XX 路 XX 号　　电话：0XXX-XXXXXXXX　　邮箱：webmaster@linchuang-group.cn</p>
+    <div class="lc-cut" style="background:#fff;">
+      地址：临川市 XX 区 XX 路 XX 号<br>
+      电话：0XXX-XXXXXXXX　邮箱：service@linchuan-minsheng.gov（虚构）<br>
+      办公时间：工作日 9:00 - 17:30
     </div>
   </div>
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D23 — 结局专属证据（A / B / C / D）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #2b2f35; padding: 40px 16px; }
+  .stack { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  .ending {
+    border: 1px solid var(--oa-border-light);
+    background: #34393f;
+    padding: 22px 24px 26px;
+  }
+  .ending .tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+    color: #fff; padding: 3px 10px; margin-bottom: 14px;
+  }
+  .ending.a .tag { background: #2e7d32; }
+  .ending.b .tag { background: #6a4ea3; }
+  .ending.c .tag { background: #b06a1e; }
+  .ending.d .tag { background: #2a6fb0; }
+  .ending h3 { color: #e6ebf1; font-size: 15px; margin: 0 0 12px; font-weight: 600; }
+
+  .sign-line { font-family: var(--font-hand); font-size: 22px; color: #d8dce2; padding: 8px 0 4px; }
+  .merge-box { font-family: var(--font-mono); font-size: 12.5px; line-height: 2; color: #c8d0da; background: #1c1e22; padding: 14px 18px; }
+  .merge-box .hl { color: #ffd27e; }
+
+  .doorlog { font-family: var(--font-mono); font-size: 12.5px; line-height: 2; color: #c8d0da; background: #14181d; padding: 14px 18px; }
+  .doorlog .bad { color: #ff9b9b; }
+  .doorlog .hl { color: #ffd27e; }
+
+  .evid-link { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .evid-link a {
+    flex: 1; min-width: 200px; text-decoration: none; color: #cfd6de;
+    border: 1px solid var(--oa-primary-blue); padding: 12px 16px; font-size: 13px; line-height: 1.7;
+    background: rgba(26,86,219,.08);
+  }
+  .evid-link a:hover { background: rgba(26,86,219,.18); }
+  .evid-link a b { color: #9fb6d8; }
+</style>
+</head>
+<body>
+<div class="stack">
+
+  <div class="caption">
+    D23 · 终章走到最后一步时，系统会调出属于你那一个结局的证据。<br>
+    <em>A、B、C、D 四个结局，各有各的"理由"。下面四段，分别对应它们。</em>
+  </div>
+
+  <!-- A -->
+  <div class="ending a">
+    <span class="tag">结局 A 专属</span>
+    <h3>敖曼签字的"同意上线"</h3>
+    <div class="merge-box">
+      文件：《旧版 OA 系统上线审批单》<br>
+      审批意见：<span class="hl">同意上线。</span><br>
+      签字：敖曼　日期：2020-0X-0X
+    </div>
+    <div class="sign-line">—— 同意上线。</div>
+    <p style="color:#9aa0a8;font-size:12px;line-height:1.9;margin:8px 0 0;">
+      你最后签的那一栏"同意终验"，和六年前她签的"同意上线"，是同一个位置。<br>
+      结局 A：你顺着系统的引导签了字。账号 30 秒后注销。OA 登录页一切正常——底部一行小字："本系统当前没有可登录的账号。"
+    </p>
+  </div>
+
+  <!-- B -->
+  <div class="ending b">
+    <span class="tag">结局 B 专属</span>
+    <h3>韩雨的 4 条工单（实为合并 1 人）</h3>
+    <div class="merge-box">
+      [人员合并确认]<br>
+      检测到 4 条工单发起人均为同一自然人：<span class="hl">韩雨</span><br>
+      · LC-WO-2021-0382　· LC-WO-2021-1057<br>
+      · LC-WO-2021-2204　· LC-WO-2022-0096<br>
+      系统已将上述 4 条记录合并为 <span class="hl">1 条人员记录</span>。<br>
+      结论：该人员当前状态为"已处理"。
+    </div>
+    <p style="color:#9aa0a8;font-size:12px;line-height:1.9;margin:8px 0 0;">
+      你拒绝签字，系统把你锁了。但韩雨当年连"拒绝"的工单，都被合并成了同一个人。<br>
+      结局 B：OA 显示"异常操作。账号已锁定。请联系系统管理员。"——系统管理员是谁？已经不在了。
+    </p>
+  </div>
+
+  <!-- C -->
+  <div class="ending c">
+    <span class="tag">结局 C 专属</span>
+    <h3>门禁日志 03:17 时间戳异常（早 6 分钟）</h3>
+    <div class="doorlog">
+[2020-02-02 03:11] 307 室 刷卡进入　— 敖曼<br>
+<span class="bad">[2020-02-02 03:17] 307 室 异常开门　— 时间戳早于相邻记录 6 分钟</span><br>
+[2020-02-02 03:23] 307 室 刷卡离开　— 敖曼<br>
+<span class="hl">// 系统注释：03:17 该次开门比预期早 6 分钟，疑似时钟漂移。</span>
+    </div>
+    <p style="color:#9aa0a8;font-size:12px;line-height:1.9;margin:8px 0 0;">
+      你保留了原始数据，变成了通讯录里一个灰色头像（TMP-2020-0271）。<br>
+      而 03:17 这个时间点，从 2020 年起就早了 6 分钟——和 D03 那场聊天，是同一个钟。
+    </p>
+  </div>
+
+  <!-- D -->
+  <div class="ending d">
+    <span class="tag">结局 D 专属</span>
+    <h3>授权委托书（空白授权对象）+ 门禁日志（六年六次）</h3>
+    <p style="color:#cfd6de;font-size:13px;line-height:1.9;margin:0 0 6px;">
+      结局 D 不需要新文件。它只需要你拼起下面两份里那两句话：<br>
+      一份是"授权对象"栏空白的委托书，一份是六年里六次"外部敲门"的门禁日志。
+    </p>
+    <div class="evid-link">
+      <a href="d19-delegation.html"><b>D19</b><br>账号授权委托书<br>授权对象栏：＿＿＿＿＿＿（空白未填）</a>
+      <a href="d20-doorlog.html"><b>D20</b><br>门禁系统日志 · 307 室<br>2020–2026，六次"外部敲门（未刷卡）"</a>
+    </div>
+    <p style="color:#9aa0a8;font-size:12px;line-height:1.9;margin:10px 0 0;">
+      结局 D：你把八项证据链拼齐了。系统自 2020 年起就具备对操作人的持续追踪能力——<br>
+      它从来都知道你是谁，只是等你来确认。当前可用人工：0 人。
+    </p>
+  </div>
+
+  <div class="caption">
+    四个结局，四种结局。<br>
+    但把它们叠在一起看，你才会发现：系统是同一套，故事也是同一个。
+  </div>
+
+</div>
+</body>
+</html>

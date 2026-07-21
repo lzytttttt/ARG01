@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D29 — 307 室资产交接清单（缺 1 把钥匙）</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #43474d; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  .list-doc {
+    background: #f5f0e8;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    padding: 44px 46px 50px;
+    font-family: var(--font-gongwen); color: #1e1e1e;
+    transform: rotate(.25deg);
+  }
+  .list-doc .l-head { text-align: center; font-size: 20px; font-weight: bold; letter-spacing: 4px; margin-bottom: 4px; }
+  .list-doc .l-sub { text-align: center; font-size: 11px; color: #777; font-family: var(--font-mono); margin-bottom: 22px; }
+  .list-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .list-table th, .list-table td { border: 1px solid #c8c0b0; padding: 9px 12px; text-align: left; }
+  .list-table th { background: #e7e0d2; font-weight: 600; }
+  .list-table td.no { font-family: var(--font-mono); width: 40px; text-align: center; color: #888; }
+  .list-table td.num { font-family: var(--font-mono); width: 90px; text-align: center; }
+  .list-table tr.miss td { background: rgba(178,58,46,.10); }
+  .list-table tr.miss td.name { color: #b23a2e; font-weight: 600; }
+  .l-note { margin-top: 20px; font-size: 12px; color: #666; border-top: 1px solid #d8d2c4; padding-top: 12px; font-family: var(--font-fangsong); line-height: 1.9; }
+  .l-sign { margin-top: 26px; text-align: right; font-size: 13px; line-height: 2; }
+
+  .sys-annot {
+    background: #1c1e22; border-left: 3px solid var(--status-red);
+    padding: 14px 18px; font-family: var(--font-mono); font-size: 12px; line-height: 1.9; color: #b8bec8;
+  }
+  .sys-annot .tag { color: #d08a8a; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    D29 · 交接清单上清清楚楚：少了一把钥匙。<br>
+    <em>那把钥匙开的是哪扇门，没人记得。</em>
+  </div>
+
+  <div class="list-doc">
+    <div class="l-head">307 室资产交接清单</div>
+    <div class="l-sub">交接单编号：HANDOVER-307-2024-001　|　交接人：敖曼　|　接收方：集团行政</div>
+
+    <table class="list-table">
+      <thead><tr><th class="no">#</th><th>资产名称</th><th>数量</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td class="no">1</td><td class="name">办公桌</td><td class="num">6</td><td>完好</td></tr>
+        <tr><td class="no">2</td><td class="name">办公椅</td><td class="num">6</td><td>完好</td></tr>
+        <tr><td class="no">3</td><td class="name">台式电脑</td><td class="num">6</td><td>已格式化</td></tr>
+        <tr><td class="no">4</td><td class="name">门禁卡</td><td class="num">5</td><td>已注销</td></tr>
+        <tr class="miss"><td class="no">5</td><td class="name">307 室机械钥匙</td><td class="num">缺 1</td><td>去向不明</td></tr>
+        <tr><td class="no">6</td><td class="name">文件柜</td><td class="num">2</td><td>已清空</td></tr>
+      </tbody>
+    </table>
+
+    <div class="l-note">
+      备注：第 5 项"307 室机械钥匙"应配 3 把，实交 2 把，缺 1 把，去向不明，暂挂账处理。<br>
+      该钥匙对应门禁系统之外的物理备用通道，建议补配后重新登记。
+    </div>
+    <div class="l-sign">
+      <div>移交人：敖曼（签字）</div>
+      <div>接收人：＿＿＿＿＿＿</div>
+      <div>日期：2024 年 X 月 X 日</div>
+    </div>
+  </div>
+
+  <div class="sys-annot">
+    <div><span class="tag">[系统批注]</span> 307 室门禁日志（见 D20）：六年里六次"外部敲门（未刷卡，未识别）"。</div>
+    <div><span class="tag">[系统批注]</span> 资产交接清单缺失 1 把机械钥匙，与门禁日志的"未识别开门"无法建立关联。</div>
+    <div><span class="tag">[系统批注]</span> 该钥匙至今未在系统中登记归还。</div>
+  </div>
+
+  <div class="caption">
+    门禁卡都注销了，电脑都格式化了。<br>
+    唯独那把不在系统里的钥匙，谁都管不着。<br>
+    它开的那扇门，也许从 2020 年起就一直开着。
+  </div>
+
+</div>
+</body>
+</html>

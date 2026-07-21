@@ -46,6 +46,49 @@
 }
 .fx-hue-drift { animation: hueDrift 14s ease-in-out infinite; }
 
+/* ============================================================
+   H08-H10 — wiki26 新增，仍保持极克制
+   ============================================================ */
+
+/* H08 文字残影：打字机回放 = 已删除又被"看见"的文字。
+   opacity 0.0 → 0.5 + translateX 微偏移，像一行被删掉却还在屏幕里重播的字。 */
+@keyframes ghostReplay {
+  0%        { opacity: 0;   transform: translateX(0); }
+  6%        { opacity: .5;  transform: translateX(2px); }
+  18%       { opacity: .5;  transform: translateX(2px); }
+  34%       { opacity: 0;   transform: translateX(0); }
+  100%      { opacity: 0;   transform: translateX(0); }
+}
+.fx-ghost-text { animation: ghostReplay 5s steps(40, end) infinite; }
+
+/* H09 血色 / 异常红晕：极低饱和、极慢扩散；仅 0.6s 一闪（约占周期 4%）。
+   与 H07 共用一处红，避免色板割裂。 */
+@keyframes bloodBloom {
+  0%, 70%   { box-shadow: inset 0 0 30px rgba(130,30,30,0); }
+  70%       { box-shadow: inset 0 0 150px rgba(130,30,30,.26); }
+  74%       { box-shadow: inset 0 0 150px rgba(130,30,30,0); }   /* ≈1.1s 一闪 ≈「4% 触发」 */
+  100%      { box-shadow: inset 0 0 30px rgba(130,30,30,0); }
+}
+.fx-blood { position: relative; }
+.fx-blood::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 30px rgba(130,30,30,0);
+  animation: bloodBloom 28s ease-in-out infinite;
+}
+
+/* H10 静音后的"白噪"：满屏 noise 纹理（8% opacity），悬停 / 点击时 1.5s 渐隐。
+   仅在"安静"处出现，玩家主动打断它，它才退场。 */
+@keyframes whisperFade { from { opacity: .08; } to { opacity: 0; } }
+.fx-whisper { position: relative; }
+.fx-whisper::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .08;
+  transition: opacity 1.5s ease;
+}
+.fx-whisper:hover::after,
+.fx-whisper.touched::after { opacity: 0; }
+
 /* H02 雨水动画（窗玻璃流淌，S06 使用） */
 @keyframes rainOnWindow {
   0%   { top: -15%; opacity: 0; }

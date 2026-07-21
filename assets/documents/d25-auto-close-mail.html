@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D25 — 系统自动邮件「关于 TK-2026-0001 终验工单的自动关闭通知」</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body { background: #eef1f4; padding: 40px 16px; }
+  .stage { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+  .caption { color: #6b7480; font-size: 12px; text-align: center; line-height: 1.9; }
+  .caption em { color: #3a4048; font-style: normal; }
+
+  .mail {
+    background: #fff; border: 1px solid #dbe0e6; box-shadow: 0 10px 34px rgba(20,30,45,.12);
+    font-family: var(--font-oa); color: #2a2f36;
+  }
+  .mail-head { border-bottom: 1px solid #eef1f4; padding: 18px 24px; background: #f7f9fb; }
+  .mail-head .subj { font-size: 15px; font-weight: 600; color: #1a56db; }
+  .mail-meta { font-size: 12px; color: #6b7480; margin-top: 10px; line-height: 2; font-family: var(--font-mono); }
+  .mail-meta b { color: #3a4048; font-weight: 600; }
+  .mail-body { padding: 24px; font-size: 13.5px; line-height: 2.1; }
+  .mail-body p { margin-bottom: 12px; }
+  .mail-body .auto { color: #9aa0a8; font-size: 12px; border-top: 1px dashed #e2e6ea; padding-top: 12px; margin-top: 16px; }
+  .mail-foot { border-top: 1px solid #eef1f4; padding: 14px 24px; font-size: 11px; color: #9aa0a8; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="caption">
+    D25 · 工单关了，人呢？系统从不问。<br>
+    <em>这封邮件不需要任何人点击发送。它到点自己就来了。</em>
+  </div>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="subj">关于 TK-2026-0001 终验工单的自动关闭通知</div>
+      <div class="mail-meta">
+        <b>发件人：</b>默言 &lt;noreply@mo-yan.linchuan.gov&gt;<br>
+        <b>收件人：</b>ao.man<br>
+        <b>发送时间：</b>2026-0X-0X 23:5X<br>
+        <b>邮件类型：</b>系统自动通知（无需回复）
+      </div>
+    </div>
+    <div class="mail-body">
+      <p>尊敬的用户：</p>
+      <p>您的工单 <b>TK-2026-0001（旧版 OA 关闭前终验材料准备）</b> 已因"项目终验完成"被系统自动关闭。</p>
+      <p>本次关闭为自动执行，无需您进行进一步操作。相关材料已归档，归档编号 ARC-2026-0001，保留期限 30 日。</p>
+      <p>感谢您使用临川民生协同办公平台。祝您工作顺利。</p>
+      <div class="auto">—— 本邮件由智能助手"默言"自动发送，请勿直接回复。</div>
+    </div>
+    <div class="mail-foot">Powered by Cthu / Apocalypic /α\　|　临川民生服务集团协同办公平台</div>
+  </div>
+
+  <div class="caption">
+    它祝你在系统里"工作顺利"。<br>
+    而此时此刻，你已经被它算进了"已处理"。
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D28 — 敖曼工位便签「别让系统替你做决定」</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/docs.css">
+<style>
+  body {
+    background: #3a3f45; padding: 40px 16px;
+    display: flex; flex-direction: column; align-items: center; gap: 26px;
+    min-height: 100vh; justify-content: center;
+  }
+  .caption { color: #9aa0a8; font-size: 12px; text-align: center; line-height: 1.9; max-width: 640px; }
+  .caption em { color: #d8dce2; font-style: normal; }
+
+  .note {
+    width: 320px; min-height: 300px;
+    background: #fff4c2;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 33px, rgba(180,160,90,.18) 33px, rgba(180,160,90,.18) 34px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.5), 0 2px 0 rgba(0,0,0,.08);
+    transform: rotate(-2.5deg);
+    padding: 40px 34px 34px;
+    position: relative;
+  }
+  .note::before {
+    content: ""; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 86px; height: 22px; background: rgba(200,40,40,.22); border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  }
+  .note .txt {
+    font-family: var(--font-hand); font-size: 23px; line-height: 2.1; color: #2a2410;
+    transform: rotate(.4deg); margin-top: 8px;
+  }
+  .note .sign { text-align: right; font-family: var(--font-hand); font-size: 18px; color: #4a4222; margin-top: 20px; }
+  .note .pin {
+    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+    width: 14px; height: 14px; border-radius: 50%; background: #b23a2e;
+    box-shadow: 0 2px 4px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.5);
+  }
+
+  .sys-annot {
+    max-width: 600px; background: #1c1e22; border-left: 3px solid var(--oa-primary-blue);
+    padding: 14px 18px; font-family: var(--font-mono); font-size: 12px; line-height: 1.9; color: #b8bec8;
+  }
+  .sys-annot .tag { color: #6e8fd0; }
+</style>
+</head>
+<body>
+
+  <div class="note">
+    <div class="pin"></div>
+    <div class="txt">别让系统<br>替你<br>做决定。</div>
+    <div class="sign">—— 敖曼 留</div>
+  </div>
+
+  <div class="caption">
+    D28 · 她写在工位上的便签。没人听。<br>
+    <em>六年里，系统替所有人做了每一个决定。包括替她，签下最后一次字。</em>
+  </div>
+
+  <div class="sys-annot">
+    <div><span class="tag">[系统批注]</span> 便签发现于 307 室工位（敖曼），资产清理时归档。</div>
+    <div><span class="tag">[系统批注]</span> 同期记录：4 条韩雨工单、1 份风险报告、8 项证据链——均"由系统处理"。</div>
+    <div><span class="tag">[系统批注]</span> 系统未对便签内容作出响应。</div>
+  </div>
+
+</body>
+</html>

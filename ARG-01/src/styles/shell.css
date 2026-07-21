@@ -22,17 +22,17 @@ body {
 /* 恐怖层（终章启用，序章预留） */
 #terror { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
 
-/* 物理空间场景 */
-.view-physical { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #05060a; }
-.view-physical .scene-host,
-.view-physical .scene { position: absolute; inset: 0; }
-
-/* 物理空间：压缩主显示区，留白处铺满雨效（克制恐怖） */
-.physical-rain { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* 物理空间场景：仅场景锁定 4:3，固定在屏幕中上部；旁白条在底部、不侵入场景 */
+.view-physical {
+  position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
+}
 .view-physical .scene-host {
   position: absolute; z-index: 5;
-  top: 10%; bottom: 17%; left: 13%; right: 13%;
+  top: 24px; left: 50%; transform: translateX(-50%);
+  width: min(96vw, calc((100vh - 180px) * 4 / 3));
+  aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: #0c0d10;
   box-shadow: 0 0 80px 12px rgba(0, 0, 0, .72);
 }
 .view-physical .scene-host .scene {
@@ -133,7 +133,6 @@ body {
   .view-physical .doorplate .room-num { font-size: 34px; }
   .view-physical .elevator .notice-paper { font-size: 18px; }
   .view-physical .elevator .notice-paper small { font-size: 13px; }
-  .view-physical .scene-host { top: 11%; bottom: 18%; left: 14%; right: 14%; }
 }
 @media (min-width: 2560px) {
   .view-physical { font-size: 18px; }
@@ -147,7 +146,6 @@ body {
   .view-physical .doorplate .company-name { font-size: 16px; }
   .view-physical .elevator .notice-paper { font-size: 22px; }
   .view-physical .elevator .notice-paper small { font-size: 15px; }
-  .view-physical .scene-host { top: 13%; bottom: 20%; left: 16%; right: 16%; }
 }
 
 /* ============================================================
