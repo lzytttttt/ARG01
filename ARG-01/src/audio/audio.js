@@ -182,6 +182,41 @@ function playWhisper() {
   src.stop(t + dur + 0.1);
 }
 
+// 第一章：调整嗡声频率（序章 30Hz，第一章 33Hz），保持第二振荡器微失谐拍频
+function setHumFreq(hz) {
+  if (humOsc1) humOsc1.frequency.value = hz;
+  if (humOsc2) humOsc2.frequency.value = hz + 0.4;
+}
+
+// 第一章：drone 相位波动（看群聊"3/3 已离开"时触发，声音似"晃"了一下）
+function humPhaseGlitch() {
+  if (!humOsc2 || !ctx) return;
+  const t = ctx.currentTime;
+  const orig = humOsc2.frequency.value;
+  humOsc2.frequency.setValueAtTime(orig, t);
+  humOsc2.frequency.linearRampToValueAtTime(orig + 3.5, t + 0.12);
+  humOsc2.frequency.linearRampToValueAtTime(orig, t + 0.4);
+}
+
+// 第一章：默言提示音——比 OA 普通"叮"更低、更短，像心跳监护仪跳过一拍
+function playMutePing() {
+  if (muted) return;
+  if (!ensure()) return;
+  resume();
+  const t = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(440, t);
+  osc.frequency.exponentialRampToValueAtTime(210, t + 0.06);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(0.13, t + 0.005);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+  osc.connect(g).connect(masterGain || ctx.destination);
+  osc.start(t);
+  osc.stop(t + 0.2);
+}
+
 function toggleMute() {
   muted = !muted;
   if (masterGain) masterGain.gain.value = muted ? 0 : 0.5;
@@ -192,4 +227,4 @@ function isMuted() {
   return muted;
 }
 
-export const ARG_Audio = { startDrone, playPing, playThunder, startHum, stopHum, playWhisper, toggleMute, isMuted };
+export const ARG_Audio = { startDrone, playPing, playThunder, startHum, stopHum, setHumFreq, humPhaseGlitch, playMutePing, playWhisper, toggleMute, isMuted };

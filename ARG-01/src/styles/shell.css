@@ -69,6 +69,12 @@ body {
   font-family: "Microsoft YaHei", sans-serif; letter-spacing: 2px;
 }
 .scene-next:hover { background: #235fd6; }
+.scene-actions { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+.scene-back {
+  padding: 9px 20px; border: 1px solid #3a3f4a; background: rgba(20,24,32,.8); color: #c8cdd6;
+  font-size: 14px; cursor: pointer; font-family: "Microsoft YaHei", sans-serif; letter-spacing: 2px;
+}
+.scene-back:hover { background: rgba(40,46,58,.9); }
 
 /* 门户 hub */
 .view-portal {
@@ -96,7 +102,12 @@ body {
   background: radial-gradient(ellipse at 50% 30%, #3a3d42 0%, #1e2024 75%);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 40px 16px;
 }
-.note-bar { z-index: 5; }
+.note-bar { z-index: 5; display: flex; gap: 14px; align-items: center; }
+.note-return {
+  padding: 7px 18px; border: 1px solid #3a3f4a; background: rgba(15,18,24,.6); color: #9aa2ad;
+  font-size: 12px; letter-spacing: 2px; cursor: pointer;
+}
+.note-return:hover { background: rgba(30,36,46,.8); color: #c8cdd6; }
 .note-flip {
   padding: 10px 30px; border: 1px solid #4a5568; background: rgba(20,24,32,.8); color: #d8dce2;
   font-size: 14px; letter-spacing: 3px; cursor: pointer;
@@ -111,7 +122,7 @@ body {
 .login-host { width: 360px; max-width: 92%; }
 
 /* OA 视图 */
-.view-oa { width: 100%; height: 100vh; overflow: auto; background: #fff; }
+.view-oa { width: 100%; height: 100vh; overflow: auto; background: #fff; color: var(--oa-text); }
 .oa-host { min-height: 100vh; }
 
 /* 公司官网视图（启衡 / Apocalypic 等，先仅可经改地址访问） */
@@ -126,6 +137,7 @@ body {
   .view-physical { font-size: 16px; }
   .scene-narrate { font-size: 16px; }
   .scene-next { font-size: 15px; padding: 10px 26px; }
+  .scene-back { font-size: 15px; padding: 10px 26px; }
   .scene-bar { padding: 18px 28px; min-height: 64px; }
   .portal-title { font-size: 54px; letter-spacing: 16px; }
   .portal-sub { font-size: 16px; }
@@ -138,6 +150,7 @@ body {
   .view-physical { font-size: 18px; }
   .scene-narrate { font-size: 19px; line-height: 1.7; }
   .scene-next { font-size: 17px; padding: 12px 30px; }
+  .scene-back { font-size: 17px; padding: 12px 30px; }
   .scene-bar { padding: 22px 36px; min-height: 76px; }
   .portal-title { font-size: 66px; letter-spacing: 20px; }
   .portal-sub { font-size: 18px; letter-spacing: 4px; }

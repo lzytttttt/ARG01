@@ -2,10 +2,14 @@
 import { playBoot, playPowerDown } from './transition.js';
 
 export const flow = (window.__flow = {
-  step: 'portal',     // portal | building | corridor1f | corridor3f | room307 | office | note | lcms | login | oa
+  step: 'portal',     // portal | building | corridor1f | corridor3f | room307 | office | note | lcms | login | oa | ch1
   noteRead: false,
   loggedIn: false,
-  muted: false
+  muted: false,
+  // 第一章内存态进度（无持久化，刷新回门户）
+  ch1Completed: false,
+  // 章节选择记录（内存态，后续做持久化时迁移至 localStorage）
+  choices: {} // 例：ch1_excelVersion = 'original' | 'verified' | 'official'
 });
 
 let routes = {};
@@ -42,7 +46,7 @@ function guard(path) {
     case '/physical/building':    return flow.step === 'portal';
     case '/physical/corridor1f':  return flow.step === 'building';
     case '/physical/corridor3f':  return flow.step === 'corridor1f';
-    case '/physical/room307':     return flow.step === 'corridor3f';
+    case '/physical/room307':     return ['corridor3f','room307','office','note'].indexOf(flow.step) >= 0;
     case '/physical/office':      return flow.step === 'room307';
     case '/note':                 return flow.step === 'office';
     case '/lcms':                 return flow.noteRead === true;
@@ -51,13 +55,18 @@ function guard(path) {
     case '/lcms/login':           return flow.noteRead === true;
     case '/lcms/404':             return flow.noteRead === true;
     case '/lcms/oa':              return flow.loggedIn === true;
+    case '/lcms/oa/ch1':          return flow.loggedIn === true; // 第一章属 digital，不触发关机动效
     default:                      return true; // '/' 与未知路径回落到门户
   }
 }
 
 // 越级访问时跳回当前应处步骤
 function fallback() {
-  if (flow.loggedIn) return '/lcms/oa';
+  if (flow.loggedIn) {
+    // 第一章已完成时越级回落到第一章（仍在终验流程内）
+    if (flow.ch1Completed) return '/lcms/oa/ch1';
+    return '/lcms/oa';
+  }
   if (flow.noteRead) return '/lcms';
   if (flow.step && flow.step !== 'portal') return '/' + flow.step;
   return '/';
@@ -97,6 +106,13 @@ export function render() {
 
 export function startRouter() {
   viewRoot = document.getElementById('view');
+  // 数字空间新标签页种子：?d=1 表示由物理字条新开标签进入网络空间，
+  // 种子 noteRead 以通过 /lcms 守卫；lastPath 置为物理字条以触发唤醒电脑动效
+  const params = new URLSearchParams(location.search);
+  if (params.get('d') === '1') {
+    flow.noteRead = true;
+    lastPath = '/note';
+  }
   window.addEventListener('hashchange', render);
   if (!location.hash) location.hash = '/';
   else render();

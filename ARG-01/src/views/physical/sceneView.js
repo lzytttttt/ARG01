@@ -51,7 +51,10 @@ export function sceneView(opts) {
           '<div class="scene-host">' + parsed.body + '</div>' +
           '<div class="scene-bar">' +
             '<div class="scene-narrate">' + (opts.narrate || '') + '</div>' +
-            '<button class="scene-next" id="nextBtn">' + (opts.btn || '前进 ▶') + '</button>' +
+            '<div class="scene-actions">' +
+              (opts.back ? '<button class="scene-back" id="backBtn">' + (opts.backBtn || '◀ 返回上一步') + '</button>' : '') +
+              '<button class="scene-next" id="nextBtn">' + (opts.btn || '前进 ▶') + '</button>' +
+            '</div>' +
           '</div>' +
         '</div>';
 
@@ -81,6 +84,12 @@ export function sceneView(opts) {
         nextBtn.addEventListener('click', function () { navigate('/note'); });
       } else {
         nextBtn.addEventListener('click', function () { navigate(opts.next); });
+      }
+
+      // 返回上一步（物理空间内回退，如办公室返回 307 室）
+      if (opts.back) {
+        const backBtn = container.querySelector('#backBtn');
+        if (backBtn) backBtn.addEventListener('click', function () { navigate(opts.back); });
       }
 
       // 可交互热点：.hotspot[data-doc] → openDocument(opts.docs[name])
