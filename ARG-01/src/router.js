@@ -2,12 +2,14 @@
 import { playBoot, playPowerDown } from './transition.js';
 
 export const flow = (window.__flow = {
-  step: 'portal',     // portal | building | corridor1f | corridor3f | room307 | office | note | lcms | login | oa | ch1
+  step: 'portal',     // portal | building | corridor1f | corridor3f | room307 | office | note | lcms | login | oa | ch1 | ch2
   noteRead: false,
   loggedIn: false,
   muted: false,
   // 第一章内存态进度（无持久化，刷新回门户）
   ch1Completed: false,
+  // 第二章内存态进度
+  ch2Completed: false,
   // 章节选择记录（内存态，后续做持久化时迁移至 localStorage）
   choices: {} // 例：ch1_excelVersion = 'original' | 'verified' | 'official'
 });
@@ -56,6 +58,7 @@ function guard(path) {
     case '/lcms/404':             return flow.noteRead === true;
     case '/lcms/oa':              return flow.loggedIn === true;
     case '/lcms/oa/ch1':          return flow.loggedIn === true; // 第一章属 digital，不触发关机动效
+    case '/lcms/oa/ch2':          return flow.loggedIn === true && flow.ch1Completed === true;
     default:                      return true; // '/' 与未知路径回落到门户
   }
 }
@@ -63,6 +66,8 @@ function guard(path) {
 // 越级访问时跳回当前应处步骤
 function fallback() {
   if (flow.loggedIn) {
+    // 第二章已完成时越级回落到第二章（仍在终验流程内）
+    if (flow.ch2Completed) return '/lcms/oa/ch2';
     // 第一章已完成时越级回落到第一章（仍在终验流程内）
     if (flow.ch1Completed) return '/lcms/oa/ch1';
     return '/lcms/oa';

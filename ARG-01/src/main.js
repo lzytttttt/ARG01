@@ -15,6 +15,7 @@ import lcmsNews from './views/lcmsNews.js';
 import login from './views/login.js';
 import oaDesk from './views/oaDesk.js';
 import chapter1 from './views/chapter1.js';
+import chapter2 from './views/chapter2.js';
 import { qiheng, qihengCases, qiheng404, apocalypic, apocalypicProduct, apocalypic404 } from './views/web.js';
 
 initShell(document.getElementById('app'));
@@ -34,6 +35,7 @@ registerRoutes({
   '/lcms/404': lcms404,
   '/lcms/oa': oaDesk,
   '/lcms/oa/ch1': chapter1,
+  '/lcms/oa/ch2': chapter2,
   '/web/qiheng': qiheng,
   '/web/qiheng/cases': qihengCases,
   '/web/qiheng/404': qiheng404,

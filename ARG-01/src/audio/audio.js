@@ -198,6 +198,20 @@ function humPhaseGlitch() {
   humOsc2.frequency.linearRampToValueAtTime(orig, t + 0.4);
 }
 
+// 第二章：嗡声骤增至刺耳级别（Jump scare 听觉层，通讯录合并瞬间触发）
+// 音量骤增约 15dB（0.04 → 0.2），持续 0.3s 后骤降回正常
+function humSpike() {
+  if (!humGain || !ctx) return;
+  const t = ctx.currentTime;
+  const normal = 0.04;
+  const peak = 0.2;
+  humGain.gain.cancelScheduledValues(t);
+  humGain.gain.setValueAtTime(normal, t);
+  humGain.gain.linearRampToValueAtTime(peak, t + 0.02);   // 几乎瞬间拉满
+  humGain.gain.setValueAtTime(peak, t + 0.3);              // 持续 0.3s
+  humGain.gain.linearRampToValueAtTime(normal, t + 0.5);   // 骤降回正常
+}
+
 // 第一章：默言提示音——比 OA 普通"叮"更低、更短，像心跳监护仪跳过一拍
 function playMutePing() {
   if (muted) return;
@@ -227,4 +241,4 @@ function isMuted() {
   return muted;
 }
 
-export const ARG_Audio = { startDrone, playPing, playThunder, startHum, stopHum, setHumFreq, humPhaseGlitch, playMutePing, playWhisper, toggleMute, isMuted };
+export const ARG_Audio = { startDrone, playPing, playThunder, startHum, stopHum, setHumFreq, humPhaseGlitch, humSpike, playMutePing, playWhisper, toggleMute, isMuted };

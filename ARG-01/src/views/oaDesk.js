@@ -39,6 +39,35 @@ export default {
       if (sumRed) sumRed.textContent = '6';
     }
 
+    // ===== 第二章入口：第一章完成后，TK-2026-0001-2 行变为可点击 =====
+    const allRows = container.querySelectorAll('.oa-table tbody tr');
+    let ch2Row = null;
+    allRows.forEach(function (r) {
+      if (r.textContent.indexOf('TK-2026-0001-2') >= 0) ch2Row = r;
+    });
+    if (ch2Row && flow.ch1Completed && !flow.ch2Completed) {
+      ch2Row.style.cursor = 'pointer';
+      ch2Row.title = '▶ 已严重超时，请立即处理！';
+      const titleCell = ch2Row.querySelector('td:nth-child(2)');
+      if (titleCell) {
+        titleCell.innerHTML += '<span class="tk-sub" style="display:block;font-weight:normal;font-size:12px;color:var(--oa-primary-blue);margin-top:4px;line-height:1.7;">▶ 已严重超时，请立即处理！</span>';
+      }
+      ch2Row.addEventListener('click', function () { navigate('/lcms/oa/ch2'); });
+    }
+    if (ch2Row && flow.ch2Completed) {
+      ch2Row.style.cursor = 'default';
+      const badge2 = ch2Row.querySelector('.badge');
+      if (badge2) { badge2.textContent = '已处理'; badge2.classList.remove('badge-pending'); }
+      const hint2 = ch2Row.querySelector('.tk-sub');
+      if (hint2) hint2.textContent = '已完成验收。材料已归档。';
+    }
+    if (flow.ch2Completed) {
+      const bc2 = container.querySelector('.oa-sidebar .badge-count');
+      if (bc2) bc2.textContent = '5';
+      const sumRed2 = container.querySelector('.sum-card .num.red');
+      if (sumRed2) sumRed2.textContent = '5';
+    }
+
     // 数据保留倒计时（后台持续运行）：系统时间 18:43 → 24:00 关闭，约 5h17m
     const cd = container.querySelector('.corner-countdown');
     let total = 5 * 3600 + 17 * 60; // 19020s

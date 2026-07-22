@@ -16,6 +16,9 @@ const HORROR_CSS = `
 .fx-monologue { font-style: italic; color: #8a9098; font-size: 13px; margin: 14px 0 6px; padding-left: 12px; border-left: 2px solid rgba(0,0,0,.1); opacity: 0; transition: opacity .7s ease; }
 .fx-monologue.show { opacity: 1; }
 .fx-ascii-anom { font-family: var(--font-mono, monospace); color: #c0392b; letter-spacing: 1px; }
+/* 第二章：灯管闪烁（物理空间共振） */
+.fx-lamp { animation: lampFlash .18s 1; }
+@keyframes lampFlash { 50% { filter: brightness(1.6); } }
 `;
 
 function injectStyle() {
@@ -63,13 +66,15 @@ function phaseHum(on) {
 // 按 flow.step 渐进激活：
 //   室外/走廊(building/corridor1f/corridor3f) —— 停止嗡声（仅雷声/底噪）
 //   307/office/note/login/oa —— 启动 30Hz 嗡声
+//   ch1 —— 33Hz（略升）
+//   ch2 —— 40Hz（明显可感知，第一次拍频脉动）
 //   离开 OA 清除血色
 function setIntensity(step) {
-  const humSteps = ['room307', 'office', 'note', 'login', 'oa', 'ch1'];
+  const humSteps = ['room307', 'office', 'note', 'login', 'oa', 'ch1', 'ch2'];
   if (humSteps.indexOf(step) >= 0) {
     ARG_Audio.startHum();
-    // 第一章 drone 略升至 33Hz（序章为 30Hz），增幅极小但为第二章 40Hz 铺垫
     if (step === 'ch1') ARG_Audio.setHumFreq(33);
+    if (step === 'ch2') ARG_Audio.setHumFreq(40);
   } else {
     ARG_Audio.stopHum();
   }
@@ -116,4 +121,19 @@ function injectMonologue(container, text) {
   return el;
 }
 
-export const ARG_Horror = { init, blackFlash, bloodTint, clearBlood, phaseHum, setIntensity, edgeFlash, glitchTable, injectMonologue };
+// 第二章：OA 文字模糊（截图合并完成后，全页 filter:blur(1px) 0.3s）
+function blurFlash(targetEl, ms) {
+  if (!targetEl) return;
+  ms = ms || 300;
+  targetEl.style.transition = 'filter ' + (ms / 1000) + 's ease';
+  targetEl.style.filter = 'blur(1px)';
+  setTimeout(function () { targetEl.style.filter = ''; }, ms);
+}
+
+// 第二章：灯管闪烁（物理空间共振，与屏幕黑闪同步）
+function lampFlash() {
+  document.body.classList.add('fx-lamp');
+  setTimeout(function () { document.body.classList.remove('fx-lamp'); }, 250);
+}
+
+export const ARG_Horror = { init, blackFlash, bloodTint, clearBlood, phaseHum, setIntensity, edgeFlash, glitchTable, injectMonologue, blurFlash, lampFlash };
